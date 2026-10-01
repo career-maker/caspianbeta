@@ -233,3 +233,64 @@ add_filter(
 		return defined( 'WPSEO_VERSION' ) ? $t : array();
 	}
 );
+
+/**
+ * Yoast SEO bridge: while Yoast is active it prints the tags, but the approved titles, descriptions and
+ * social images keep coming from the page-level SEO fields (ACF) and the SEO Defaults page.
+ */
+if ( defined( 'WPSEO_VERSION' ) ) {
+	$csp_title_filter = function ( $title ) {
+			$id = csp_seo_object_id();
+			if ( $id ) {
+				$custom = csp_get( 'seo_title', $id );
+				if ( $custom ) {
+					return $custom;
+				}
+			}
+			if ( is_front_page() ) {
+				return csp_site_name();
+			}
+			if ( is_singular() || ( is_home() && ! is_front_page() ) ) {
+				$t = is_home() ? get_the_title( (int) get_option( 'page_for_posts' ) ) : single_post_title( '', false );
+				return $t . ' | ' . csp_site_name();
+			}
+			return $title;
+		};
+	add_filter( 'wpseo_title', $csp_title_filter, 20 );
+	add_filter( 'wpseo_opengraph_title', $csp_title_filter, 20 );
+	add_filter( 'wpseo_twitter_title', $csp_title_filter, 20 );
+	add_filter(
+		'wpseo_metadesc',
+		function ( $desc ) {
+			if ( '' === trim( (string) $desc ) ) {
+				$d = csp_seo_description();
+				if ( $d ) {
+					return wp_strip_all_tags( $d );
+				}
+			}
+			return $desc;
+		},
+		20
+	);
+	$csp_img_filter = function ( $url ) {
+		if ( empty( $url ) ) {
+			$id = csp_seo_image_id();
+			if ( $id ) {
+				$src = wp_get_attachment_image_url( $id, 'large' );
+				if ( $src ) {
+					return $src;
+				}
+			}
+		}
+		return $url;
+	};
+	add_filter( 'wpseo_opengraph_image', $csp_img_filter, 20 );
+	add_filter( 'wpseo_twitter_image', $csp_img_filter, 20 );
+	add_filter(
+		'wpseo_opengraph_site_name',
+		function ( $name ) {
+			return csp_site_name() ? csp_site_name() : $name;
+		},
+		20
+	);
+}
