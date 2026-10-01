@@ -129,25 +129,34 @@ add_filter(
 	}
 );
 
-// Remember the outcome of the last send so the settings screen can show it.
+// Remember the outcome of every send (last 20) so the settings screen can show what happened.
+function csp_mail_log_add( $ok, $to, $subject, $msg = '' ) {
+	$log = get_option( 'csp_mail_log', array() );
+	$log = is_array( $log ) ? $log : array();
+	array_unshift(
+		$log,
+		array(
+			'ok'   => (bool) $ok,
+			'time' => time(),
+			'to'   => is_array( $to ) ? implode( ', ', $to ) : (string) $to,
+			'subj' => (string) $subject,
+			'msg'  => (string) $msg,
+		)
+	);
+	update_option( 'csp_mail_log', array_slice( $log, 0, 20 ), false );
+	update_option( 'csp_mail_status', array( 'ok' => (bool) $ok, 'time' => time(), 'msg' => (string) $msg ), false );
+}
 add_action(
 	'wp_mail_failed',
 	function ( $err ) {
-		update_option(
-			'csp_mail_status',
-			array(
-				'ok'   => false,
-				'time' => time(),
-				'msg'  => is_wp_error( $err ) ? $err->get_error_message() : 'Unknown error',
-			),
-			false
-		);
+		$d = is_wp_error( $err ) ? $err->get_error_data() : array();
+		csp_mail_log_add( false, isset( $d['to'] ) ? $d['to'] : '', isset( $d['subject'] ) ? $d['subject'] : '', is_wp_error( $err ) ? $err->get_error_message() : 'Unknown error' );
 	}
 );
 add_action(
 	'wp_mail_succeeded',
-	function () {
-		update_option( 'csp_mail_status', array( 'ok' => true, 'time' => time(), 'msg' => '' ), false );
+	function ( $d ) {
+		csp_mail_log_add( true, isset( $d['to'] ) ? $d['to'] : '', isset( $d['subject'] ) ? $d['subject'] : '' );
 	}
 );
 
@@ -161,6 +170,43 @@ function csp_send_html( $to, $subject, $html, $text, $headers = array() ) {
 }
 
 /* ------------------------------------------------------------- HTML mail design */
+
+/** URL of the website logo for e-mails (PNG/JPG copy is generated once from a WebP/SVG logo). */
+function csp_mail_logo_url() {
+	$fallback = CSP_URI . '/assets/images/mail-logo.png';
+	$id       = (int) csp_opt( 'opt_logo' );
+	if ( ! $id ) {
+		return $fallback;
+	}
+	$mime = get_post_mime_type( $id );
+	$url  = wp_get_attachment_image_url( $id, 'medium' );
+	if ( ! $url ) {
+		$url = wp_get_attachment_url( $id );
+	}
+	if ( in_array( $mime, array( 'image/png', 'image/jpeg', 'image/gif' ), true ) && $url ) {
+		return $url;
+	}
+	$cache = get_option( 'csp_mail_logo', array() );
+	if ( is_array( $cache ) && isset( $cache['id'], $cache['url'] ) && (int) $cache['id'] === $id ) {
+		return $cache['url'];
+	}
+	$file = get_attached_file( $id );
+	$up   = wp_upload_dir();
+	if ( $file && is_readable( $file ) && empty( $up['error'] ) ) {
+		$editor = wp_get_image_editor( $file );
+		if ( ! is_wp_error( $editor ) ) {
+			$editor->resize( 240, 240, false );
+			$name = 'csp-mail-logo-' . $id . '.png';
+			$res  = $editor->save( trailingslashit( $up['path'] ) . $name, 'image/png' );
+			if ( ! is_wp_error( $res ) ) {
+				$new = trailingslashit( $up['url'] ) . $name;
+				update_option( 'csp_mail_logo', array( 'id' => $id, 'url' => $new ), false );
+				return $new;
+			}
+		}
+	}
+	return $fallback;
+}
 
 /**
  * Branded, table-based, inline-styled e-mail (renders in Gmail, Outlook, Apple Mail, mobile).
@@ -179,7 +225,7 @@ function csp_mail_html( $a ) {
 	$sans   = "'Manrope',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif";
 
 	$site  = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
-	$logo  = CSP_URI . '/assets/images/mail-logo.png';
+	$logo  = csp_mail_logo_url();
 	$phone = csp_opt( 'opt_phone_display' );
 	$tel   = csp_opt( 'opt_phone_tel' );
 	$email = csp_opt( 'opt_email' );
@@ -354,7 +400,7 @@ function csp_mail_confirm( $d ) {
 	$headers = array();
 	$to_us   = csp_enquiry_recipient();
 	if ( $to_us ) {
-		$headers[] = 'Reply-To: ' . $site . ' <' . $to_us . '>';
+		$headers[] = 'Reply-To: ' . $to_us;
 	}
 	return csp_send_html( $d['email'], $subject, csp_mail_html( $a ), csp_mail_text( $a ), $headers );
 }
@@ -574,6 +620,24 @@ function csp_mail_page() {
 
 			<?php submit_button( 'Save settings' ); ?>
 		</form>
+
+		<?php $log = get_option( 'csp_mail_log', array() ); ?>
+		<div class="csp-card"><h2>Recent emails</h2>
+			<?php if ( empty( $log ) ) : ?>
+				<p class="description">Nothing sent yet. Every enquiry notification and visitor confirmation is listed here with its result.</p>
+			<?php else : ?>
+			<table class="widefat striped"><thead><tr><th>When</th><th>To</th><th>Subject</th><th>Result</th></tr></thead><tbody>
+				<?php foreach ( (array) $log as $row ) : ?>
+				<tr>
+					<td><?php echo esc_html( human_time_diff( $row['time'] ) . ' ago' ); ?></td>
+					<td><?php echo esc_html( $row['to'] ); ?></td>
+					<td><?php echo esc_html( $row['subj'] ); ?></td>
+					<td><?php echo $row['ok'] ? '<span class="csp-pill csp-on">Sent</span>' : '<span class="csp-pill csp-bad">Failed</span> ' . esc_html( $row['msg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody></table>
+			<?php endif; ?>
+		</div>
 
 		<div class="csp-card"><h2>Send a test email</h2>
 			<p>Sends a sample of the branded enquiry email to <strong><?php echo esc_html( csp_enquiry_recipient() ? csp_enquiry_recipient() : '— set an address first —' ); ?></strong> using the <em>saved</em> settings.</p>

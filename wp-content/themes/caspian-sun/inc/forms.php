@@ -144,7 +144,9 @@ function csp_handle_contact() {
 	$data = compact( 'name', 'phone', 'email', 'subject', 'message', 'product', 'size' );
 	$sent = csp_mail_notify( $data );
 	if ( '0' !== (string) csp_mail_opt( 'autoreply', '1' ) ) {
-		csp_mail_confirm( $data );
+		if ( ! csp_mail_confirm( $data ) ) {
+			error_log( 'Caspian theme: confirmation e-mail to the visitor failed for enquiry #' . (int) $id ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+		}
 	}
 
 	// The enquiry is saved even if mail transport is unavailable; log the failure.

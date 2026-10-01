@@ -5,3 +5,4 @@ wp-content/uploads/*cache*/
 .DS_Store
 caspian.sql
 *.sql
+wp-content/uploads/*/*/csp-mail-logo-*.png
