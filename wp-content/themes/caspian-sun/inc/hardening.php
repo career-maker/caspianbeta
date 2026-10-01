@@ -48,6 +48,30 @@ add_action(
 	0
 );
 
+/* ---- robots.txt also when WordPress lives in a sub-folder (core only registers the rule at the domain root) ---- */
+add_action(
+	'init',
+	function () {
+		if ( is_admin() || empty( $_SERVER['REQUEST_URI'] ) ) {
+			return;
+		}
+		$path = (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ); // phpcs:ignore WordPress.Security
+		$base = rtrim( (string) wp_parse_url( home_url(), PHP_URL_PATH ), '/' );
+		if ( '' === $base || $path !== $base . '/robots.txt' ) {
+			return; // At the domain root WordPress already serves it.
+		}
+		status_header( 200 );
+		header( 'Content-Type: text/plain; charset=utf-8' );
+		do_action( 'do_robotstxt' );
+		$public = get_option( 'blog_public' );
+		echo apply_filters( 'robots_txt', "User-agent: *
+Disallow: /wp-admin/
+", $public ); // phpcs:ignore WordPress.Security.EscapeOutput
+		exit;
+	},
+	1
+);
+
 /* ---- robots.txt (virtual — do not add a physical file, or the sitemap line is lost) ---- */
 add_filter(
 	'robots_txt',
