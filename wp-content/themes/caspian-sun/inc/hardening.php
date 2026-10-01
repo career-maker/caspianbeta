@@ -24,6 +24,24 @@ add_filter(
 remove_action( 'template_redirect', 'rest_output_link_header', 11 );
 
 /* ---- Case-sensitive URLs: /About-Us/ → 301 → /about-us/ ---- */
+
+/**
+ * Lower-case redirect target for a request URI, or '' when none is needed.
+ *
+ * @param string $uri  Request URI (path + optional query).
+ * @param string $base Path of the home URL without trailing slash ('' at the domain root, '/caspwp' in a sub-folder).
+ */
+function csp_url_case_target( $uri, $base ) {
+	$path = (string) wp_parse_url( $uri, PHP_URL_PATH );
+	$rest = ( '' !== $base && 0 === strpos( $path, $base ) ) ? substr( $path, strlen( $base ) ) : $path;
+	$check = preg_replace( '/%[0-9a-fA-F]{2}/', '', $rest ); // Percent-escapes (%E0…) are case-insensitive hex, not content.
+	if ( $check === strtolower( $check ) || preg_match( '#^/(wp-admin|wp-content|wp-includes|wp-json)(/|$)|^/wp-login\.php#i', $rest ) ) {
+		return '';
+	}
+	$query = (string) wp_parse_url( $uri, PHP_URL_QUERY );
+	return $base . strtolower( $rest ) . ( $query ? '?' . $query : '' );
+}
+
 add_action(
 	'init',
 	function () {
@@ -34,16 +52,12 @@ add_action(
 		if ( ! in_array( $method, array( 'GET', 'HEAD' ), true ) ) {
 			return;
 		}
-		$uri  = wp_unslash( $_SERVER['REQUEST_URI'] ); // phpcs:ignore WordPress.Security
-		$path = (string) wp_parse_url( $uri, PHP_URL_PATH );
-		$base = rtrim( (string) wp_parse_url( home_url(), PHP_URL_PATH ), '/' );
-		$rest = ( '' !== $base && 0 === strpos( $path, $base ) ) ? substr( $path, strlen( $base ) ) : $path;
-		if ( $rest === strtolower( $rest ) || preg_match( '#^/(wp-admin|wp-content|wp-includes|wp-json)(/|$)|^/wp-login\.php#i', $rest ) ) {
-			return;
+		$base   = rtrim( (string) wp_parse_url( home_url(), PHP_URL_PATH ), '/' );
+		$target = csp_url_case_target( wp_unslash( $_SERVER['REQUEST_URI'] ), $base ); // phpcs:ignore WordPress.Security
+		if ( '' !== $target ) {
+			wp_safe_redirect( untrailingslashit( home_url() ) . substr( $target, strlen( $base ) ), 301 );
+			exit;
 		}
-		$query = (string) wp_parse_url( $uri, PHP_URL_QUERY );
-		wp_safe_redirect( home_url( strtolower( $rest ) ) . ( $query ? '?' . $query : '' ), 301 );
-		exit;
 	},
 	0
 );

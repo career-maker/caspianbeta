@@ -101,16 +101,16 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
           <input type="hidden" name="csp_ts" value="<?php echo esc_attr( $token ); ?>">
           <div class="csp-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
-            <?php csp_field_row( 'cf-name', 'name', 'text', csp_get( 'contact_label_name' ), csp_get( 'contact_placeholder_name' ), true, 'autocomplete="name"' ); ?>
-            <?php csp_field_row( 'cf-phone', 'phone', 'tel', csp_get( 'contact_label_phone' ), csp_get( 'contact_placeholder_phone' ), true, 'autocomplete="tel" inputmode="tel"' ); ?>
+            <?php csp_field_row( 'cf-name', 'name', 'text', ( csp_get( 'contact_label_name' ) ? csp_get( 'contact_label_name' ) : __( 'Name', 'caspian-sun' ) ), csp_get( 'contact_placeholder_name' ), true, 'autocomplete="name"' ); ?>
+            <?php csp_field_row( 'cf-phone', 'phone', 'tel', ( csp_get( 'contact_label_phone' ) ? csp_get( 'contact_label_phone' ) : __( 'Phone', 'caspian-sun' ) ), csp_get( 'contact_placeholder_phone' ), true, 'autocomplete="tel" inputmode="tel"' ); ?>
           </div>
-          <?php csp_field_row( 'cf-email', 'email', 'email', csp_get( 'contact_label_email' ), csp_get( 'contact_placeholder_email' ), true, 'autocomplete="email"' ); ?>
+          <?php csp_field_row( 'cf-email', 'email', 'email', ( csp_get( 'contact_label_email' ) ? csp_get( 'contact_label_email' ) : __( 'Email', 'caspian-sun' ) ), csp_get( 'contact_placeholder_email' ), true, 'autocomplete="email"' ); ?>
           <div class="form-row">
             <?php csp_select_row( 'cf-product', 'product', csp_get( 'contact_label_product' ) ? csp_get( 'contact_label_product' ) : __( 'Product', 'caspian-sun' ), $product_opts, $sel_product ); ?>
             <?php csp_select_row( 'cf-size', 'size', csp_get( 'contact_label_packing' ) ? csp_get( 'contact_label_packing' ) : __( 'Packing', 'caspian-sun' ), $size_opts, $sel_size, ! $sel_product || count( $size_opts ) < 2 ); ?>
           </div>
           <?php csp_field_row( 'cf-subject', 'subject', 'text', csp_get( 'contact_label_subject' ) ? csp_get( 'contact_label_subject' ) : __( 'Subject', 'caspian-sun' ), csp_get( 'contact_placeholder_subject' ) ? csp_get( 'contact_placeholder_subject' ) : __( 'How can we help?', 'caspian-sun' ), true ); ?>
-          <?php csp_field_row( 'cf-message', 'message', 'textarea', csp_get( 'contact_label_message' ), csp_get( 'contact_placeholder_message' ), true ); ?>
+          <?php csp_field_row( 'cf-message', 'message', 'textarea', ( csp_get( 'contact_label_message' ) ? csp_get( 'contact_label_message' ) : __( 'Message', 'caspian-sun' ) ), csp_get( 'contact_placeholder_message' ), true ); ?>
           <?php if ( csp_get( 'contact_submit' ) ) : ?>
           <div class="btn-shop"><button type="submit" class="form-submit"><?php echo esc_html( csp_get( 'contact_submit' ) ); ?></button></div>
           <?php endif; ?>
