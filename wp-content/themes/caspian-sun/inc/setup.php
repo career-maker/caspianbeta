@@ -149,7 +149,7 @@ function csp_enqueue() {
 			array(
 				'ajax'  => admin_url( 'admin-ajax.php' ),
 				'nonce' => wp_create_nonce( 'csp_contact' ),
-				'recaptcha' => ( csp_opt( 'opt_recaptcha_site' ) && csp_opt( 'opt_recaptcha_secret' ) ) ? csp_opt( 'opt_recaptcha_site' ) : '',
+				'recaptcha' => csp_recaptcha_keys()[0],
 			)
 		);
 	}
@@ -188,20 +188,7 @@ add_action(
 	1
 );
 
-// Favicon from Theme Settings.
-add_action(
-	'wp_head',
-	function () {
-		$id = csp_opt( 'opt_favicon' );
-		if ( $id ) {
-			$url = csp_img_url( $id );
-			if ( $url ) {
-				echo '<link rel="icon" type="' . esc_attr( get_post_mime_type( $id ) ) . '" href="' . $url . '">' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
-			}
-		}
-	},
-	2
-);
+// Favicon: see inc/hardening.php (get_site_icon_url filter -> Theme Settings image or theme fallback).
 
 // Preload the hero image for LCP.
 add_action(

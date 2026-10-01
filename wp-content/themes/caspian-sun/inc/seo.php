@@ -29,6 +29,9 @@ function csp_site_name() {
 add_filter(
 	'pre_get_document_title',
 	function ( $title ) {
+		if ( defined( 'WPSEO_VERSION' ) ) {
+			return $title; // Yoast SEO owns titles when active.
+		}
 		$id = csp_seo_object_id();
 		if ( $id ) {
 			$custom = csp_get( 'seo_title', $id );
@@ -93,6 +96,9 @@ function csp_seo_image_id() {
 add_action(
 	'wp_head',
 	function () {
+		if ( defined( 'WPSEO_VERSION' ) ) {
+			return; // Yoast SEO outputs meta, Open Graph and schema when active.
+		}
 		$desc  = csp_seo_description();
 		$title = wp_get_document_title();
 		$url   = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : '' );
@@ -213,6 +219,9 @@ function csp_jsonld() {
 add_filter(
 	'wp_sitemaps_add_provider',
 	function ( $provider, $name ) {
+		if ( defined( 'WPSEO_VERSION' ) ) {
+			return $provider;
+		}
 		return 'users' === $name ? false : $provider;
 	},
 	10,
@@ -220,7 +229,7 @@ add_filter(
 );
 add_filter(
 	'wp_sitemaps_taxonomies',
-	function () {
-		return array();
+	function ( $t ) {
+		return defined( 'WPSEO_VERSION' ) ? $t : array();
 	}
 );

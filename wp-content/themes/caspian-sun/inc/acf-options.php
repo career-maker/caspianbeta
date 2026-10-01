@@ -86,13 +86,6 @@ function csp_register_options_groups() {
 			csp_f_tab( 'Common labels' ),
 			csp_f_text( 'opt_breadcrumb_home', 'Breadcrumb — "Home" label' ),
 			csp_f_text( 'opt_view_more', '"View More" link label' ),
-			csp_f_tab( 'Contact form delivery' ),
-			csp_f( 'email', 'opt_form_recipient', 'Send enquiries to', array( 'instructions' => 'Notification email address for contact-form submissions. Leave empty to use the WordPress admin email.' ) ),
-			csp_f_bool( 'opt_form_autoreply', 'Send confirmation email to the visitor' ),
-			csp_f_text( 'opt_form_autoreply_subject', 'Confirmation email — subject' ),
-			csp_f_area( 'opt_form_autoreply_body', 'Confirmation email — message', 4 ),
-			csp_f_text( 'opt_recaptcha_site', 'Google reCAPTCHA v3 — site key', array( 'instructions' => 'Optional. When both keys are filled in, reCAPTCHA v3 protects the contact form (a honeypot and time-trap are always active).' ) ),
-			csp_f_text( 'opt_recaptcha_secret', 'Google reCAPTCHA v3 — secret key' ),
 		)
 	);
 
@@ -216,7 +209,7 @@ function csp_register_options_groups() {
 	);
 
 	/* ---- Per-page SEO (pages, posts, products) ---------------------------- */
-	foreach ( array( 'page', 'post', 'product' ) as $pt ) {
+	foreach ( defined( 'WPSEO_VERSION' ) ? array() : array( 'page', 'post', 'product' ) as $pt ) { // Yoast replaces these boxes.
 		$seo_fields = array(
 			csp_f_text( 'seo_title', 'SEO title', array( 'instructions' => 'Leave empty to use "Page title | Site name".', 'maxlength' => 70 ) ),
 			csp_f_area( 'seo_description', 'Meta description', 3, array( 'maxlength' => 200, 'instructions' => 'Leave empty to use the default (or the excerpt for articles/products).' ) ),

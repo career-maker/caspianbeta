@@ -110,13 +110,17 @@ function csp_handle_contact() {
 	}
 	set_transient( $key, $cnt + 1, 10 * MINUTE_IN_SECONDS );
 
-	// Optional reCAPTCHA v3.
-	$secret = csp_opt( 'opt_recaptcha_secret' );
-	if ( $secret && csp_opt( 'opt_recaptcha_site' ) ) {
+	// Optional reCAPTCHA v3 (keys from Theme Settings → Mail & reCAPTCHA, read on every request).
+	list( $rc_site, $secret ) = csp_recaptcha_keys();
+	if ( $secret && $rc_site ) {
 		$token = isset( $_POST['g-recaptcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 		$res   = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array( 'timeout' => 8, 'body' => array( 'secret' => $secret, 'response' => $token, 'remoteip' => $ip ) ) );
 		$body  = is_wp_error( $res ) ? array() : json_decode( wp_remote_retrieve_body( $res ), true );
-		if ( empty( $body['success'] ) || ( isset( $body['score'] ) && $body['score'] < 0.4 ) ) {
+		$min   = (float) csp_mail_opt( 'recaptcha_threshold', 0.5 );
+		if ( empty( $body['success'] ) || ( isset( $body['score'] ) && $body['score'] < $min ) || ( isset( $body['action'] ) && 'contact' !== $body['action'] ) ) {
+			if ( ! empty( $body['error-codes'] ) ) {
+				error_log( 'Caspian theme: reCAPTCHA rejected: ' . implode( ',', (array) $body['error-codes'] ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+			}
 			$fail( array( '_form' => csp_get( 'contact_error', $page ) ), 400 );
 		}
 	}
@@ -136,30 +140,11 @@ function csp_handle_contact() {
 		}
 	}
 
-	// Notification to the site owner.
-	$to      = csp_opt( 'opt_form_recipient' );
-	$to      = is_email( $to ) ? $to : get_option( 'admin_email' );
-	$site    = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
-	$lines   = array(
-		'Name: ' . $name,
-		'Email: ' . $email,
-		'Phone: ' . ( $phone ? $phone : '—' ),
-	);
-	if ( $product ) {
-		$lines[] = 'Product: ' . $product . ( $size ? ' (' . $size . ')' : '' );
-	}
-	$lines[] = '';
-	$lines[] = $message;
-	$headers = array( 'Content-Type: text/plain; charset=UTF-8', 'Reply-To: ' . $name . ' <' . $email . '>' );
-	$sent    = wp_mail( $to, '[' . $site . '] ' . ( $product ? 'Product enquiry: ' . $product : 'New enquiry from ' . $name ), implode( "\n", $lines ), $headers );
-
-	// Confirmation to the visitor (optional).
-	if ( csp_opt( 'opt_form_autoreply' ) ) {
-		$subj = csp_oneline( csp_opt( 'opt_form_autoreply_subject' ) );
-		$body = (string) csp_opt( 'opt_form_autoreply_body' );
-		if ( $subj && $body ) {
-			wp_mail( $email, $subj, $body, array( 'Content-Type: text/plain; charset=UTF-8' ) );
-		}
+	// Branded e-mails: notification to the owner, confirmation to the visitor.
+	$data = compact( 'name', 'phone', 'email', 'message', 'product', 'size' );
+	$sent = csp_mail_notify( $data );
+	if ( '0' !== (string) csp_mail_opt( 'autoreply', '1' ) ) {
+		csp_mail_confirm( $data );
 	}
 
 	// The enquiry is saved even if mail transport is unavailable; log the failure.
@@ -178,35 +163,3 @@ function csp_form_done( $is_ajax ) {
 	wp_safe_redirect( add_query_arg( 'csp_sent', 'ok', remove_query_arg( 'csp_sent', $back ) ) . '#contact-form' );
 	exit;
 }
-
-/**
- * SMTP transport. Credentials never live in the theme: define them in wp-config.php
- *   define( 'CSP_SMTP_HOST', 'smtp.example.com' );  define( 'CSP_SMTP_PORT', 587 );
- *   define( 'CSP_SMTP_USER', '…' );  define( 'CSP_SMTP_PASS', '…' );  define( 'CSP_SMTP_SECURE', 'tls' );
- *   define( 'CSP_SMTP_FROM', 'no-reply@yourdomain.com' );
- * Without them WordPress falls back to PHP mail().
- */
-add_action(
-	'phpmailer_init',
-	function ( $mailer ) {
-		if ( ! defined( 'CSP_SMTP_HOST' ) ) {
-			return;
-		}
-		$mailer->isSMTP();
-		$mailer->Host = CSP_SMTP_HOST; // phpcs:ignore WordPress.NamingConventions
-		$mailer->Port = defined( 'CSP_SMTP_PORT' ) ? CSP_SMTP_PORT : 587; // phpcs:ignore WordPress.NamingConventions
-		if ( defined( 'CSP_SMTP_USER' ) ) {
-			$mailer->SMTPAuth = true; // phpcs:ignore WordPress.NamingConventions
-			$mailer->Username = CSP_SMTP_USER; // phpcs:ignore WordPress.NamingConventions
-			$mailer->Password = defined( 'CSP_SMTP_PASS' ) ? CSP_SMTP_PASS : ''; // phpcs:ignore WordPress.NamingConventions
-		}
-		$mailer->SMTPSecure = defined( 'CSP_SMTP_SECURE' ) ? CSP_SMTP_SECURE : ''; // phpcs:ignore WordPress.NamingConventions
-		$mailer->SMTPAutoTLS = (bool) $mailer->SMTPSecure; // phpcs:ignore WordPress.NamingConventions
-	}
-);
-add_filter(
-	'wp_mail_from',
-	function ( $from ) {
-		return defined( 'CSP_SMTP_FROM' ) ? CSP_SMTP_FROM : $from;
-	}
-);
