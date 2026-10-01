@@ -129,18 +129,24 @@ function csp_page_assets() {
 	return array( 'legal', 'legal' );
 }
 
+/** Cache-busting version: the file's modification time, so every deploy reaches visitors at once. */
+function csp_asset_ver( $rel ) {
+	$f = CSP_DIR . '/assets/' . $rel;
+	return is_readable( $f ) ? CSP_VERSION . '.' . filemtime( $f ) : CSP_VERSION;
+}
+
 add_action( 'wp_enqueue_scripts', 'csp_enqueue' );
 function csp_enqueue() {
 	$uri = CSP_URI . '/assets/';
-	wp_enqueue_style( 'csp-preloader', $uri . 'css/preloader.css', array(), CSP_VERSION );
-	wp_enqueue_style( 'csp-components', $uri . 'css/components.css', array( 'csp-preloader' ), CSP_VERSION );
+	wp_enqueue_style( 'csp-preloader', $uri . 'css/preloader.css', array(), csp_asset_ver( 'css/preloader.css' ) );
+	wp_enqueue_style( 'csp-components', $uri . 'css/components.css', array( 'csp-preloader' ), csp_asset_ver( 'css/components.css' ) );
 
 	list( $css, $js ) = csp_page_assets();
-	wp_enqueue_style( 'csp-page', $uri . 'css/page-' . $css . '.css', array( 'csp-components' ), CSP_VERSION );
+	wp_enqueue_style( 'csp-page', $uri . 'css/page-' . $css . '.css', array( 'csp-components' ), csp_asset_ver( 'css/page-' . $css . '.css' ) );
 
-	wp_enqueue_script( 'csp-components', $uri . 'js/components.js', array(), CSP_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	wp_enqueue_script( 'csp-components', $uri . 'js/components.js', array(), csp_asset_ver( 'js/components.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	if ( $js ) {
-		wp_enqueue_script( 'csp-page', $uri . 'js/' . $js . '.js', array( 'csp-components' ), CSP_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script( 'csp-page', $uri . 'js/' . $js . '.js', array( 'csp-components' ), csp_asset_ver( 'js/' . $js . '.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 	if ( 'contact' === $js ) {
 		wp_localize_script(
