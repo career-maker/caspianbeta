@@ -19,25 +19,65 @@ $hours    = csp_opt( 'opt_hours' );
 
 // Product enquiry context from the product page ("Contact Us" button).
 // phpcs:disable WordPress.Security.NonceVerification
-$q_product = isset( $_GET['enquiry_product'] ) ? sanitize_text_field( wp_unslash( $_GET['enquiry_product'] ) ) : '';
+$q_product = isset( $_GET['enquiry_product'] ) ? html_entity_decode( sanitize_text_field( wp_unslash( $_GET['enquiry_product'] ) ), ENT_QUOTES, 'UTF-8' ) : '';
 $q_size    = isset( $_GET['enquiry_size'] ) ? sanitize_text_field( wp_unslash( $_GET['enquiry_size'] ) ) : '';
 $sent      = isset( $_GET['csp_sent'] ) ? sanitize_key( wp_unslash( $_GET['csp_sent'] ) ) : '';
 // phpcs:enable
 
-$token = csp_form_token();
+$token   = csp_form_token();
+$catalog = csp_enquiry_products();
 
-/** Labelled input (label text, placeholder and required flag all editable / fixed by design). */
+// Preselect the product / packing sent by the product page (case-insensitive match against the catalogue).
+$sel_product = '';
+foreach ( array_keys( $catalog ) as $title ) {
+	if ( '' !== $q_product && 0 === strcasecmp( $title, $q_product ) ) {
+		$sel_product = $title;
+		break;
+	}
+}
+$sel_size = '';
+if ( $sel_product ) {
+	foreach ( $catalog[ $sel_product ] as $sz ) {
+		if ( '' !== $q_size && 0 === strcasecmp( $sz, $q_size ) ) {
+			$sel_size = $sz;
+			break;
+		}
+	}
+}
+$product_opts = array( '' => __( 'General enquiry (no specific product)', 'caspian-sun' ) );
+foreach ( array_keys( $catalog ) as $title ) {
+	$product_opts[ $title ] = $title;
+}
+$size_opts = array( '' => __( 'Select packing', 'caspian-sun' ) );
+if ( $sel_product ) {
+	foreach ( $catalog[ $sel_product ] as $sz ) {
+		$size_opts[ $sz ] = $sz;
+	}
+}
+
+/** Labelled input / textarea. Validation rules live in inc/validation.php (server) and assets/js/contact.js (live). */
 function csp_field_row( $id, $name, $type, $label, $placeholder, $required, $extra = '' ) {
 	if ( '' === (string) $label ) {
 		return;
 	}
-	echo '<div class="form-group"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
+	$req = $required ? ' <span class="req" aria-hidden="true">*</span>' : '';
+	echo '<div class="form-group"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . $req . '</label>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	if ( 'textarea' === $type ) {
-		echo '<textarea id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . ( $placeholder ? ' placeholder="' . esc_attr( $placeholder ) . '"' : '' ) . ( $required ? ' required' : '' ) . ' maxlength="3000" aria-describedby="' . esc_attr( $id ) . '-err"></textarea>';
+		echo '<textarea id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . ( $placeholder ? ' placeholder="' . esc_attr( $placeholder ) . '"' : '' ) . ( $required ? ' aria-required="true"' : '' ) . ' rows="5" aria-describedby="' . esc_attr( $id ) . '-err"></textarea>';
 	} else {
-		echo '<input id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" type="' . esc_attr( $type ) . '"' . ( $placeholder ? ' placeholder="' . esc_attr( $placeholder ) . '"' : '' ) . ( $required ? ' required' : '' ) . ' maxlength="200" ' . $extra . ' aria-describedby="' . esc_attr( $id ) . '-err">'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<input id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" type="' . esc_attr( $type ) . '"' . ( $placeholder ? ' placeholder="' . esc_attr( $placeholder ) . '"' : '' ) . ( $required ? ' aria-required="true"' : '' ) . ' ' . $extra . ' aria-describedby="' . esc_attr( $id ) . '-err">'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 	echo '<span class="form-error" id="' . esc_attr( $id ) . '-err" role="alert"></span></div>';
+}
+
+/** Labelled <select>. $options: array( value => label ). */
+function csp_select_row( $id, $name, $label, $options, $selected, $disabled = false ) {
+	echo '<div class="form-group"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
+	echo '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . ( $disabled ? ' disabled' : '' ) . ' aria-describedby="' . esc_attr( $id ) . '-err">';
+	foreach ( $options as $val => $text ) {
+		echo '<option value="' . esc_attr( $val ) . '"' . selected( (string) $selected, (string) $val, false ) . '>' . esc_html( $text ) . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
+	echo '</select><span class="form-error" id="' . esc_attr( $id ) . '-err" role="alert"></span></div>';
 }
 ?>
 <main id="main">
@@ -55,18 +95,21 @@ function csp_field_row( $id, $name, $type, $label, $placeholder, $required, $ext
         <?php elseif ( 'err' === $sent ) : ?>
         <div class="form-status is-error" role="alert"><?php echo esc_html( csp_get( 'contact_error' ) ); ?></div>
         <?php endif; ?>
-        <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="cspContactForm" novalidate data-sending="<?php echo esc_attr( csp_get( 'contact_sending' ) ); ?>" data-success="<?php echo esc_attr( csp_get( 'contact_success' ) ); ?>" data-error="<?php echo esc_attr( csp_get( 'contact_error' ) ); ?>">
+        <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="cspContactForm" novalidate data-products="<?php echo esc_attr( wp_json_encode( $catalog ) ); ?>" data-sending="<?php echo esc_attr( csp_get( 'contact_sending' ) ); ?>" data-success="<?php echo esc_attr( csp_get( 'contact_success' ) ); ?>" data-error="<?php echo esc_attr( csp_get( 'contact_error' ) ); ?>">
           <input type="hidden" name="action" value="csp_contact">
           <?php wp_nonce_field( 'csp_contact', 'csp_nonce' ); ?>
           <input type="hidden" name="csp_ts" value="<?php echo esc_attr( $token ); ?>">
-          <input type="hidden" name="product" value="<?php echo esc_attr( $q_product ); ?>">
-          <input type="hidden" name="size" value="<?php echo esc_attr( $q_size ); ?>">
           <div class="csp-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <?php csp_field_row( 'cf-name', 'name', 'text', csp_get( 'contact_label_name' ), csp_get( 'contact_placeholder_name' ), true, 'autocomplete="name"' ); ?>
-            <?php csp_field_row( 'cf-phone', 'phone', 'tel', csp_get( 'contact_label_phone' ), csp_get( 'contact_placeholder_phone' ), false, 'autocomplete="tel"' ); ?>
+            <?php csp_field_row( 'cf-phone', 'phone', 'tel', csp_get( 'contact_label_phone' ), csp_get( 'contact_placeholder_phone' ), true, 'autocomplete="tel" inputmode="tel"' ); ?>
           </div>
           <?php csp_field_row( 'cf-email', 'email', 'email', csp_get( 'contact_label_email' ), csp_get( 'contact_placeholder_email' ), true, 'autocomplete="email"' ); ?>
+          <div class="form-row">
+            <?php csp_select_row( 'cf-product', 'product', csp_get( 'contact_label_product' ) ? csp_get( 'contact_label_product' ) : __( 'Product', 'caspian-sun' ), $product_opts, $sel_product ); ?>
+            <?php csp_select_row( 'cf-size', 'size', csp_get( 'contact_label_packing' ) ? csp_get( 'contact_label_packing' ) : __( 'Packing', 'caspian-sun' ), $size_opts, $sel_size, ! $sel_product || count( $size_opts ) < 2 ); ?>
+          </div>
+          <?php csp_field_row( 'cf-subject', 'subject', 'text', csp_get( 'contact_label_subject' ) ? csp_get( 'contact_label_subject' ) : __( 'Subject', 'caspian-sun' ), csp_get( 'contact_placeholder_subject' ) ? csp_get( 'contact_placeholder_subject' ) : __( 'How can we help?', 'caspian-sun' ), true ); ?>
           <?php csp_field_row( 'cf-message', 'message', 'textarea', csp_get( 'contact_label_message' ), csp_get( 'contact_placeholder_message' ), true ); ?>
           <?php if ( csp_get( 'contact_submit' ) ) : ?>
           <div class="btn-shop"><button type="submit" class="form-submit"><?php echo esc_html( csp_get( 'contact_submit' ) ); ?></button></div>

@@ -308,6 +308,7 @@ function csp_mail_notify( $d ) {
 			'Name'    => $d['name'],
 			'Email'   => array( $d['email'], 'mailto:' . $d['email'] ),
 			'Phone'   => $d['phone'] ? array( $d['phone'], 'tel:' . preg_replace( '/[^0-9+]/', '', $d['phone'] ) ) : '',
+			'Subject' => $d['subject'],
 			'Product' => $d['product'],
 			'Packing' => $d['size'],
 			'Received' => wp_date( 'j M Y, H:i' ),
@@ -317,7 +318,7 @@ function csp_mail_notify( $d ) {
 		'button'        => array( 'Reply to ' . $d['name'], 'mailto:' . $d['email'] . '?subject=' . rawurlencode( 'Re: your enquiry to ' . $site ) ),
 		'footer_note'   => 'Sent automatically from the contact form at ' . home_url( '/' ) . '. Replying to this email answers the visitor directly.',
 	);
-	$subject = '[' . $site . '] ' . ( $d['product'] ? 'Product enquiry: ' . $d['product'] : 'New enquiry from ' . $d['name'] );
+	$subject = '[' . $site . '] ' . $d['subject'] . ( $d['product'] ? ' — ' . $d['product'] : '' );
 	return csp_send_html(
 		csp_enquiry_recipient(),
 		csp_oneline( $subject ),
@@ -338,6 +339,7 @@ function csp_mail_confirm( $d ) {
 		'title'         => 'Thank you, ' . $d['name'],
 		'intro'         => $intro,
 		'rows'          => array(
+			'Subject' => $d['subject'],
 			'Product' => $d['product'],
 			'Packing' => $d['size'],
 			'Email'   => $d['email'],

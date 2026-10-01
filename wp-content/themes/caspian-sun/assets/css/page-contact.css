@@ -425,3 +425,17 @@
 .form-status.is-success{color:#1E4951;border-left:3px solid #D7BB51;padding:.7rem 1rem;background:#F7F3EC}
 .form-status.is-error{color:#b3261e;border-left:3px solid #b3261e;padding:.7rem 1rem;background:#fdf2f1}
 .form-submit:disabled{opacity:.6;cursor:progress}
+
+/* ---- selects + live validation states ---- */
+.form-group select{padding:clamp(.7rem,1.5vw,.9rem) 2.2rem clamp(.7rem,1.5vw,.9rem) clamp(.8rem,2vw,1rem);border:1px solid #ddd;font-family:'Manrope',sans-serif;font-size:.95rem;color:var(--charcoal-black);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231E4951' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 1rem center;appearance:none;-webkit-appearance:none;border-radius:0;width:100%;text-overflow:ellipsis;transition:all .3s}
+.form-group select:focus{outline:none;border-color:var(--rich-gold);box-shadow:0 0 0 3px rgba(215,187,81,.2)}
+.form-group select:disabled{background-color:#f4f2ee;color:#8a8a84;cursor:not-allowed}
+.form-group select[aria-invalid="true"]{border-color:#b3261e}
+.form-group input[aria-invalid="false"]:not(:placeholder-shown),.form-group textarea[aria-invalid="false"]:not(:placeholder-shown){border-color:#2e7d4f}
+.form-group textarea{margin-bottom:0}
+.form-error{animation:csp-err .18s ease-out}
+@keyframes csp-err{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.form-error{animation:none}}
+.form-section .form-group{margin-bottom:1.2rem}
+.form-section .form-row .form-group{margin-bottom:0}
+.form-section .form-row{align-items:start}

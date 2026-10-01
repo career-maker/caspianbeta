@@ -71,32 +71,32 @@ function csp_handle_contact() {
 		$fail( array( '_form' => __( 'This form has expired. Please reload the page and try again.', 'caspian-sun' ) ), 400 );
 	}
 
-	$name    = isset( $_POST['name'] ) ? csp_oneline( sanitize_text_field( wp_unslash( $_POST['name'] ) ) ) : '';
-	$phone   = isset( $_POST['phone'] ) ? csp_oneline( sanitize_text_field( wp_unslash( $_POST['phone'] ) ) ) : '';
-	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-	$message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
-	$product = isset( $_POST['product'] ) ? csp_oneline( sanitize_text_field( wp_unslash( $_POST['product'] ) ) ) : '';
-	$size    = isset( $_POST['size'] ) ? csp_oneline( sanitize_text_field( wp_unslash( $_POST['size'] ) ) ) : '';
+	$raw = array();
+	foreach ( array( 'name', 'phone', 'email', 'subject', 'message', 'product', 'size' ) as $k ) {
+		$raw[ $k ] = isset( $_POST[ $k ] ) && is_scalar( $_POST[ $k ] ) ? (string) wp_unslash( $_POST[ $k ] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+	}
 	// phpcs:enable
 
 	$page = csp_page_by_template( 'templates/contact.php' );
 	$e    = array();
-	if ( mb_strlen( $name ) < 2 ) {
-		$e['name'] = __( 'Please enter your name (at least 2 characters).', 'caspian-sun' );
-	} elseif ( mb_strlen( $name ) > 100 ) {
-		$e['name'] = __( 'Name is too long.', 'caspian-sun' );
+	list( $name, $e['name'] )       = csp_v_name( $raw['name'] );
+	list( $phone, $e['phone'] )     = csp_v_phone( $raw['phone'] );
+	list( $email, $e['email'] )     = csp_v_email( $raw['email'] );
+	list( $subject, $e['subject'] ) = csp_v_text( $raw['subject'], __( 'subject', 'caspian-sun' ), 2, 150, false );
+	list( $message, $e['message'] ) = csp_v_text( $raw['message'], __( 'message', 'caspian-sun' ), 2, 3000, true );
+
+	// Product / packing must come from the catalogue (optional).
+	$product      = csp_oneline( csp_v_trim( $raw['product'] ) );
+	$size         = csp_oneline( csp_v_trim( $raw['size'] ) );
+	$catalog      = csp_enquiry_products();
+	$e['product'] = '';
+	$e['size']    = '';
+	if ( '' !== $product && ! isset( $catalog[ $product ] ) ) {
+		$e['product'] = __( 'Please choose a product from the list.', 'caspian-sun' );
+	} elseif ( '' !== $size && ( '' === $product || ! in_array( $size, $catalog[ $product ], true ) ) ) {
+		$e['size'] = __( 'Please choose a packing option from the list.', 'caspian-sun' );
 	}
-	if ( '' !== $phone && ( ! preg_match( '/^[0-9+\-\s().]{6,25}$/', $phone ) || strlen( preg_replace( '/\D/', '', $phone ) ) < 6 ) ) {
-		$e['phone'] = __( 'Please enter a valid phone number.', 'caspian-sun' );
-	}
-	if ( ! is_email( $email ) ) {
-		$e['email'] = __( 'Please enter a valid email address.', 'caspian-sun' );
-	}
-	if ( mb_strlen( $message ) < 10 ) {
-		$e['message'] = __( 'Please write a message (at least 10 characters).', 'caspian-sun' );
-	} elseif ( mb_strlen( $message ) > 3000 ) {
-		$e['message'] = __( 'Message is too long (3000 characters maximum).', 'caspian-sun' );
-	}
+	$e = array_filter( $e );
 	if ( $e ) {
 		$fail( $e );
 	}
@@ -126,7 +126,7 @@ function csp_handle_contact() {
 	}
 
 	// Store the enquiry.
-	$title = $product ? sprintf( '%s — %s', $name, $product ) : $name;
+	$title = $product ? sprintf( '%s — %s', $name, $product ) : $name . ' — ' . $subject;
 	$id    = wp_insert_post(
 		array(
 			'post_type'   => 'csp_enquiry',
@@ -135,13 +135,13 @@ function csp_handle_contact() {
 		)
 	);
 	if ( $id && ! is_wp_error( $id ) ) {
-		foreach ( compact( 'name', 'phone', 'email', 'message', 'product', 'size', 'ip' ) as $k => $v ) {
+		foreach ( compact( 'name', 'phone', 'email', 'subject', 'message', 'product', 'size', 'ip' ) as $k => $v ) {
 			update_post_meta( $id, '_csp_' . $k, $v );
 		}
 	}
 
 	// Branded e-mails: notification to the owner, confirmation to the visitor.
-	$data = compact( 'name', 'phone', 'email', 'message', 'product', 'size' );
+	$data = compact( 'name', 'phone', 'email', 'subject', 'message', 'product', 'size' );
 	$sent = csp_mail_notify( $data );
 	if ( '0' !== (string) csp_mail_opt( 'autoreply', '1' ) ) {
 		csp_mail_confirm( $data );

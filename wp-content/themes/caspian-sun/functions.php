@@ -19,6 +19,7 @@ require_once CSP_DIR . '/inc/acf-lib.php';
 require_once CSP_DIR . '/inc/acf-options.php';
 require_once CSP_DIR . '/inc/acf-pages.php';
 require_once CSP_DIR . '/inc/acf-content.php';
+require_once CSP_DIR . '/inc/validation.php';
 require_once CSP_DIR . '/inc/mail.php';
 require_once CSP_DIR . '/inc/forms.php';
 require_once CSP_DIR . '/inc/seo.php';

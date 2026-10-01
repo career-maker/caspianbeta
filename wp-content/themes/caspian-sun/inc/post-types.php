@@ -123,6 +123,7 @@ add_action(
 					'name'    => __( 'Name', 'caspian-sun' ),
 					'phone'   => __( 'Phone', 'caspian-sun' ),
 					'email'   => __( 'Email', 'caspian-sun' ),
+					'subject' => __( 'Subject', 'caspian-sun' ),
 					'product' => __( 'Product', 'caspian-sun' ),
 					'size'    => __( 'Packing', 'caspian-sun' ),
 					'message' => __( 'Message', 'caspian-sun' ),
