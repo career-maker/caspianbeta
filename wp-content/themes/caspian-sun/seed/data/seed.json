@@ -1,0 +1,1751 @@
+{
+ "options": {
+  "opt_phone_display": "+971 58 561 6040",
+  "opt_phone_tel": "+971585616040",
+  "opt_whatsapp_display": "+971 58 561 6040",
+  "opt_whatsapp_number": "971585616040",
+  "opt_email": "info@caspiansunfood.com",
+  "opt_address": "Office C-08, Belselah Building,\nDubai, United Arab Emirates",
+  "opt_hours": "Mon-Fri: 9:00AM - 5:00PM\nSat: 11:00AM - 4:00PM",
+  "opt_logo": "@img:casplogo.webp",
+  "opt_favicon": "@img:images/logo.png",
+  "opt_breadcrumb_home": "Home",
+  "opt_view_more": "View More",
+  "opt_form_recipient": "",
+  "opt_form_autoreply": 0,
+  "opt_form_autoreply_subject": "Thank you for contacting Caspian & Sun Food Trading",
+  "opt_form_autoreply_body": "Thank you for your enquiry. We have received your message and a member of our team will get back to you shortly.\n\nCaspian & Sun Food Trading LLC",
+  "opt_social": [
+   {
+    "network": "facebook",
+    "url": "https://www.facebook.com/share/1LpQyUtJgN/?mibextid=wwXlfr"
+   },
+   {
+    "network": "linkedin",
+    "url": "https://www.linkedin.com/company/caspian-sun-food-trading-llc/about"
+   },
+   {
+    "network": "instagram",
+    "url": "https://www.instagram.com/caspiansunfoodtrading/"
+   }
+  ],
+  "opt_header_cta": {
+   "url": "/contact/",
+   "title": "Get In Touch",
+   "target": ""
+  },
+  "opt_header_phone_show": 1,
+  "opt_footer_social_heading": "SOCIAL MEDIA",
+  "opt_footer_about_heading": "ABOUT",
+  "opt_footer_about_text": "Founded in 1981, Caspian & Sun is an international food trading and distribution company specializing in premium food products. We connect trusted producers with HORECA, hospitality, wholesale, and retail businesses across Türkiye, the UAE, and international markets.",
+  "opt_footer_company_heading": "COMPANY",
+  "opt_footer_products_heading": "PRODUCTS",
+  "opt_footer_contact_heading": "CONTACT US",
+  "opt_copyright": "© 2025 Caspian & Sun Food Trading LLC",
+  "opt_legal_links": [
+   {
+    "link": {
+     "url": "/privacy-policy/",
+     "title": "Privacy Policy",
+     "target": ""
+    }
+   },
+   {
+    "link": {
+     "url": "/terms/",
+     "title": "Terms of Use",
+     "target": ""
+    }
+   }
+  ],
+  "opt_credit_text": "Designed & Developed by:",
+  "opt_credit_link": {
+   "url": "https://intersmart.in",
+   "title": "Intersmart",
+   "target": "_blank"
+  },
+  "opt_credit_logo": "@img:images/intersmart-logo.svg",
+  "pd_banner_heading": "PREMIUM PRODUCTS",
+  "pd_banner_text": "Exceptional seafood, meat, poultry, and specialty products, carefully sourced from trusted producers around the world.",
+  "pd_banner_image": "@img:images/hero/hero-seafood.webp",
+  "pd_banner_image_mobile": "@img:images/hero/hero-seafood-sm.webp",
+  "pd_badge": "Premium Quality",
+  "pd_origin_label": "Origin",
+  "pd_packing_label": "Packing",
+  "pd_packing_hint": "Select a packing option to add it to your enquiry",
+  "pd_packing_selected": "Selected:",
+  "pd_enquire_label": "Contact Us",
+  "pd_back_link": {
+   "url": "/products/",
+   "title": "Back to Shop",
+   "target": ""
+  },
+  "pd_assurances": [
+   {
+    "icon": "leaf",
+    "text": "Responsibly\nSourced"
+   },
+   {
+    "icon": "handling",
+    "text": "Carefully\nHandled"
+   },
+   {
+    "icon": "global-std",
+    "text": "Global Market\nStandards"
+   }
+  ],
+  "pd_related_heading": "Related Products",
+  "pd_related_link": {
+   "url": "/products/",
+   "title": "View All Products",
+   "target": ""
+  },
+  "bd_banner_heading": "INSIGHTS",
+  "bd_banner_text": "Exploring the world of premium food through industry insights, market trends, sourcing stories, and culinary discoveries.",
+  "bd_banner_image": "@img:images/hero/hero-seafood.webp",
+  "bd_banner_image_mobile": "@img:images/hero/hero-seafood-sm.webp",
+  "bd_by_label": "By",
+  "bd_reference_label": "Reference:",
+  "bd_share_label": "Share with:",
+  "bd_refs_heading": "References",
+  "bd_related_heading": "RELATED INSIGHTS",
+  "e404_banner_heading": "PAGE NOT FOUND",
+  "e404_banner_text": "The page you are looking for may have moved or no longer exists.",
+  "e404_banner_image": "@img:images/hero/extracted_5_2000x1331.webp",
+  "e404_banner_image_mobile": "@img:images/hero/extracted_5_2000x1331-sm.webp",
+  "e404_heading": "Let us get you back on track",
+  "e404_text": "Check the address for typing errors, or return to the home page to continue exploring our premium seafood, meat and poultry.",
+  "e404_button": {
+   "url": "/",
+   "title": "Back to Home",
+   "target": ""
+  },
+  "seo_site_name": "Caspian & Sun Food Trading LLC",
+  "seo_default_description": "Caspian & Sun Food Trading is an international food trading and distribution company supplying premium seafood, meat and poultry to hotels, restaurants and retailers in Türkiye, the UAE and beyond.",
+  "seo_default_image": "@img:images/home/about-photo.webp",
+  "seo_org_name": "Caspian & Sun Food Trading LLC",
+  "seo_org_founded": "1981"
+ },
+ "pages": {
+  "home": {
+   "title": "Home",
+   "template": "",
+   "fields": {
+    "seo_title": "Caspian & Sun Food Trading LLC | Premium Seafood, Meat & Poultry",
+    "seo_description": "Caspian & Sun Food Trading is an international food trading and distribution company supplying premium seafood, meat and poultry to hotels, restaurants and retailers in Türkiye, the UAE and beyond.",
+    "home_hero_heading": "Feel the\nTaste of Sea",
+    "home_hero_text": "We carefully select the freshest seafood and deliver it to your table under hygienic conditions using modern processing techniques. Our products undergo strict quality control at every step, offering a natural, healthy, and gourmet taste experience.",
+    "home_hero_button": {
+     "url": "/products/",
+     "title": "Explore More",
+     "target": ""
+    },
+    "home_hero_poster": "@img:videos/hero-salmon-poster.webp",
+    "home_hero_poster_mobile": "@img:videos/hero-salmon-poster-sm.webp",
+    "home_hero_video": "@img:videos/hero-salmon-720.mp4",
+    "home_hero_video_mobile": "@img:videos/hero-salmon-360.mp4",
+    "home_about_eyebrow": "About",
+    "home_about_heading": "About\nCaspian",
+    "home_about_paras": [
+     {
+      "text": "CASPIAN & SUN FOOD TRADING is an international food trading and distribution company with operations in Türkiye and the United Arab Emirates, specializing in the import, export, sourcing, sales, and distribution of premium food products for the HORECA sector (Hotels, Restaurants, Catering), luxury hospitality businesses, wholesalers, distributors, and retail markets."
+     },
+     {
+      "text": "Our story began in 1981 in Azerbaijan as a family-owned business founded on integrity, trust, and a passion for supplying quality food products. Through decades of continuous growth, we expanded our operations into Türkiye and the United Arab Emirates, building strong international partnerships and an extensive global sourcing network."
+     }
+    ],
+    "home_about_button": {
+     "url": "/about/",
+     "title": "Explore More",
+     "target": ""
+    },
+    "home_about_image": "@img:images/home/about-photo.webp",
+    "home_counters": [
+     {
+      "icon": "@img:images/home/counter-1.png",
+      "number": 25,
+      "suffix": "+",
+      "label": "Years Of Experience"
+     },
+     {
+      "icon": "@img:images/home/counter-4.png",
+      "number": 40,
+      "suffix": "+",
+      "label": "Countries Served"
+     },
+     {
+      "icon": "@img:images/home/counter-2.png",
+      "number": 15000,
+      "suffix": "+",
+      "label": "Successful Shipments"
+     },
+     {
+      "icon": "@img:images/home/counter-3.png",
+      "number": 2500,
+      "suffix": "+",
+      "label": "Global Clients"
+     }
+    ],
+    "home_cats_eyebrow": "Categories",
+    "home_cats_heading": "Our Categories",
+    "home_cats_button": {
+     "url": "/products/",
+     "title": "Explore More",
+     "target": ""
+    },
+    "home_cats_bg": "@img:images/pdf_extracted/extracted_3_bg.webp",
+    "home_cats": [
+     {
+      "image": "@img:images/home/cat-frozen.webp",
+      "title": "Seafood",
+      "subtitle": "Ocean Fresh",
+      "link": {
+       "url": "/products/#seafood",
+       "title": "",
+       "target": ""
+      }
+     },
+     {
+      "image": "@img:images/home/cat-butchery.webp",
+      "title": "Meat",
+      "subtitle": "Premium Quality",
+      "link": {
+       "url": "/products/#meat",
+       "title": "",
+       "target": ""
+      }
+     },
+     {
+      "image": "@img:images/home/cat-poultry.webp",
+      "title": "Poultry",
+      "subtitle": "Fresh Quality",
+      "link": {
+       "url": "/products/#poultry",
+       "title": "",
+       "target": ""
+      }
+     }
+    ],
+    "home_why_heading": "Why Choose Us",
+    "home_why_text": "Delivering premium-quality seafood through sustainable sourcing, advanced processing, and dependable global export solutions.",
+    "home_why_items": [
+     {
+      "icon": "@img:images/home/why-4.png",
+      "title": "Freshness Guaranteed",
+      "text": "Always fresh and carefully selected products."
+     },
+     {
+      "icon": "@img:images/home/why-2.png",
+      "title": "Sustainable Sourcing",
+      "text": "Responsibly sourced seafood, from the sea to your table."
+     },
+     {
+      "icon": "@img:images/home/why-3.png",
+      "title": "Reliable Delivery",
+      "text": "Fast, secure delivery with full cold chain assurance."
+     },
+     {
+      "icon": "@img:images/home/why-1.png",
+      "title": "Premium Quality",
+      "text": "Products that maintain flavor and nutritional value."
+     }
+    ],
+    "home_why_video_image": "@img:images/home/why-video.webp",
+    "home_why_video": "@img:videos/hero-salmon-720.mp4",
+    "home_clients_heading": "Our Clients",
+    "home_clients_text": "Serving a diverse network of global clients with consistent quality, timely deliveries, and trusted seafood export solutions.",
+    "home_clients_button": {
+     "url": "/contact/",
+     "title": "Explore More",
+     "target": ""
+    },
+    "home_client_logos": [
+     {
+      "logo": "@img:images/home/partner-1.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-2.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-3.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-4.png",
+      "invert": 1
+     },
+     {
+      "logo": "@img:images/home/partner-5.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-6.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-7.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-8.png",
+      "invert": 0
+     },
+     {
+      "logo": "@img:images/home/partner-9.png",
+      "invert": 0
+     }
+    ],
+    "home_products_eyebrow": "Products",
+    "home_products_heading": "Discover Our Products",
+    "home_products_text": "We source premium food products from trusted international suppliers based on quality, freshness, and customer requirements.",
+    "home_products": [
+     "@product:king-crab-leg",
+     "@product:lobster",
+     "@product:beluga-caviar",
+     "@product:hokkaido-scallops",
+     "@product:carabinero-shrimp",
+     "@product:black-cod",
+     "@product:black-angus-australia",
+     "@product:lamb",
+     "@product:foie-gras-escalope",
+     "@product:duck"
+    ],
+    "home_products_button": {
+     "url": "/products/",
+     "title": "View More",
+     "target": ""
+    },
+    "home_testi_image": "@img:images/home/testi-main.webp",
+    "home_testi_avatars": "@img:images/home/avatars-cluster.webp",
+    "home_testi_count": "1K +",
+    "home_testi_count_label": "Clients We Served",
+    "home_testi_eyebrow": "Testimonials",
+    "home_testi_heading": "What Our\nClients Say",
+    "home_testimonials": [
+     {
+      "type": "text",
+      "quote": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "name": "John Doe",
+      "role": "Le Torta Restuarant",
+      "avatar": "@img:images/home/avatar-1.webp",
+      "video_cover": "",
+      "video": ""
+     },
+     {
+      "type": "video",
+      "quote": "",
+      "name": "Steve John",
+      "role": "Senior Chef",
+      "avatar": "@img:images/home/avatar-2.webp",
+      "video_cover": "@img:images/home/testi-chef.webp",
+      "video": "@img:videos/hero-salmon-720.mp4"
+     },
+     {
+      "type": "text",
+      "quote": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "name": "Rohan John",
+      "role": "Chairman Of The Industry",
+      "avatar": "@img:images/home/avatar-3.webp",
+      "video_cover": "",
+      "video": ""
+     },
+     {
+      "type": "text",
+      "quote": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "name": "John Doe",
+      "role": "Le Torta Restuarant",
+      "avatar": "@img:images/home/avatar-1.webp",
+      "video_cover": "",
+      "video": ""
+     }
+    ],
+    "home_articles_eyebrow": "Blogs",
+    "home_articles_heading": "Recent Articles",
+    "home_articles": [
+     {
+      "post": "@post:rising-demand-premium-seafood",
+      "image": "@img:images/home/art-1.webp",
+      "open": 0
+     },
+     {
+      "post": "@post:importance-reliable-food-sourcing",
+      "image": "@img:images/home/art-2.webp",
+      "open": 1
+     },
+     {
+      "post": "@post:origin-to-table-premium-seafood",
+      "image": "@img:images/products/thumb/hokkaido-scallops.webp",
+      "open": 0
+     },
+     {
+      "post": "@post:global-seafood-trends-horeca",
+      "image": "@img:images/products/thumb/carabinero-shrimp.webp",
+      "open": 0
+     },
+     {
+      "post": "@post:international-sourcing-premium-hospitality",
+      "image": "@img:images/home/art-3.webp",
+      "open": 1
+     }
+    ],
+    "home_cta_eyebrow": "Contact",
+    "home_cta_heading": "Your Trusted Seafood Export Partner",
+    "home_cta_text": "Contact us for wholesale enquiries, customised export solutions, and timely global deliveries.",
+    "home_cta_button": {
+     "url": "/contact/",
+     "title": "Contact Us",
+     "target": ""
+    },
+    "home_cta_image": "@img:images/home/cta-fish.webp"
+   }
+  },
+  "about": {
+   "title": "About Us",
+   "template": "templates/about.php",
+   "fields": {
+    "seo_title": "About Us | Caspian & Sun Food Trading LLC",
+    "seo_description": "Founded in 1981, Caspian & Sun is an international food trading and distribution company connecting trusted producers with HORECA, hospitality, wholesale and retail businesses.",
+    "about_banner_heading": "ABOUT US",
+    "about_banner_text": "We connect world-class food manufacturers with businesses throughout the Middle East and international markets.",
+    "about_banner_image": "@img:images/hero/extracted_5_2000x1331.webp",
+    "about_banner_image_mobile": "@img:images/hero/extracted_5_2000x1331-sm.webp",
+    "about_ov_eyebrow": "Our Profile",
+    "about_ov_heading": "COMPANY OVERVIEW",
+    "about_ov_paras": [
+     {
+      "text": "CASPIAN & SUN FOOD TRADING is an international food trading and distribution company with operations in Türkiye and the United Arab Emirates, specializing in the import, export, sourcing, sales, and distribution of premium food products for the HORECA sector (Hotels, Restaurants, Catering), luxury hospitality businesses, wholesalers, distributors, and retail markets."
+     },
+     {
+      "text": "Our story began in 1981 in Azerbaijan as a family-owned business founded on integrity, trust, and a passion for supplying quality food products. Through decades of continuous growth, we expanded our operations into Türkiye and the United Arab Emirates, building strong international partnerships and an extensive global sourcing network."
+     },
+     {
+      "text": "Today, with our headquarters in Istanbul, Türkiye, and expanding operations in Dubai, UAE, we connect world-class food manufacturers with businesses throughout the Middle East and international markets."
+     }
+    ],
+    "about_ov_image_back": "@img:images/pdf_extracted/extracted_6_2000x1488-about.webp",
+    "about_ov_image_front": "@img:images/pdf_extracted/extracted_3_2208x3936-about.webp",
+    "about_svc_eyebrow": "What We Do",
+    "about_svc_heading": "OUR SERVICES",
+    "about_services": [
+     {
+      "icon": "truck",
+      "title": "Import, Supply and Distribution",
+      "text": "Import, supply and distribution to customers."
+     },
+     {
+      "icon": "globe",
+      "title": "International Sourcing",
+      "text": "International sourcing from Europe, North America, Asia, and other global markets."
+     },
+     {
+      "icon": "box",
+      "title": "Wide Product Range",
+      "text": "Supply of frozen, chilled, ambient, dairy, meat, seafood, bakery, beverages, and specialty food products."
+     },
+     {
+      "icon": "search",
+      "title": "Sourcing to Requirements",
+      "text": "Product sourcing based on customer requirements."
+     },
+     {
+      "icon": "link",
+      "title": "Procurement & Supply Chain",
+      "text": "International procurement and supply chain management."
+     }
+    ],
+    "about_str_image": "@img:images/pdf_extracted/extracted_1_2000x2500-about.webp",
+    "about_str_eyebrow": "Our Strength",
+    "about_str_heading": "INTERNATIONAL SOURCING EXPERTISE",
+    "about_str_intro": "Our experienced sourcing team works directly with carefully selected manufacturers and producers worldwide to ensure that every product meets our customers' quality expectations.",
+    "about_str_lead": "We continuously evaluate suppliers based on:",
+    "about_str_list": [
+     {
+      "text": "Product Quality"
+     },
+     {
+      "text": "Food Safety Standards"
+     },
+     {
+      "text": "Certifications"
+     },
+     {
+      "text": "Production Capacity"
+     },
+     {
+      "text": "Reliability"
+     },
+     {
+      "text": "Competitive Pricing"
+     },
+     {
+      "text": "Consistent Supply"
+     }
+    ],
+    "about_str_closing": "By sourcing products from multiple international markets, we are able to provide our customers with the best combination of quality, availability, and value.",
+    "about_net_eyebrow": "Our Operations",
+    "about_net_heading": "OUR INTERNATIONAL NETWORK",
+    "about_net_intro": "Our international operations are supported through strategically located companies in Bulgaria, Türkiye, and the United Arab Emirates, allowing us to facilitate sourcing, logistics, trade, and supply activities across key markets.",
+    "about_net_items": [
+     {
+      "country": "Bulgaria",
+      "company": "ILDE - STIL EOOD",
+      "address": "Georgi Kirkov 23, Svilengrad 6500, Bulgaria"
+     },
+     {
+      "country": "Türkiye",
+      "company": "SUN SEAFOOD DIŞ TİCARET LİMİTED ŞİRKETİ",
+      "address": "Yavuz Selim Mah. Gazi Bayram Çavuş Sk. No: 6, İç Kapı No: 1, Beykoz, İstanbul, Türkiye"
+     },
+     {
+      "country": "United Arab Emirates",
+      "company": "CASPIAN & SUN FOOD TRADING LLC",
+      "address": "Office C-08, Belselah Building, Dubai, United Arab Emirates"
+     }
+    ],
+    "about_vis_image": "@img:images/pdf_extracted/extracted_4_2000x1499-about.webp",
+    "about_vis_eyebrow": "Mission & Vision",
+    "about_vis_heading": "OUR VISION",
+    "about_vis_text": "To become one of the leading international food trading companies in Türkiye and the United Arab Emirates by connecting premium food manufacturers with luxury hotels, restaurants, catering companies, wholesalers, retailers, and foodservice distributors through reliable sourcing, competitive pricing, and exceptional customer service.",
+    "about_mis_image": "@img:images/pdf_extracted/extracted_8_1920x1080-about.webp",
+    "about_mis_eyebrow": "Mission & Vision",
+    "about_mis_heading": "OUR MISSION",
+    "about_mis_paras": [
+     {
+      "text": "To supply premium-quality food products sourced from trusted manufacturers around the world while providing reliable sourcing solutions, competitive pricing, efficient logistics, and exceptional customer service."
+     },
+     {
+      "text": "We are committed to building long-term partnerships based on trust, integrity, transparency, and mutual success while creating lasting value for our customers, suppliers, and business partners."
+     }
+    ],
+    "about_goal_eyebrow": "What We Aim For",
+    "about_goal_heading": "STRATEGIC GOAL",
+    "about_goal_paras": [
+     {
+      "text": "Our primary goal is to establish Caspian & Sun Food Trading as a leading international sourcing, importing, and food supply company in the UAE and Türkiye, creating a strong bridge between global food producers and the growing hospitality, foodservice, wholesale, and retail markets in both countries."
+     },
+     {
+      "text": "We aim to develop a trusted global supplier network, expand our international product portfolio, and provide customers with access to premium products from the world's leading food-producing regions through a reliable and professionally managed supply chain."
+     }
+    ],
+    "about_ord_eyebrow": "Simple & Reliable",
+    "about_ord_heading": "HOW ORDERING WORKS",
+    "about_ord_intro": "Our order fulfillment process is designed to deliver efficient, reliable, and timely service. From understanding customer requirements and verifying inventory to preparing competitive quotations, coordinating logistics, conducting quality inspections, and ensuring on-time delivery, every step is carefully managed to provide a seamless purchasing experience. We are committed to building long-term partnerships by maintaining adequate inventory, ensuring a consistent product supply, and supporting our customers' future procurement needs.",
+    "about_ord_steps": [
+     {
+      "text": "Customer Inquiry"
+     },
+     {
+      "text": "Share Your Order Details"
+     },
+     {
+      "text": "Inventory Availability Check"
+     },
+     {
+      "text": "Best Quotation & Product Offer"
+     },
+     {
+      "text": "Order Confirmation"
+     },
+     {
+      "text": "Order Preparation & Logistics Arrangement"
+     },
+     {
+      "text": "Quality Inspection"
+     },
+     {
+      "text": "Delivery to Customer"
+     },
+     {
+      "text": "Continuous Supply & After-Sales Support"
+     }
+    ],
+    "about_lt_heading": "Lead Time",
+    "about_lt_items": [
+     {
+      "icon": "calendar",
+      "label": "Stock Available",
+      "text": "Next-day delivery (subject to location and availability)"
+     },
+     {
+      "icon": "bolt",
+      "label": "Urgent Requests",
+      "text": "Same-day urgent requests may be accommodated whenever possible."
+     }
+    ],
+    "about_src_eyebrow": "Global Sourcing",
+    "about_src_heading": "COUNTRIES WE SOURCE FROM",
+    "about_src_intro": "Our international sourcing network includes trusted suppliers from:",
+    "about_src_closing": "Every sourcing decision is made with one objective: To provide our customers with the highest-quality products from the countries best known for producing them.",
+    "about_src_countries": [
+     {
+      "flag": "@img:images/flags/spain.svg",
+      "name": "Spain"
+     },
+     {
+      "flag": "@img:images/flags/russia.svg",
+      "name": "Russia"
+     },
+     {
+      "flag": "@img:images/flags/morocco.svg",
+      "name": "Morocco"
+     },
+     {
+      "flag": "@img:images/flags/japan.svg",
+      "name": "Japan"
+     },
+     {
+      "flag": "@img:images/flags/china.svg",
+      "name": "China"
+     },
+     {
+      "flag": "@img:images/flags/chile.svg",
+      "name": "Chile"
+     },
+     {
+      "flag": "@img:images/flags/usa.svg",
+      "name": "USA"
+     },
+     {
+      "flag": "@img:images/flags/canada.svg",
+      "name": "Canada"
+     },
+     {
+      "flag": "@img:images/flags/hungary.svg",
+      "name": "Hungary"
+     },
+     {
+      "flag": "@img:images/flags/australia.svg",
+      "name": "Australia"
+     }
+    ],
+    "about_src_more": "and many other regions around the world",
+    "about_ind_eyebrow": "Who We Supply",
+    "about_ind_heading": "INDUSTRIES WE SERVE",
+    "about_ind_intro": "Our primary focus is supplying businesses within the HORECA and foodservice industries, including:",
+    "about_ind_list": [
+     {
+      "text": "Luxury Hotels"
+     },
+     {
+      "text": "Fine Dining Restaurants"
+     },
+     {
+      "text": "HORECA Sectors"
+     }
+    ],
+    "about_ind_clients_text": "We work with international restaurants and establishments, including Novikov, Scorpios, Maxx Royal Hotel, Bagatelle, Rüya, NOBU, Zuma, Mandarin Oriental, Gigi, Mondaine, and GAIA.",
+    "about_ind_chips": [
+     {
+      "text": "Novikov"
+     },
+     {
+      "text": "Scorpios"
+     },
+     {
+      "text": "Maxx Royal Hotel"
+     },
+     {
+      "text": "Bagatelle"
+     },
+     {
+      "text": "Rüya"
+     },
+     {
+      "text": "NOBU"
+     },
+     {
+      "text": "Zuma"
+     },
+     {
+      "text": "Mandarin Oriental"
+     },
+     {
+      "text": "Gigi"
+     },
+     {
+      "text": "Mondaine"
+     },
+     {
+      "text": "GAIA"
+     }
+    ],
+    "about_why_eyebrow": "Our Promise",
+    "about_why_heading": "WHY CHOOSE CASPIAN & SUN FOOD TRADING?",
+    "about_why_list": [
+     {
+      "text": "Strong international sourcing expertise"
+     },
+     {
+      "text": "Reliable global supplier network"
+     },
+     {
+      "text": "Premium quality products"
+     },
+     {
+      "text": "Competitive market pricing"
+     },
+     {
+      "text": "Efficient logistics coordination"
+     },
+     {
+      "text": "Cold chain supply management"
+     },
+     {
+      "text": "Products Sourced to Customer Requirements"
+     },
+     {
+      "text": "Long-term business partnerships"
+     },
+     {
+      "text": "Dedicated customer support"
+     }
+    ]
+   }
+  },
+  "products": {
+   "title": "Products",
+   "template": "templates/products.php",
+   "fields": {
+    "seo_title": "Premium Products | Caspian & Sun Food Trading LLC",
+    "seo_description": "Exceptional seafood, meat, poultry and specialty products, carefully sourced from trusted producers around the world.",
+    "products_banner_heading": "PREMIUM PRODUCTS",
+    "products_banner_text": "Exceptional seafood, meat, poultry, and specialty products, carefully sourced from trusted producers around the world.",
+    "products_banner_image": "@img:images/hero/extracted_3_2208x3936.webp",
+    "products_banner_image_mobile": "@img:images/hero/extracted_3_2208x3936-sm.webp",
+    "products_search_heading": "PREMIUM PRODUCT SELECTION",
+    "products_search_placeholder": "Search...",
+    "products_all_label": "All",
+    "products_other_tab": "Other Food Products",
+    "products_no_results": "No products match your search.",
+    "products_nav_label": "Product categories",
+    "products_other_heading": "Other Food Products",
+    "products_other_text": "Our sourcing capabilities extend beyond our core product range. We work closely with our customers to source premium and specialty food products tailored to their specific requirements, connecting them with trusted producers and reliable suppliers across international markets.",
+    "products_other_button": {
+     "url": "/contact/",
+     "title": "Enquire Now",
+     "target": ""
+    }
+   }
+  },
+  "contact": {
+   "title": "Contact Us",
+   "template": "templates/contact.php",
+   "fields": {
+    "seo_title": "Contact Us | Caspian & Sun Food Trading LLC",
+    "seo_description": "Contact Caspian & Sun Food Trading in Dubai for product inquiries, quotations, sourcing requests and business partnerships.",
+    "contact_banner_heading": "CONTACT US",
+    "contact_banner_text": "Connecting the finest seafood from pristine waters to discerning markets around the world.",
+    "contact_banner_image": "@img:images/hero/extracted_0_2000x1121.webp",
+    "contact_banner_image_mobile": "@img:images/hero/extracted_0_2000x1121-sm.webp",
+    "contact_form_heading": "GET IN TOUCH",
+    "contact_form_text": "For inquiries or further information, please contact us. We’re here to help.",
+    "contact_label_name": "Name",
+    "contact_label_phone": "Phone Number",
+    "contact_label_email": "Email Address",
+    "contact_label_message": "Message",
+    "contact_submit": "Contact Us",
+    "contact_sending": "Sending…",
+    "contact_success": "Thank you — your message has been sent. We will get back to you shortly.",
+    "contact_error": "Sorry, your message could not be sent. Please check the highlighted fields and try again.",
+    "contact_info_heading": "CONTACT INFO",
+    "contact_label_phones": "Phones",
+    "contact_label_mail": "Email",
+    "contact_label_location": "Location",
+    "contact_label_hours": "Open Hours",
+    "contact_label_call": "Call",
+    "contact_label_whatsapp": "WhatsApp",
+    "contact_map_heading": "LOCATE US",
+    "contact_map_text": "Conveniently located and easy to reach. Find us on the map.",
+    "contact_map_name": "Dubai-UAE",
+    "contact_cta_image": "@img:images/products/lobster.webp",
+    "contact_cta_watermark": "@img:images/watermark-fish.webp",
+    "contact_cta_heading": "DELIVERING THE\nBEST THE SEA\nHAS TO OFFER.",
+    "contact_cta_text": "We deliver the finest seafood with a commitment to quality, hygiene, and sustainability.",
+    "contact_cta_button": {
+     "url": "#contact-form",
+     "title": "Contact Us",
+     "target": ""
+    }
+   }
+  },
+  "privacy": {
+   "title": "Privacy Policy",
+   "template": "templates/privacy.php",
+   "fields": {
+    "seo_title": "Privacy Policy | Caspian & Sun Food Trading LLC",
+    "seo_description": "How Caspian & Sun Food Trading LLC collects, uses and protects personal information.",
+    "privacy_banner_heading": "Privacy Policy",
+    "privacy_banner_text": "How Caspian & Sun Food Trading LLC collects, uses and protects your information.",
+    "privacy_banner_image": "@img:images/hero/extracted_5_2000x1331.webp",
+    "privacy_banner_image_mobile": "@img:images/hero/extracted_5_2000x1331-sm.webp",
+    "privacy_toc_heading": "On this page",
+    "privacy_updated": "Last updated: September 24, 2026",
+    "privacy_lead": "Your privacy matters to us. This policy explains what personal information we collect when you visit our website or contact us, how we use it, and the choices you have.",
+    "privacy_card_company": "Company",
+    "privacy_card_email": "Email",
+    "privacy_card_phone": "Phone",
+    "privacy_card_address": "Address",
+    "privacy_sections": [
+     {
+      "title": "Who we are",
+      "content": "<p>This website is operated by Caspian &amp; Sun Food Trading LLC (“Caspian”, “we”, “us”), a food trading company supplying seafood, meat and poultry products to wholesale, hospitality and retail customers worldwide.</p>\n<p>For the purposes of this policy, we are the party responsible for deciding how and why your personal information is used.</p>",
+      "card": 0
+     },
+     {
+      "title": "Information we collect",
+      "content": "<p>We collect only the information we need to respond to you and to run our website:</p>\n<ul><li><strong>Information you give us</strong> — such as your name, email address, phone number, company name and the content of your message when you use our contact form, enquire about a product, or write to us.</li><li><strong>Enquiry details</strong> — the product, size or quantity you ask about.</li><li><strong>Technical information</strong> — such as your IP address, browser type, device, pages visited and time spent, collected automatically through cookies and similar technologies.</li></ul>",
+      "card": 0
+     },
+     {
+      "title": "How we use your information",
+      "content": "<p>We use your information to:</p>\n<ul><li>respond to enquiries and prepare quotations;</li><li>arrange, deliver and support orders and shipments;</li><li>send service messages relating to your enquiry or account;</li><li>improve our website, products and customer experience;</li><li>meet legal, tax, customs and food-safety obligations.</li></ul>\n<p>We do not sell or rent your personal information to anyone.</p>",
+      "card": 0
+     },
+     {
+      "title": "Sharing your information",
+      "content": "<p>We share information only where it is necessary to serve you, and only with:</p>\n<ul><li>logistics, cold-chain and customs partners who help deliver your order;</li><li>service providers who host our website or provide email, analytics or IT support, under confidentiality obligations;</li><li>authorities or advisers when we are required to by law or need to protect our legal rights.</li></ul>",
+      "card": 0
+     },
+     {
+      "title": "Cookies and analytics",
+      "content": "<p>Our website uses cookies — small files stored on your device — to keep the site working, remember preferences and understand how visitors use it. You can block or delete cookies in your browser settings; some parts of the site may then work less smoothly.</p>",
+      "card": 0
+     },
+     {
+      "title": "How long we keep information",
+      "content": "<p>We keep personal information only for as long as needed for the purposes above, including to satisfy legal, accounting and food-traceability requirements. When it is no longer needed we delete or anonymise it.</p>",
+      "card": 0
+     },
+     {
+      "title": "Keeping your information secure",
+      "content": "<p>We use reasonable technical and organisational measures to protect personal information from loss, misuse and unauthorised access. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security.</p>",
+      "card": 0
+     },
+     {
+      "title": "International transfers",
+      "content": "<p>We supply customers in many countries, so your information may be processed in countries other than your own, including where we or our service providers operate. Where this happens we take steps to keep it protected in line with this policy.</p>",
+      "card": 0
+     },
+     {
+      "title": "Your rights",
+      "content": "<p>Depending on where you live, you may have the right to:</p>\n<ul><li>ask for a copy of the personal information we hold about you;</li><li>ask us to correct information that is inaccurate;</li><li>ask us to delete your information or restrict how we use it;</li><li>object to certain uses, including direct marketing.</li></ul>\n<p>To exercise any of these rights, contact us using the details below. We may need to verify your identity before acting on a request.</p>",
+      "card": 0
+     },
+     {
+      "title": "Third-party links",
+      "content": "<p>Our website may link to other websites, including social media. We are not responsible for the content or privacy practices of those sites, and encourage you to read their policies.</p>",
+      "card": 0
+     },
+     {
+      "title": "Children",
+      "content": "<p>Our website and services are intended for businesses and adults. We do not knowingly collect personal information from anyone under 18.</p>",
+      "card": 0
+     },
+     {
+      "title": "Changes to this policy",
+      "content": "<p>We may update this policy from time to time. The latest version will always be on this page with a revised “last updated” date. Continued use of the website after a change means you accept the updated policy.</p>",
+      "card": 0
+     },
+     {
+      "title": "Contact us",
+      "content": "<p>Questions about this policy or your information? We are happy to help.</p>",
+      "card": 1
+     }
+    ],
+    "privacy_also_label": "Also read",
+    "privacy_also_link": {
+     "url": "/terms/",
+     "title": "Terms of Use",
+     "target": ""
+    },
+    "privacy_also_text": "The rules that apply when you use our website and enquire about our products."
+   }
+  },
+  "terms": {
+   "title": "Terms of Use",
+   "template": "templates/terms.php",
+   "fields": {
+    "seo_title": "Terms of Use | Caspian & Sun Food Trading LLC",
+    "seo_description": "Terms of use for the Caspian & Sun Food Trading LLC website.",
+    "terms_banner_heading": "Terms of Use",
+    "terms_banner_text": "The terms that apply when you use the Caspian & Sun Food Trading LLC website.",
+    "terms_banner_image": "@img:images/hero/extracted_5_2000x1331.webp",
+    "terms_banner_image_mobile": "@img:images/hero/extracted_5_2000x1331-sm.webp",
+    "terms_toc_heading": "On this page",
+    "terms_updated": "Last updated: September 24, 2026",
+    "terms_lead": "Please read these terms carefully. By using this website you agree to them. If you do not agree, please do not use the site.",
+    "terms_card_company": "Company",
+    "terms_card_email": "Email",
+    "terms_card_phone": "Phone",
+    "terms_card_address": "Address",
+    "terms_sections": [
+     {
+      "title": "Acceptance of these terms",
+      "content": "<p>These Terms of Use apply to your access to and use of this website, operated by Caspian &amp; Sun Food Trading LLC (“Caspian”, “we”, “us”). By browsing or using the site you confirm that you accept these terms and our <a href=\"/privacy-policy/\">Privacy Policy</a>.</p>",
+      "card": 0
+     },
+     {
+      "title": "About this website",
+      "content": "<p>This website presents our company, our seafood, meat and poultry products, and how to contact us. It is provided for information and business enquiries. It is not an online shop — products are not sold or paid for through this site.</p>",
+      "card": 0
+     },
+     {
+      "title": "Product information and availability",
+      "content": "<p>We take care to describe our products accurately. However, descriptions, origins, sizes, packaging and availability are indicative and may change with season, catch, harvest and supply conditions.</p>\n<ul><li>Photographs are for illustration and may differ from the product supplied.</li><li>Availability is not guaranteed until confirmed by us in writing.</li><li>Sizes and specifications shown are typical and may vary within industry tolerances.</li></ul>",
+      "card": 0
+     },
+     {
+      "title": "Enquiries, quotations and orders",
+      "content": "<p>Submitting an enquiry through the website, by email or by phone does not create a binding order. A quotation is an invitation to trade and is valid only for the period stated in it.</p>\n<p>An order becomes binding only when we confirm it in writing. Prices, payment terms, delivery terms, cold-chain handling and documentation are governed by the individual quotation or trade agreement, which will prevail over anything on this website.</p>",
+      "card": 0
+     },
+     {
+      "title": "Intellectual property",
+      "content": "<p>All content on this website — including text, logos, brand names, photographs, graphics and design — belongs to Caspian or its licensors and is protected by intellectual property laws. You may view and print pages for your own business use, but you may not copy, modify, distribute or use our content for commercial purposes without our written permission.</p>",
+      "card": 0
+     },
+     {
+      "title": "Acceptable use",
+      "content": "<p>When using the website you agree not to:</p>\n<ul><li>use it for any unlawful, fraudulent or harmful purpose;</li><li>attempt to gain unauthorised access to the site, its servers or other users’ data;</li><li>introduce viruses or other malicious code, or disrupt the site’s operation;</li><li>submit false, misleading or offensive information through our forms.</li></ul>",
+      "card": 0
+     },
+     {
+      "title": "Third-party links",
+      "content": "<p>The website may contain links to third-party sites for your convenience. We do not control and are not responsible for their content, availability or practices, and a link does not mean we endorse them.</p>",
+      "card": 0
+     },
+     {
+      "title": "Disclaimer",
+      "content": "<p>The website and its content are provided “as is” and “as available”. To the fullest extent permitted by law, we make no warranties of any kind, express or implied, including that the site will be uninterrupted, error-free or free of harmful components.</p>",
+      "card": 0
+     },
+     {
+      "title": "Limitation of liability",
+      "content": "<p>To the fullest extent permitted by law, Caspian will not be liable for any indirect, incidental or consequential loss arising from your use of, or inability to use, this website or from reliance on its content. Nothing in these terms excludes liability that cannot be excluded by law.</p>",
+      "card": 0
+     },
+     {
+      "title": "Governing law",
+      "content": "<p>These terms are governed by the laws of the United Arab Emirates, and the courts of Dubai will have jurisdiction over any dispute, unless a signed trade agreement between us and you provides otherwise.</p>",
+      "card": 0
+     },
+     {
+      "title": "Changes to these terms",
+      "content": "<p>We may revise these terms at any time by updating this page. The revised version applies from the “last updated” date shown. Please check back regularly — continued use of the site means you accept the current terms.</p>",
+      "card": 0
+     },
+     {
+      "title": "Contact us",
+      "content": "<p>If you have any questions about these terms, please get in touch.</p>",
+      "card": 1
+     }
+    ],
+    "terms_also_label": "Also read",
+    "terms_also_link": {
+     "url": "/privacy-policy/",
+     "title": "Privacy Policy",
+     "target": ""
+    },
+    "terms_also_text": "How we collect, use and protect your personal information."
+   }
+  },
+  "blog": {
+   "title": "Insights",
+   "template": "",
+   "fields": {
+    "seo_title": "Insights | Caspian & Sun Food Trading LLC",
+    "seo_description": "Industry insights, market trends and sourcing stories from Caspian & Sun Food Trading on premium food and global supply chains.",
+    "blog_banner_heading": "INSIGHTS",
+    "blog_banner_text": "Exploring the world of premium food through industry insights, market trends, sourcing stories, and culinary discoveries.",
+    "blog_hero_poster": "@img:videos/hero-salmon-poster.webp",
+    "blog_hero_poster_mobile": "@img:videos/hero-salmon-poster-sm.webp",
+    "blog_hero_video": "@img:videos/hero-salmon-720.mp4",
+    "blog_hero_video_mobile": "@img:videos/hero-salmon-360.mp4",
+    "blog_grid_heading": "FOOD INDUSTRY INSIGHTS",
+    "blog_trusted_heading": "TRUSTED BY",
+    "blog_trusted_text": "Proud to supply premium food products to internationally recognized restaurants and hospitality establishments, including NOBU, Zuma, Mandarin Oriental, Gigi, Mondaine, and Gaia.",
+    "blog_trusted_clients": [
+     {
+      "name": "NOBU"
+     },
+     {
+      "name": "Zuma"
+     },
+     {
+      "name": "Mandarin Oriental"
+     },
+     {
+      "name": "Gigi"
+     },
+     {
+      "name": "Mondaine"
+     },
+     {
+      "name": "Gaia"
+     }
+    ]
+   }
+  }
+ },
+ "products": [
+  {
+   "slug": "king-crab-leg",
+   "title": "King Crab Leg",
+   "category": "Seafood",
+   "menu_order": 0,
+   "fields": {
+    "card_summary": "Sourced from the cold waters of Russia and Norway, King Crab Legs are prized for their impressive size, succulent meat, and naturally sweet, delicate flavour.",
+    "description": "Sourced from the cold waters of Russia and Norway, King Crab Legs are prized for their impressive size, succulent meat, and naturally sweet, delicate flavour. Their firm yet tender texture and rich taste make them a distinguished choice for premium seafood menus, luxury buffets, and fine-dining experiences. Ideal for steaming, grilling, or serving chilled, King Crab Legs bring exceptional presentation and refined seafood appeal to any culinary creation.",
+    "card_image": "@img:images/products/thumb/king-crab-leg.webp",
+    "gallery": [
+     "@img:images/products/king-crab-leg.webp"
+    ],
+    "origin": [
+     {
+      "country": "Russia"
+     },
+     {
+      "country": "Norway"
+     }
+    ],
+    "packing": [
+     {
+      "size": "L4 Cluster"
+     }
+    ],
+    "seo_title": "King Crab Leg | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "lobster",
+   "title": "Lobster",
+   "category": "Seafood",
+   "menu_order": 1,
+   "fields": {
+    "card_summary": "Harvested from the cold Atlantic waters of Canada, Canadian Lobster is valued for its distinctive sweet flavour, tender meat, and rich ocean-fresh character.",
+    "description": "Harvested from the cold Atlantic waters of Canada, Canadian Lobster is valued for its distinctive sweet flavour, tender meat, and rich ocean-fresh character. With its attractive appearance and versatile culinary applications, it is a sought-after ingredient for premium restaurants, hotels, and gourmet seafood establishments. Perfect for grilling, steaming, butter-poaching, or incorporating into signature seafood dishes, Canadian Lobster delivers an elegant touch to every menu.",
+    "card_image": "@img:images/products/thumb/lobster.webp",
+    "gallery": [
+     "@img:images/products/lobster.webp"
+    ],
+    "origin": [
+     {
+      "country": "Canada"
+     }
+    ],
+    "packing": [
+     {
+      "size": "KG"
+     }
+    ],
+    "seo_title": "Lobster | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "beluga-caviar",
+   "title": "Beluga Caviar",
+   "category": "Seafood",
+   "menu_order": 2,
+   "fields": {
+    "card_summary": "Beluga Caviar represents the pinnacle of gourmet indulgence, celebrated for its delicate pearls, smooth texture, and refined, buttery flavour with subtle notes of the sea.",
+    "description": "Beluga Caviar represents the pinnacle of gourmet indulgence, celebrated for its delicate pearls, smooth texture, and refined, buttery flavour with subtle notes of the sea. Its elegant appearance and luxurious character make it a prestigious addition to exclusive dining experiences and sophisticated culinary presentations.",
+    "card_image": "@img:images/products/thumb/beluga-caviar.webp",
+    "gallery": [
+     "@img:images/products/beluga-caviar.webp"
+    ],
+    "origin": [
+     {
+      "country": "France"
+     }
+    ],
+    "packing": [
+     {
+      "size": "30g"
+     },
+     {
+      "size": "50g"
+     },
+     {
+      "size": "125g"
+     }
+    ],
+    "seo_title": "Beluga Caviar | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "hokkaido-scallops",
+   "title": "Hokkaido Scallops",
+   "category": "Seafood",
+   "menu_order": 3,
+   "fields": {
+    "card_summary": "From the pristine waters surrounding Hokkaido, Japan, these premium scallops are appreciated for their natural sweetness, delicate ocean flavour, and tender, succulent texture.",
+    "description": "From the pristine waters surrounding Hokkaido, Japan, these premium scallops are appreciated for their natural sweetness, delicate ocean flavour, and tender, succulent texture. Carefully valued in Japanese cuisine, Hokkaido Scallops offer exceptional versatility for both traditional preparations and contemporary gourmet dishes.",
+    "card_image": "@img:images/products/thumb/hokkaido-scallops.webp",
+    "gallery": [
+     "@img:images/products/hokkaido-scallops.webp"
+    ],
+    "origin": [
+     {
+      "country": "Japan"
+     }
+    ],
+    "packing": [
+     {
+      "size": "2S"
+     },
+     {
+      "size": "3S"
+     }
+    ],
+    "seo_title": "Hokkaido Scallops | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "carabinero-shrimp",
+   "title": "Carabinero Shrimp",
+   "category": "Seafood",
+   "menu_order": 4,
+   "fields": {
+    "card_summary": "Carabinero Shrimp is a prized gourmet seafood delicacy recognised for its striking deep-red shell, intense marine aroma, and remarkably rich flavour.",
+    "description": "Carabinero Shrimp is a prized gourmet seafood delicacy recognised for its striking deep-red shell, intense marine aroma, and remarkably rich flavour. Its distinctive character and concentrated head juices make it particularly valued in Spanish and Mediterranean gastronomy.",
+    "card_image": "@img:images/products/thumb/carabinero-shrimp.webp",
+    "gallery": [
+     "@img:images/products/carabinero-shrimp.webp"
+    ],
+    "origin": [
+     {
+      "country": "Spain"
+     }
+    ],
+    "packing": [
+     {
+      "size": "8/10"
+     },
+     {
+      "size": "11/15"
+     },
+     {
+      "size": "18/24"
+     }
+    ],
+    "seo_title": "Carabinero Shrimp | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "black-cod",
+   "title": "Black Cod",
+   "category": "Seafood",
+   "menu_order": 5,
+   "fields": {
+    "card_summary": "Sourced from Alaskan waters, Black Cod, also known as Sablefish, is renowned for its exceptionally rich flavour, silky texture, and naturally high oil content.",
+    "description": "Sourced from Alaskan waters, Black Cod, also known as Sablefish, is renowned for its exceptionally rich flavour, silky texture, and naturally high oil content. Its delicate flesh remains moist and tender during cooking, making it a favourite ingredient in sophisticated seafood cuisine.",
+    "card_image": "@img:images/products/thumb/black-cod.webp",
+    "gallery": [
+     "@img:images/products/black-cod.webp"
+    ],
+    "origin": [
+     {
+      "country": "Alaska"
+     }
+    ],
+    "packing": [
+     {
+      "size": "5-7 LB"
+     }
+    ],
+    "seo_title": "Black Cod | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "black-angus-australia",
+   "title": "Black Angus (Australia)",
+   "category": "Meat",
+   "menu_order": 0,
+   "fields": {
+    "card_summary": "Australian Black Angus Beef is valued for its excellent marbling, rich beef flavour, and naturally tender texture.",
+    "description": "Australian Black Angus Beef is valued for its excellent marbling, rich beef flavour, and naturally tender texture. Produced in Australia's established cattle industry, it offers a distinctive balance of juiciness and depth of flavour, making it a versatile choice for premium culinary applications.",
+    "card_image": "@img:images/products/thumb/black-angus-australia.webp",
+    "gallery": [
+     "@img:images/products/black-angus-australia.webp"
+    ],
+    "origin": [
+     {
+      "country": "Australia"
+     }
+    ],
+    "packing": [
+     {
+      "size": "KG"
+     }
+    ],
+    "seo_title": "Black Angus (Australia) | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "lamb",
+   "title": "Lamb",
+   "category": "Meat",
+   "menu_order": 1,
+   "fields": {
+    "card_summary": "Australian Lamb is appreciated for its tender texture, delicate flavour, and natural juiciness.",
+    "description": "Australian Lamb is appreciated for its tender texture, delicate flavour, and natural juiciness. Raised within Australia's established lamb production industry, it offers versatility across a wide range of international cuisines, from Mediterranean specialities to contemporary fine dining.",
+    "card_image": "@img:images/products/thumb/lamb.webp",
+    "gallery": [
+     "@img:images/products/lamb.webp"
+    ],
+    "origin": [
+     {
+      "country": "Australia"
+     }
+    ],
+    "packing": [
+     {
+      "size": "KG"
+     }
+    ],
+    "seo_title": "Lamb | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "black-angus-usa",
+   "title": "Black Angus (USA)",
+   "category": "Meat",
+   "menu_order": 2,
+   "fields": {
+    "card_summary": "American Black Angus Beef is recognised for its rich beef character, attractive marbling, and succulent texture.",
+    "description": "American Black Angus Beef is recognised for its rich beef character, attractive marbling, and succulent texture. Depending on the cut and grading, it offers a range of flavour profiles and tenderness levels suited to diverse professional culinary requirements.",
+    "card_image": "@img:images/products/thumb/black-angus-usa.webp",
+    "gallery": [
+     "@img:images/products/black-angus-usa.webp"
+    ],
+    "origin": [
+     {
+      "country": "USA"
+     }
+    ],
+    "packing": [
+     {
+      "size": "KG"
+     }
+    ],
+    "seo_title": "Black Angus (USA) | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "black-angus-argentina",
+   "title": "Black Angus (Argentina)",
+   "category": "Meat",
+   "menu_order": 3,
+   "fields": {
+    "card_summary": "Argentine Black Angus Beef combines the recognised characteristics of Angus cattle with Argentina's long-standing beef-producing tradition.",
+    "description": "Argentine Black Angus Beef combines the recognised characteristics of Angus cattle with Argentina's long-standing beef-producing tradition. It is appreciated for its full-bodied beef flavour, appealing texture, and versatility across premium meat preparations.",
+    "card_image": "@img:images/products/thumb/black-angus-argentina.webp",
+    "gallery": [
+     "@img:images/products/black-angus-argentina.webp"
+    ],
+    "origin": [
+     {
+      "country": "Argentina"
+     }
+    ],
+    "packing": [
+     {
+      "size": "KG"
+     }
+    ],
+    "seo_title": "Black Angus (Argentina) | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "yellow-chicken",
+   "title": "Yellow Chicken",
+   "category": "Poultry",
+   "menu_order": 0,
+   "fields": {
+    "card_summary": "French Yellow Chicken is valued for its distinctive golden-yellow skin, delicate flavour, and tender, succulent meat.",
+    "description": "French Yellow Chicken is valued for its distinctive golden-yellow skin, delicate flavour, and tender, succulent meat. A popular choice in French gastronomy, it brings a traditional culinary character to both classic preparations and contemporary restaurant menus.",
+    "card_image": "@img:images/products/thumb/yellow-chicken.webp",
+    "gallery": [
+     "@img:images/products/yellow-chicken.webp"
+    ],
+    "origin": [
+     {
+      "country": "France"
+     }
+    ],
+    "packing": [
+     {
+      "size": "Whole"
+     },
+     {
+      "size": "Legs"
+     },
+     {
+      "size": "Breast"
+     }
+    ],
+    "seo_title": "Yellow Chicken | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "foie-gras-escalope",
+   "title": "Foie Gras Escalope (Sliced)",
+   "category": "Poultry",
+   "menu_order": 1,
+   "fields": {
+    "card_summary": "Foie Gras is a distinguished gourmet delicacy celebrated for its exceptionally smooth texture, rich buttery flavour, and refined culinary character.",
+    "description": "Foie Gras is a distinguished gourmet delicacy celebrated for its exceptionally smooth texture, rich buttery flavour, and refined culinary character. Widely featured in French gastronomy, it is prized for its versatility in sophisticated appetisers, signature dishes, and luxury dining experiences.",
+    "card_image": "@img:images/products/thumb/foie-gras-escalope.webp",
+    "gallery": [
+     "@img:images/products/foie-gras-escalope.webp"
+    ],
+    "origin": [
+     {
+      "country": "France"
+     },
+     {
+      "country": "Hungary"
+     }
+    ],
+    "packing": [
+     {
+      "size": "40/60gr"
+     }
+    ],
+    "seo_title": "Foie Gras Escalope (Sliced) | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "duck",
+   "title": "Duck Breast, Legs, Whole",
+   "category": "Poultry",
+   "menu_order": 2,
+   "fields": {
+    "card_summary": "French and Hungarian Duck offers a rich, distinctive flavour and a tender texture appreciated in European and international cuisine.",
+    "description": "French and Hungarian Duck offers a rich, distinctive flavour and a tender texture appreciated in European and international cuisine. Available in multiple cuts, it provides chefs with flexibility for creating both traditional duck specialities and contemporary gourmet dishes.",
+    "card_image": "@img:images/products/thumb/duck.webp",
+    "gallery": [
+     "@img:images/products/duck.webp"
+    ],
+    "origin": [
+     {
+      "country": "France"
+     },
+     {
+      "country": "Hungary"
+     }
+    ],
+    "packing": [
+     {
+      "size": "Whole"
+     },
+     {
+      "size": "Legs"
+     },
+     {
+      "size": "Breast"
+     }
+    ],
+    "seo_title": "Duck Breast, Legs, Whole | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "corn-fed-baby-chicken",
+   "title": "Corn Fed Baby Chicken",
+   "category": "Poultry",
+   "menu_order": 3,
+   "fields": {
+    "card_summary": "Spanish Corn-Fed Baby Chicken is a premium poultry speciality characterised by its compact size, delicate flavour, and tender meat.",
+    "description": "Spanish Corn-Fed Baby Chicken is a premium poultry speciality characterised by its compact size, delicate flavour, and tender meat. Its golden appearance and elegant individual portion size make it particularly suitable for refined restaurant presentations and premium hospitality menus.",
+    "card_image": "@img:images/products/thumb/corn-fed-baby-chicken.webp",
+    "gallery": [
+     "@img:images/products/corn-fed-baby-chicken.webp"
+    ],
+    "origin": [
+     {
+      "country": "Spain"
+     }
+    ],
+    "packing": [
+     {
+      "size": "Whole"
+     },
+     {
+      "size": "Legs"
+     },
+     {
+      "size": "Breast"
+     }
+    ],
+    "seo_title": "Corn Fed Baby Chicken | Caspian & Sun Food Trading LLC"
+   }
+  }
+ ],
+ "posts": [
+  {
+   "slug": "rising-demand-premium-seafood",
+   "title": "The Rising Demand for Premium Seafood in Global Markets",
+   "excerpt": "Hotels, restaurants and retailers worldwide are placing greater value on quality, provenance and consistency in seafood.",
+   "date": "2026-03-12 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/king-crab-leg.webp",
+    "article_card_image": "@img:images/products/thumb/king-crab-leg.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>Seafood is one of the most widely traded food commodities in the world, and demand for premium products continues to grow as consumers and hospitality operators look for provenance, freshness and consistency. Industry analysis from organisations such as the FAO points to rising global consumption of aquatic foods, driven by population growth, rising incomes and a steady shift towards protein-rich diets.</p><p>Within that growth, the premium segment is distinct. Luxury hotels, fine-dining restaurants and upscale retailers are not simply buying more seafood; they are asking for specific species, specific origins and specific grades. King crab from cold northern waters, Canadian lobster, Hokkaido scallops and caviar each carry a story that chefs and guests recognise and value.</p><p>For importers and distributors, this places a premium on sourcing relationships. Reliable access to trusted producers, clear documentation and dependable cold-chain logistics are what allow a product to reach the kitchen in the condition the chef expects. Markets in the Middle East, where hospitality is a major driver of food demand, are a clear example.</p><p>At Caspian &amp; Sun Food Trading, we see the same pattern across our customers: quality and reliability come first, and price is judged against both. That is why we work directly with producers in the regions best known for each product.</p>",
+    "article_refs": [
+     {
+      "text": "FAO, The State of World Fisheries and Aquaculture 2024",
+      "url": "https://www.fao.org/publications/home/fao-flagship-publications/the-state-of-world-fisheries-and-aquaculture"
+     },
+     {
+      "text": "OECD-FAO Agricultural Outlook 2025-2034",
+      "url": "https://www.agri-outlook.org/"
+     },
+     {
+      "text": "FAO GLOBEFISH, Fish and seafood market information and analysis",
+      "url": "https://www.fao.org/in-action/globefish/"
+     }
+    ],
+    "seo_title": "The Rising Demand for Premium Seafood in Global Markets | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "importance-reliable-food-sourcing",
+   "title": "Understanding the Importance of Reliable Food Sourcing",
+   "excerpt": "Why consistent supply, verified suppliers and transparent processes matter more than ever to foodservice businesses.",
+   "date": "2026-01-20 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/lobster.webp",
+    "article_card_image": "@img:images/products/thumb/lobster.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>For a hotel or restaurant group, a missing ingredient is not a minor inconvenience. It can mean a changed menu, disappointed guests and lost revenue. Reliable sourcing is therefore less about finding a product once and more about securing it repeatedly, to the same specification, season after season.</p><p>A dependable sourcing partner begins with supplier selection. Product quality, certifications, production standards and track record are the criteria that separate a producer who can supply occasionally from one who can supply consistently. Food safety systems and traceability are equally important, particularly for products that cross several borders before reaching the customer.</p><p>Sourcing also depends on logistics. Temperature control, correct packing formats and accurate documentation protect product quality and avoid delays at the border. Working with international standards such as those developed under Codex Alimentarius gives buyers and sellers a common reference point.</p><p>The result of a well-managed sourcing relationship is predictability: stable quality, dependable delivery and pricing that can be planned around. It is the foundation on which long-term partnerships between producers, traders and customers are built.</p>",
+    "article_refs": [
+     {
+      "text": "FAO/WHO Codex Alimentarius, International Food Standards",
+      "url": "https://www.fao.org/fao-who-codexalimentarius/"
+     },
+     {
+      "text": "FAO, Food safety and quality",
+      "url": "https://www.fao.org/food-safety/en/"
+     },
+     {
+      "text": "WTO, Sanitary and Phytosanitary Measures",
+      "url": "https://www.wto.org/english/tratop_e/sps_e/sps_e.htm"
+     }
+    ],
+    "seo_title": "Understanding the Importance of Reliable Food Sourcing | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "origin-to-table-premium-seafood",
+   "title": "From Origin to Table: What Defines Premium Seafood?",
+   "excerpt": "Species, origin, handling and grading all shape the quality of premium seafood long before it reaches the plate.",
+   "date": "2025-11-05 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/hokkaido-scallops.webp",
+    "article_card_image": "@img:images/products/thumb/hokkaido-scallops.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>Premium seafood is defined by a combination of factors rather than a single label. Species and origin matter, because different waters produce different textures and flavours. Harvest method and timing matter, because they affect freshness and yield. Handling and processing matter, because even an excellent catch can lose quality if it is not chilled or frozen correctly.</p><p>Grading and sizing are the next layer. Scallops are sold by size grade, shrimp by count per kilogram, and crab by cluster or leg size. These specifications allow chefs to plan portions and costs with confidence, and they allow buyers to compare like with like across suppliers.</p><p>Cold-chain integrity is what carries quality from origin to table. Products such as king crab legs, lobster and scallops are typically frozen at source to lock in freshness, then transported at controlled temperatures and thawed only when needed in the kitchen.</p><p>Finally, premium seafood is backed by documentation: certificates of origin, health certificates and traceability records. For hospitality businesses, this paperwork is as important as the product itself, because it demonstrates that what is on the plate is what was promised.</p>",
+    "article_refs": [
+     {
+      "text": "FAO, The State of World Fisheries and Aquaculture 2024",
+      "url": "https://www.fao.org/publications/home/fao-flagship-publications/the-state-of-world-fisheries-and-aquaculture"
+     },
+     {
+      "text": "FAO GLOBEFISH, Fish and seafood market information and analysis",
+      "url": "https://www.fao.org/in-action/globefish/"
+     },
+     {
+      "text": "FAO/WHO Codex Alimentarius, International Food Standards",
+      "url": "https://www.fao.org/fao-who-codexalimentarius/"
+     }
+    ],
+    "seo_title": "From Origin to Table: What Defines Premium Seafood? | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "global-seafood-trends-horeca",
+   "title": "Global Seafood Trends Shaping the HORECA Industry",
+   "excerpt": "From provenance storytelling to specialty species, the trends influencing how hotels, restaurants and caterers buy seafood.",
+   "date": "2025-09-18 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/carabinero-shrimp.webp",
+    "article_card_image": "@img:images/products/thumb/carabinero-shrimp.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>The HORECA sector, covering hotels, restaurants and catering, is one of the most influential buyers of seafood worldwide. Its purchasing choices reflect wider changes in how people dine, and several trends are shaping what reaches the menu.</p><p>Provenance is one. Guests increasingly want to know where their food comes from, and menus now name the origin of a scallop, a shrimp or a cut of fish. Specialty species are another: products such as carabinero shrimp, Hokkaido scallops and black cod have moved from niche ingredients to recognised menu highlights.</p><p>Consistency and portion control are a third. Kitchens that serve many covers need products in reliable sizes and formats, which is why grading and packing specifications matter so much in foodservice supply.</p><p>Finally, responsible sourcing and food safety continue to rise up the agenda. Buyers expect documented standards and dependable suppliers, and they increasingly favour partners who can provide both quality and transparency across the supply chain.</p>",
+    "article_refs": [
+     {
+      "text": "OECD-FAO Agricultural Outlook 2025-2034",
+      "url": "https://www.agri-outlook.org/"
+     },
+     {
+      "text": "FAO GLOBEFISH, Fish and seafood market information and analysis",
+      "url": "https://www.fao.org/in-action/globefish/"
+     },
+     {
+      "text": "FAO, The State of World Fisheries and Aquaculture 2024",
+      "url": "https://www.fao.org/publications/home/fao-flagship-publications/the-state-of-world-fisheries-and-aquaculture"
+     }
+    ],
+    "seo_title": "Global Seafood Trends Shaping the HORECA Industry | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "international-sourcing-premium-hospitality",
+   "title": "How International Food Sourcing Supports Premium Hospitality",
+   "excerpt": "Why luxury hospitality relies on a global network of producers to deliver the products guests expect.",
+   "date": "2025-06-10 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/beluga-caviar.webp",
+    "article_card_image": "@img:images/products/thumb/beluga-caviar.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>Premium hospitality is built on experience, and the ingredients on the plate are a large part of that experience. No single country produces every product a luxury kitchen requires, which is why international sourcing is central to high-end foodservice.</p><p>The best-known producers of a product are often far from the market that wants it: lamb and beef from Australia, scallops from Japan, lobster from Canada, poultry and foie gras from France and Hungary, carabinero shrimp from Spain. Connecting those producers with hotels and restaurants in the Middle East requires experience in export documentation, cold-chain logistics and quality control.</p><p>An international sourcing partner takes on that complexity on behalf of the customer. It evaluates suppliers, manages specifications, coordinates shipping and handles compliance, so the chef can focus on the menu rather than the supply chain.</p><p>When a specific product is not in a trader's portfolio, a strong sourcing network can also locate it. That flexibility, responding to a customer's exact requirement, is what distinguishes a supply partner from a simple supplier.</p>",
+    "article_refs": [
+     {
+      "text": "OECD-FAO Agricultural Outlook 2025-2034",
+      "url": "https://www.agri-outlook.org/"
+     },
+     {
+      "text": "USDA Foreign Agricultural Service, Global Agricultural Information Network (GAIN)",
+      "url": "https://gain.fas.usda.gov/"
+     },
+     {
+      "text": "WTO, Sanitary and Phytosanitary Measures",
+      "url": "https://www.wto.org/english/tratop_e/sps_e/sps_e.htm"
+     }
+    ],
+    "seo_title": "How International Food Sourcing Supports Premium Hospitality | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "premium-meat-poultry-seafood",
+   "title": "Inside the World of Premium Meat, Poultry and Seafood",
+   "excerpt": "A look at what sets premium proteins apart, and how origin shapes flavour, texture and value.",
+   "date": "2025-02-27 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/black-angus-australia.webp",
+    "article_card_image": "@img:images/products/thumb/black-angus-australia.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>Premium proteins share a common thread: origin and production method shape the final product. Australian Black Angus is valued for its marbling and tenderness, Argentine beef for its full-bodied flavour, and American Angus for its range of grades and cuts. Each serves a different kind of kitchen and menu.</p><p>Poultry follows the same logic. French yellow chicken is known for its golden skin and delicate flavour, corn-fed baby chicken from Spain for its compact size and tenderness, and duck and foie gras from France and Hungary for their place in classical European cuisine.</p><p>Seafood adds a further dimension. Cold-water species such as king crab and lobster, and delicate products such as scallops and caviar, depend on careful handling from harvest through to delivery.</p><p>Across all three categories, a professional buyer looks at the same fundamentals: specification, consistency, documentation and dependable supply. Sourcing from recognised producing regions, through an experienced partner, is the most reliable way to secure all four.</p>",
+    "article_refs": [
+     {
+      "text": "OECD-FAO Agricultural Outlook 2025-2034",
+      "url": "https://www.agri-outlook.org/"
+     },
+     {
+      "text": "FAO, The State of Food Security and Nutrition in the World 2025",
+      "url": "https://www.fao.org/publications/home/fao-flagship-publications/the-state-of-food-security-and-nutrition-in-the-world"
+     },
+     {
+      "text": "FAO, Food safety and quality",
+      "url": "https://www.fao.org/food-safety/en/"
+     }
+    ],
+    "seo_title": "Inside the World of Premium Meat, Poultry and Seafood | Caspian & Sun Food Trading LLC"
+   }
+  },
+  {
+   "slug": "food-supply-chains-producer-to-market",
+   "title": "Understanding Food Supply Chains: From Producer to Market",
+   "excerpt": "How a premium food product travels from producer to customer, and where quality is won or lost.",
+   "date": "2024-10-08 09:00:00",
+   "fields": {
+    "article_image": "@img:images/products/black-cod.webp",
+    "article_card_image": "@img:images/products/thumb/black-cod.webp",
+    "article_author": "Caspian & Sun Editorial Team",
+    "article_body": "<p>A food supply chain is a series of connected steps: production or harvest, processing, packing, storage, transport, customs clearance and final delivery. Each step is an opportunity to protect quality and each is also a point where it can be lost.</p><p>At the start of the chain, producer selection and quality standards set the ceiling for everything that follows. Processing and packing then determine how well a product tolerates long-distance transport, particularly for frozen and chilled goods.</p><p>Transport and storage depend on an unbroken cold chain and on accurate paperwork. Certificates, permits and labelling must match the requirements of the destination market, or shipments may be delayed or rejected.</p><p>An effective trading partner coordinates these steps end to end. By managing sourcing, logistics and compliance together, it shortens lead times, reduces risk and gives customers a single point of accountability from producer to market.</p>",
+    "article_refs": [
+     {
+      "text": "FAO GLOBEFISH, Fish and seafood market information and analysis",
+      "url": "https://www.fao.org/in-action/globefish/"
+     },
+     {
+      "text": "WTO, Sanitary and Phytosanitary Measures",
+      "url": "https://www.wto.org/english/tratop_e/sps_e/sps_e.htm"
+     },
+     {
+      "text": "FAO, Food safety and quality",
+      "url": "https://www.fao.org/food-safety/en/"
+     }
+    ],
+    "seo_title": "Understanding Food Supply Chains: From Producer to Market | Caspian & Sun Food Trading LLC"
+   }
+  }
+ ],
+ "categories": [
+  {
+   "name": "Seafood",
+   "slug": "seafood"
+  },
+  {
+   "name": "Poultry",
+   "slug": "poultry"
+  },
+  {
+   "name": "Meat",
+   "slug": "meat"
+  }
+ ],
+ "menus": {
+  "header_left": [
+   {
+    "title": "Home",
+    "url": "/"
+   },
+   {
+    "title": "Products",
+    "url": "/products/"
+   },
+   {
+    "title": "About",
+    "url": "/about/"
+   }
+  ],
+  "header_right": [
+   {
+    "title": "Insights",
+    "url": "/blog/"
+   },
+   {
+    "title": "Contact",
+    "url": "/contact/"
+   }
+  ],
+  "footer_company": [
+   {
+    "title": "Home",
+    "url": "/"
+   },
+   {
+    "title": "About",
+    "url": "/about/"
+   },
+   {
+    "title": "Products",
+    "url": "/products/"
+   },
+   {
+    "title": "Insights",
+    "url": "/blog/"
+   },
+   {
+    "title": "Contact",
+    "url": "/contact/"
+   }
+  ],
+  "footer_products": [
+   {
+    "title": "Seafood",
+    "url": "/products/#seafood"
+   },
+   {
+    "title": "Meat",
+    "url": "/products/#meat"
+   },
+   {
+    "title": "Poultry",
+    "url": "/products/#poultry"
+   }
+  ]
+ },
+ "media_alts": {
+  "videos/hero-salmon-poster.webp": "",
+  "videos/hero-salmon-poster-sm.webp": "",
+  "videos/hero-salmon-720.mp4": "",
+  "videos/hero-salmon-360.mp4": "",
+  "images/home/about-photo.webp": "Fresh fish, prawns and scallops on a wooden board",
+  "images/home/counter-1.png": "",
+  "images/home/counter-4.png": "",
+  "images/home/counter-2.png": "",
+  "images/home/counter-3.png": "",
+  "images/pdf_extracted/extracted_3_bg.webp": "Fish on ice",
+  "images/home/cat-frozen.webp": "Seafood",
+  "images/home/cat-butchery.webp": "Meat",
+  "images/home/cat-poultry.webp": "Poultry",
+  "images/home/why-4.png": "",
+  "images/home/why-2.png": "",
+  "images/home/why-3.png": "",
+  "images/home/why-1.png": "",
+  "images/home/why-video.webp": "Fresh sea bass on ice",
+  "images/home/partner-1.png": "Partner logo 1",
+  "images/home/partner-2.png": "Maido by Mitsuharu",
+  "images/home/partner-3.png": "Partner logo 3",
+  "images/home/partner-4.png": "La Mar",
+  "images/home/partner-5.png": "Partner logo 5",
+  "images/home/partner-6.png": "Partner logo 6",
+  "images/home/partner-7.png": "Partner logo 7",
+  "images/home/partner-8.png": "Partner logo 8",
+  "images/home/partner-9.png": "Partner logo 9",
+  "images/home/testi-main.webp": "Chef preparing fresh fish",
+  "images/home/avatars-cluster.webp": "",
+  "images/home/avatar-1.webp": "John Doe",
+  "images/home/avatar-2.webp": "Steve John",
+  "images/home/testi-chef.webp": "Chef",
+  "images/home/avatar-3.webp": "Rohan John",
+  "images/home/art-1.webp": "The Rising Demand for Premium Seafood in Global Markets",
+  "images/home/art-2.webp": "Understanding the Importance of Reliable Food Sourcing",
+  "images/products/thumb/hokkaido-scallops.webp": "From Origin to Table: What Defines Premium Seafood?",
+  "images/products/thumb/carabinero-shrimp.webp": "Global Seafood Trends Shaping the HORECA Industry",
+  "images/home/art-3.webp": "How International Food Sourcing Supports Premium Hospitality",
+  "images/home/cta-fish.webp": "Fish",
+  "images/hero/extracted_5_2000x1331.webp": "",
+  "images/hero/extracted_5_2000x1331-sm.webp": "",
+  "images/pdf_extracted/extracted_6_2000x1488-about.webp": "Fresh seafood selection",
+  "images/pdf_extracted/extracted_3_2208x3936-about.webp": "Premium fish and caviar",
+  "images/pdf_extracted/extracted_1_2000x2500-about.webp": "Fresh fish on blue cloth",
+  "images/pdf_extracted/extracted_4_2000x1499-about.webp": "Fresh fish on ice",
+  "images/pdf_extracted/extracted_8_1920x1080-about.webp": "Underwater ocean scene",
+  "images/flags/spain.svg": "",
+  "images/flags/russia.svg": "",
+  "images/flags/morocco.svg": "",
+  "images/flags/japan.svg": "",
+  "images/flags/china.svg": "",
+  "images/flags/chile.svg": "",
+  "images/flags/usa.svg": "",
+  "images/flags/canada.svg": "",
+  "images/flags/hungary.svg": "",
+  "images/flags/australia.svg": "",
+  "images/hero/extracted_3_2208x3936.webp": "",
+  "images/hero/extracted_3_2208x3936-sm.webp": "",
+  "images/products/thumb/king-crab-leg.webp": "King Crab Leg",
+  "images/products/king-crab-leg.webp": "King Crab Leg",
+  "images/products/thumb/lobster.webp": "Lobster",
+  "images/products/lobster.webp": "Lobster",
+  "images/products/thumb/beluga-caviar.webp": "Beluga Caviar",
+  "images/products/beluga-caviar.webp": "Beluga Caviar",
+  "images/products/hokkaido-scallops.webp": "Hokkaido Scallops",
+  "images/products/carabinero-shrimp.webp": "Carabinero Shrimp",
+  "images/products/thumb/black-cod.webp": "Black Cod",
+  "images/products/black-cod.webp": "Black Cod",
+  "images/products/thumb/black-angus-australia.webp": "Black Angus (Australia)",
+  "images/products/black-angus-australia.webp": "Black Angus (Australia)",
+  "images/products/thumb/lamb.webp": "Lamb",
+  "images/products/lamb.webp": "Lamb",
+  "images/products/thumb/black-angus-usa.webp": "Black Angus (USA)",
+  "images/products/black-angus-usa.webp": "Black Angus (USA)",
+  "images/products/thumb/black-angus-argentina.webp": "Black Angus (Argentina)",
+  "images/products/black-angus-argentina.webp": "Black Angus (Argentina)",
+  "images/products/thumb/yellow-chicken.webp": "Yellow Chicken",
+  "images/products/yellow-chicken.webp": "Yellow Chicken",
+  "images/products/thumb/foie-gras-escalope.webp": "Foie Gras Escalope (Sliced)",
+  "images/products/foie-gras-escalope.webp": "Foie Gras Escalope (Sliced)",
+  "images/products/thumb/duck.webp": "Duck Breast, Legs, Whole",
+  "images/products/duck.webp": "Duck Breast, Legs, Whole",
+  "images/products/thumb/corn-fed-baby-chicken.webp": "Corn Fed Baby Chicken",
+  "images/products/corn-fed-baby-chicken.webp": "Corn Fed Baby Chicken",
+  "images/hero/extracted_0_2000x1121.webp": "",
+  "images/hero/extracted_0_2000x1121-sm.webp": "",
+  "images/watermark-fish.webp": "",
+  "casplogo.webp": "Caspian & Sun logo",
+  "images/logo.png": "Caspian & Sun favicon",
+  "images/intersmart-logo.svg": "Intersmart",
+  "images/hero/hero-seafood.webp": "",
+  "images/hero/hero-seafood-sm.webp": ""
+ },
+ "video_files": [
+  "videos/hero-salmon-360.mp4",
+  "videos/hero-salmon-720.mp4"
+ ]
+}
