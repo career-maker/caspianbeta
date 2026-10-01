@@ -20,6 +20,13 @@ function csp_get( $name, $post_id = null ) {
 	return $v ? $v : '';
 }
 
+/** Article summary: the editable "Article summary" field, falling back to the WordPress excerpt (existing content). */
+function csp_article_summary( $post_id = 0 ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	$s       = function_exists( 'get_field' ) ? get_field( 'article_summary', $post_id ) : '';
+	return is_string( $s ) && '' !== trim( $s ) ? trim( $s ) : get_the_excerpt( $post_id );
+}
+
 /** Option-page field. */
 function csp_opt( $name ) {
 	return csp_get( $name, 'option' );

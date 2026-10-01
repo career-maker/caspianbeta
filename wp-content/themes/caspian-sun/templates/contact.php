@@ -44,11 +44,12 @@ if ( $sel_product ) {
 		}
 	}
 }
-$product_opts = array( '' => __( 'General enquiry (no specific product)', 'caspian-sun' ) );
+$product_opts = array( '' => csp_get( 'contact_product_placeholder' ) ? csp_get( 'contact_product_placeholder' ) : __( 'General enquiry (no specific product)', 'caspian-sun' ) );
 foreach ( array_keys( $catalog ) as $title ) {
 	$product_opts[ $title ] = $title;
 }
-$size_opts = array( '' => __( 'Select packing', 'caspian-sun' ) );
+$packing_ph = csp_get( 'contact_packing_placeholder' ) ? csp_get( 'contact_packing_placeholder' ) : __( 'Select packing', 'caspian-sun' );
+$size_opts  = array( '' => $packing_ph );
 if ( $sel_product ) {
 	foreach ( $catalog[ $sel_product ] as $sz ) {
 		$size_opts[ $sz ] = $sz;
@@ -95,7 +96,7 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
         <?php elseif ( 'err' === $sent ) : ?>
         <div class="form-status is-error" role="alert"><?php echo esc_html( csp_get( 'contact_error' ) ); ?></div>
         <?php endif; ?>
-        <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="cspContactForm" novalidate data-products="<?php echo esc_attr( wp_json_encode( $catalog ) ); ?>" data-sending="<?php echo esc_attr( csp_get( 'contact_sending' ) ); ?>" data-success="<?php echo esc_attr( csp_get( 'contact_success' ) ); ?>" data-error="<?php echo esc_attr( csp_get( 'contact_error' ) ); ?>">
+        <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="cspContactForm" novalidate data-products="<?php echo esc_attr( wp_json_encode( $catalog ) ); ?>" data-packing-label="<?php echo esc_attr( $packing_ph ); ?>" data-sending="<?php echo esc_attr( csp_get( 'contact_sending' ) ); ?>" data-success="<?php echo esc_attr( csp_get( 'contact_success' ) ); ?>" data-error="<?php echo esc_attr( csp_get( 'contact_error' ) ); ?>">
           <input type="hidden" name="action" value="csp_contact">
           <?php wp_nonce_field( 'csp_contact', 'csp_nonce' ); ?>
           <input type="hidden" name="csp_ts" value="<?php echo esc_attr( $token ); ?>">

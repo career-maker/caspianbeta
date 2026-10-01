@@ -144,7 +144,7 @@
     var list = (p && catalog[p]) ? catalog[p] : [];
     sel.innerHTML = '';
     var first = document.createElement('option');
-    first.value = ''; first.textContent = 'Select packing';
+    first.value = ''; first.textContent = form.getAttribute('data-packing-label') || (window.CSP_FORM && window.CSP_FORM.packingLabel) || 'Select packing';
     sel.appendChild(first);
     list.forEach(function (s) {
       var o = document.createElement('option');

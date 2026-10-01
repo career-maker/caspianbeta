@@ -26,5 +26,6 @@
   tabs.forEach(function(t){t.addEventListener('click',function(){setFilter(t.dataset.filter);});});
   if(input)input.addEventListener('input',apply);
   var h=location.hash.replace('#','');
-  if(['seafood','poultry','meat','other'].indexOf(h)>-1)setFilter(h);
+  var valid=[].slice.call(tabs).map(function(t){return t.dataset.filter;});
+  if(h&&h!=='all'&&valid.indexOf(h)>-1)setFilter(h);
 })();

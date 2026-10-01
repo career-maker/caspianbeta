@@ -35,12 +35,13 @@ while ( have_posts() ) :
 	$share = array(
 		'x'        => 'https://twitter.com/intent/tweet?url=' . rawurlencode( $url ) . '&text=' . rawurlencode( $title ),
 		'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $url ),
+		'linkedin' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . rawurlencode( $url ),
 		'whatsapp' => 'https://wa.me/?text=' . rawurlencode( $title . ' ' . $url ),
 	);
 	// Instagram has no share URL: link to the brand profile configured in Theme Settings.
 	foreach ( array_filter( (array) get_field( 'opt_social', 'option' ) ) as $s ) {
-		if ( 'instagram' === $s['network'] && ! empty( $s['url'] ) ) {
-			$share = array_slice( $share, 0, 2, true ) + array( 'instagram' => $s['url'] ) + array_slice( $share, 2, null, true );
+		if ( is_array( $s ) && isset( $s['network'] ) && 'instagram' === $s['network'] && ! empty( $s['url'] ) ) {
+			$share = array_slice( $share, 0, 3, true ) + array( 'instagram' => $s['url'] ) + array_slice( $share, 3, null, true );
 		}
 	}
 	$share_labels = csp_icon_choices();
@@ -48,6 +49,16 @@ while ( have_posts() ) :
 	?>
 <main id="main">
 	<?php csp_banner( 'bd', false, 'option' ); ?>
+	<?php
+	csp_breadcrumb(
+		array_filter(
+			array(
+				$page_id ? array( get_the_title( $page_id ), get_permalink( $page_id ) ) : array( __( 'Insights', 'caspian-sun' ), home_url( '/blog/' ) ),
+				array( $title, '' ),
+			)
+		)
+	);
+	?>
 <div class="article-wrap">
   <article>
     <div class="article-meta reveal"><?php echo implode( ' &nbsp;|&nbsp; ', $meta ); // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
@@ -98,7 +109,7 @@ while ( have_posts() ) :
       <a href="<?php the_permalink(); ?>" class="related-card reveal in-view">
         <?php echo $rimg ? '<div class="related-card-img">' . $rimg . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <h3><?php echo esc_html( $rt ); ?></h3>
-        <?php echo csp_p( get_the_excerpt() ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+        <?php echo csp_p( csp_article_summary( get_the_ID() ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <?php echo csp_view_more( '', $view_more, '', 'span', true ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       </a>
 		<?php endwhile; ?>

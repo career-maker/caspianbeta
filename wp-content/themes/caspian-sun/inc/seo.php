@@ -60,8 +60,8 @@ function csp_seo_description() {
 		if ( $d ) {
 			return $d;
 		}
-		if ( is_singular( 'post' ) && has_excerpt( $id ) ) {
-			return wp_strip_all_tags( get_the_excerpt( $id ) );
+		if ( is_singular( 'post' ) && csp_article_summary( $id ) ) {
+			return wp_strip_all_tags( csp_article_summary( $id ) );
 		}
 		if ( is_singular( 'product' ) ) {
 			$d = csp_get( 'card_summary', $id );
@@ -101,7 +101,7 @@ add_action(
 		}
 		$desc  = csp_seo_description();
 		$title = wp_get_document_title();
-		$url   = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : '' );
+		$url   = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : ( is_home() && get_option( 'page_for_posts' ) ? get_permalink( (int) get_option( 'page_for_posts' ) ) : '' ) );
 		$img   = csp_seo_image_id();
 		$imgu  = $img ? wp_get_attachment_image_src( $img, 'large' ) : false;
 

@@ -20,7 +20,7 @@ function csp_register_content_groups() {
 			csp_f_area( 'description', 'Full description', 8, array( 'instructions' => 'Shown on the product page.' ) ),
 			csp_f_img( 'card_image', 'Card image', array( 'instructions' => 'Image used on product cards and in related-product lists.' ) ),
 			csp_f( 'gallery', 'gallery', 'Product page photos', array( 'return_format' => 'id', 'preview_size' => 'medium', 'library' => 'all', 'insert' => 'append', 'instructions' => 'First photo is the main image; extra photos appear as thumbnails.' ) ),
-			csp_f_rep( 'origin', 'Origin (countries)', array( csp_f_text( 'country', 'Country', array( 'instructions' => 'A flag is shown automatically for known countries.' ) ) ), array( 'layout' => 'table', 'button_label' => 'Add country', 'collapsed' => '' ) ),
+			csp_f_rep( 'origin', 'Origin (countries)', array( csp_f_text( 'country', 'Country', array( 'instructions' => 'A flag is shown automatically for known countries; for any other country upload one below.' ) ), csp_f_img( 'flag', 'Flag image (optional)', array( 'instructions' => 'Overrides the built-in flag. Square image recommended.' ) ) ), array( 'layout' => 'table', 'button_label' => 'Add country', 'collapsed' => '' ) ),
 			csp_f_rep( 'packing', 'Packing options', array( csp_f_text( 'size', 'Packing option' ) ), array( 'layout' => 'table', 'button_label' => 'Add packing option', 'collapsed' => '' ) ),
 		),
 		0
@@ -35,6 +35,7 @@ function csp_register_content_groups() {
 			csp_f_img( 'article_image', 'Featured image', array( 'instructions' => 'Large image at the top of the article.' ) ),
 			csp_f_img( 'article_card_image', 'Listing image', array( 'instructions' => 'Image used on the Insights page and in related-article lists.' ) ),
 			csp_f_text( 'article_author', 'Author name' ),
+			csp_f_area( 'article_summary', 'Article summary', 3, array( 'instructions' => 'Short text shown on article cards (home page, Insights page, related articles) and under the title. Leave empty to use the WordPress excerpt.' ) ),
 			csp_f_wysiwyg( 'article_body', 'Article body', array( 'toolbar' => 'full', 'tabs' => 'all', 'media_upload' => 1 ) ),
 			csp_f_rep(
 				'article_refs',

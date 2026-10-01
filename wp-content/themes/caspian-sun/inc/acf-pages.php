@@ -150,7 +150,7 @@ function csp_register_page_groups() {
 				csp_f_area( 'home_articles_heading', 'Heading', 2 ),
 				csp_f_rep(
 					'home_articles',
-					'Articles (1st = large, 2nd–3rd = middle column, 4th–5th = right column)',
+					'Articles — use 1, 3 or 5 (1st = large, 2nd–3rd = middle column, 4th–5th = right column)',
 					array(
 						csp_f( 'post_object', 'post', 'Article', array( 'post_type' => array( 'post' ), 'return_format' => 'id', 'ui' => 1 ) ),
 						csp_f_img( 'image', 'Image for this slot' ),
@@ -328,6 +328,8 @@ function csp_register_page_groups() {
 				csp_f_text( 'contact_label_name', 'Label — Name' ),
 				csp_f_text( 'contact_label_phone', 'Label — Phone' ),
 				csp_f_text( 'contact_label_email', 'Label — Email' ),
+				csp_f_text( 'contact_product_placeholder', 'Product dropdown — first option', array( 'instructions' => 'Default: General enquiry (no specific product)' ) ),
+				csp_f_text( 'contact_packing_placeholder', 'Packing dropdown — first option', array( 'instructions' => 'Default: Select packing' ) ),
 				csp_f_text( 'contact_label_subject', 'Label — Subject' ),
 				csp_f_text( 'contact_label_product', 'Label — Product' ),
 				csp_f_text( 'contact_label_packing', 'Label — Packing' ),

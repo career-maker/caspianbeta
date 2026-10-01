@@ -25,6 +25,7 @@ if ( is_wp_error( $terms ) ) {
 $view_more = csp_opt( 'opt_view_more' );
 $other_tab = csp_get( 'products_other_tab' );
 $other_btn = csp_get( 'products_other_button' );
+$show_other = $other_tab && ( csp_get( 'products_other_heading' ) || csp_get( 'products_other_text' ) );
 $arrow_svg = '<svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><path d="M2 12h14"/><circle cx="18" cy="12" r="2"/></svg>';
 ?>
 <main id="main">
@@ -48,7 +49,7 @@ $arrow_svg = '<svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><pa
     <?php foreach ( $terms as $t ) : ?>
     <button type="button" class="cat-tab" data-filter="<?php echo esc_attr( $t->slug ); ?>" aria-pressed="false"><?php echo esc_html( $t->name ); ?></button>
     <?php endforeach; ?>
-    <?php if ( $other_tab ) : ?><button type="button" class="cat-tab" data-filter="other" aria-pressed="false"><?php echo esc_html( $other_tab ); ?></button><?php endif; ?>
+    <?php if ( $show_other ) : ?><button type="button" class="cat-tab" data-filter="other" aria-pressed="false"><?php echo esc_html( $other_tab ); ?></button><?php endif; ?>
   </div>
 
   <div class="shop-grid">
@@ -100,7 +101,7 @@ $arrow_svg = '<svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><pa
 	endforeach;
 	?>
 
-    <?php if ( $other_tab && ( csp_get( 'products_other_heading' ) || csp_get( 'products_other_text' ) ) ) : ?>
+    <?php if ( $show_other ) : ?>
     <section class="cat-block other-block" id="other" data-cat="Other">
       <?php echo csp_heading( csp_get( 'products_other_heading' ), 2, '', 'cat-heading' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <?php echo csp_p( csp_get( 'products_other_text' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>

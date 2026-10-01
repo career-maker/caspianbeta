@@ -27,7 +27,8 @@ while ( have_posts() ) :
 	$packing = array_values( array_filter( (array) get_field( 'packing' ), function ( $o ) {
 		return ! empty( $o['size'] );
 	} ) );
-	$enq_url = $contact_page ? add_query_arg( 'enquiry_product', rawurlencode( $name ), get_permalink( $contact_page ) ) : '';
+	$enq_base = $contact_page ? get_permalink( $contact_page ) : home_url( '/contact/#contact-form' ); // Falls back when no page uses the Contact template.
+	$enq_url  = add_query_arg( 'enquiry_product', rawurlencode( $name ), $enq_base );
 	?>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs><clipPath id="flagClip"><circle cx="12" cy="12" r="12"/></clipPath></defs>
@@ -74,7 +75,7 @@ while ( have_posts() ) :
         <?php echo csp_opt( 'pd_origin_label' ) ? '<div class="spec-label">' . esc_html( csp_opt( 'pd_origin_label' ) ) . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <div class="spec-value">
           <?php foreach ( $origin as $o ) : ?>
-          <span class="origin-item"><?php echo csp_flag_svg( $o['country'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( $o['country'] ); ?></span>
+          <span class="origin-item"><?php echo csp_flag_svg( $o['country'], ! empty( $o['flag'] ) ? (int) $o['flag'] : 0 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( $o['country'] ); ?></span>
           <?php endforeach; ?>
         </div>
       </div>

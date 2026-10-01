@@ -156,6 +156,7 @@ function csp_enqueue() {
 				'ajax'  => admin_url( 'admin-ajax.php' ),
 				'nonce' => wp_create_nonce( 'csp_contact' ),
 				'recaptcha' => csp_recaptcha_keys()[0],
+				'packingLabel' => csp_get( 'contact_packing_placeholder' ) ? csp_get( 'contact_packing_placeholder' ) : '',
 			)
 		);
 	}

@@ -54,7 +54,7 @@ $clients   = get_field( 'blog_trusted_clients', $page_id );
       <?php $img = csp_img( csp_get( 'article_card_image' ), array( 'alt' => $title ) ); ?>
       <?php echo $img ? '<div class="blog-card-img">' . $img . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <h3><?php echo esc_html( $title ); ?></h3>
-      <?php echo csp_p( get_the_excerpt() ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+      <?php echo csp_p( csp_article_summary( get_the_ID() ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <?php echo csp_view_more( '', $view_more, '', 'span', true ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
     </a>
 	<?php endwhile; ?>

@@ -66,6 +66,7 @@ function csp_register_options_groups() {
 			csp_f_img( 'opt_logo', 'Logo', array( 'instructions' => 'Used in the header, mobile menu, footer and page preloader (square, 360×360 recommended).' ) ),
 			csp_f_img( 'opt_favicon', 'Favicon', array( 'instructions' => 'Browser tab icon (PNG, square).' ) ),
 			csp_f_tab( 'Contact details' ),
+			csp_f_text( 'opt_company_name', 'Company name', array( 'instructions' => 'Legal company name shown on the Privacy Policy and Terms contact cards. Leave empty to use the SEO organisation name.' ) ),
 			csp_f_text( 'opt_phone_display', 'Phone — display text', array( 'instructions' => 'Shown in header, footer and contact page. e.g. +971 58 561 6040' ) ),
 			csp_f_text( 'opt_phone_tel', 'Phone — dial number', array( 'instructions' => 'Digits with country code, used for the tel: link. e.g. +971585616040' ) ),
 			csp_f_text( 'opt_whatsapp_display', 'WhatsApp — display text' ),

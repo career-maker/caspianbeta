@@ -18,7 +18,7 @@ $phone    = csp_opt( 'opt_phone_display' );
 $tel      = preg_replace( '/[^\d+]/', '', (string) csp_opt( 'opt_phone_tel' ) );
 $email    = csp_opt( 'opt_email' );
 $address  = trim( preg_replace( '/\s*[\r\n]+\s*/', ' ', (string) csp_opt( 'opt_address' ) ) );
-$company  = csp_opt( 'seo_org_name' );
+$company  = csp_opt( 'opt_company_name' ) ? csp_opt( 'opt_company_name' ) : csp_opt( 'seo_org_name' );
 ?>
 <main id="main">
 

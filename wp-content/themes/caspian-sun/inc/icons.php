@@ -78,7 +78,13 @@ function csp_icon( $name, $extra_attrs = '' ) {
  * Country flags for the product "Origin" row (inline SVG, circular clip).
  * Matches the approved design; unknown countries simply show no flag.
  */
-function csp_flag_svg( $country ) {
+function csp_flag_svg( $country, $image_id = 0 ) {
+	if ( $image_id ) {
+		$img = csp_img( $image_id, array( 'class' => 'flag', 'alt' => trim( (string) $country ) . ' flag', 'loading' => 'lazy', 'decoding' => 'async', 'width' => 24, 'height' => 24 ) );
+		if ( $img ) {
+			return $img;
+		}
+	}
 	static $flags = null;
 	if ( null === $flags ) {
 		$usa   = '<rect width="24" height="24" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="3.4"/><rect y="6.9" width="24" height="3.4"/><rect y="13.7" width="24" height="3.4"/><rect y="20.6" width="24" height="3.4"/></g><rect width="12" height="13.7" fill="#3C3B6E"/>';
