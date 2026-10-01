@@ -77,7 +77,9 @@ add_filter(
 	'robots_txt',
 	function ( $output, $public ) {
 		if ( ! $public ) {
-			return $output; // "Discourage search engines" is on: keep WordPress' Disallow: /
+			return "User-agent: *
+Disallow: /
+"; // Pre-launch: block all crawling.
 		}
 		$lines = array(
 			'User-agent: *',
@@ -125,4 +127,27 @@ add_action(
 		}
 	},
 	1
+);
+
+/* ---- Pre-launch: Settings → Reading → "Discourage search engines" (blog_public = 0) blocks indexing everywhere ---- */
+add_action(
+	'send_headers',
+	function () {
+		if ( '0' === (string) get_option( 'blog_public' ) ) {
+			header( 'X-Robots-Tag: noindex, nofollow, noarchive, nosnippet', true );
+		}
+	}
+);
+// No sitemap while the site is not public.
+add_filter(
+	'wpseo_enable_xml_sitemap',
+	function ( $on ) {
+		return '0' === (string) get_option( 'blog_public' ) ? false : $on;
+	}
+);
+add_filter(
+	'wp_sitemaps_enabled',
+	function ( $on ) {
+		return '0' === (string) get_option( 'blog_public' ) ? false : $on;
+	}
 );
