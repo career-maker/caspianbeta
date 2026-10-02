@@ -24,5 +24,6 @@ require_once CSP_DIR . '/inc/mail.php';
 require_once CSP_DIR . '/inc/forms.php';
 require_once CSP_DIR . '/inc/seo.php';
 require_once CSP_DIR . '/inc/hardening.php';
+require_once CSP_DIR . '/inc/htaccess.php';
 require_once CSP_DIR . '/inc/admin-cleanup.php';
 require_once CSP_DIR . '/inc/seed.php';
