@@ -123,6 +123,12 @@ while ( have_posts() ) :
 
 </main>
 
+<?php if ( $enq_url ) : ?>
+<div class="enq-bar" id="enqBar" role="region" aria-label="<?php echo esc_attr( $name ); ?>">
+  <a id="enqBarBtn" href="<?php echo esc_url( $enq_url ); ?>"><span><?php echo esc_html( ( csp_opt( 'pd_sticky_label' ) ? csp_opt( 'pd_sticky_label' ) : __( 'Enquire about', 'caspian-sun' ) ) . ' ' . $name ); ?></span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+<?php endif; ?>
+
 	<?php
 	/* Related: same category first, topped up from the rest of the catalogue. */
 	$ids = array();

@@ -135,3 +135,15 @@
       .size{padding:1rem .3rem .8rem;min-height:100px;}
     }
   @media (max-width:768px){.hero{background:linear-gradient(to top,rgba(10,15,15,.62) 0%,rgba(10,15,15,.2) 50%,rgba(0,0,0,.05) 100%),var(--hero-bg-sm,var(--hero-bg,none)) center 35%/cover;}}
+
+/* Mobile sticky enquiry bar */
+.enq-bar{display:none;}
+@media (max-width:768px){
+  .enq-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:150;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 -6px 24px rgba(0,0,0,.12);transform:translateY(115%);transition:transform .3s ease;}
+  .enq-bar.is-on{transform:none;}
+  .enq-bar a{display:flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:0 1rem;background:var(--deep-teal);color:#fff;text-decoration:none;font:700 .85rem/1.2 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--rich-gold);}
+  .enq-bar a span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .enq-bar a svg{flex:none;}
+  body.has-enq-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom));}
+}
+@media (prefers-reduced-motion:reduce){.enq-bar{transition:none;}}

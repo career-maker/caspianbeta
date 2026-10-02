@@ -34,6 +34,20 @@
   var sizes = document.querySelectorAll('.size');
   var hint = document.getElementById('sizesHint');
   var enquire = document.getElementById('enquireBtn');
+  var bar = document.getElementById('enqBar'), barBtn = document.getElementById('enqBarBtn');
+
+  /* mobile sticky bar: visible while the main "Contact us" button is not on screen */
+  if (bar) {
+    var show = function (on) { bar.classList.toggle('is-on', on); };
+    if (enquire && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { show(!en[0].isIntersecting); }, { threshold: 0.2 }).observe(enquire);
+    } else { show(true); }
+  }
+  function setLink(h) {
+    if (enquire) enquire.setAttribute('href', h);
+    if (barBtn) barBtn.setAttribute('href', h);
+  }
+
   if (!sizes.length || !enquire) return;
   var base = enquire.getAttribute('href');
   var idle = hint ? hint.getAttribute('data-idle') : '';
@@ -45,14 +59,14 @@
       sizes.forEach(function (x) { x.classList.remove('active'); x.setAttribute('aria-checked', 'false'); });
       if (on) {
         if (hint) hint.textContent = idle;
-        enquire.setAttribute('href', base);
+        setLink(base);
         return;
       }
       s.classList.add('active');
       s.setAttribute('aria-checked', 'true');
       var v = s.getAttribute('data-size');
       if (hint) hint.innerHTML = esc(selectedLabel) + ' <strong>' + esc(v) + '</strong>';
-      enquire.setAttribute('href', base + (base.indexOf('?') > -1 ? '&' : '?') + 'enquiry_size=' + encodeURIComponent(v));
+      setLink(base + (base.indexOf('?') > -1 ? '&' : '?') + 'enquiry_size=' + encodeURIComponent(v));
     });
   });
 })();

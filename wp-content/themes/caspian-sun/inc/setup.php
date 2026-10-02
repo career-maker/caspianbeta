@@ -365,3 +365,14 @@ add_action(
 	},
 	99
 );
+
+/** Single product pages carry a mobile sticky enquiry bar: reserve space for it. */
+add_filter(
+	'body_class',
+	function ( $c ) {
+		if ( is_singular( 'product' ) ) {
+			$c[] = 'has-enq-bar';
+		}
+		return $c;
+	}
+);

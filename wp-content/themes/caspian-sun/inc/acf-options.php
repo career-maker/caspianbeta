@@ -139,6 +139,7 @@ function csp_register_options_groups() {
 			csp_f_text( 'pd_packing_hint', 'Packing hint (nothing selected)' ),
 			csp_f_text( 'pd_packing_selected', 'Packing hint (option selected)', array( 'instructions' => 'The chosen option is appended after this text.' ) ),
 			csp_f_text( 'pd_enquire_label', 'Enquiry button label' ),
+			csp_f_text( 'pd_sticky_label', 'Mobile sticky bar — text', array( 'instructions' => 'Shown on phones in a bar fixed to the bottom of the product page, followed by the product name. Default: Enquire about' ) ),
 			csp_f_link( 'pd_back_link', 'Secondary button ("Back to Shop")' ),
 			csp_f_rep(
 				'pd_assurances',
