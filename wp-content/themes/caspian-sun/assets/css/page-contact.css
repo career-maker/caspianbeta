@@ -455,3 +455,7 @@
 .form-summary a:focus-visible{box-shadow:inset 0 0 0 2px #b3261e}
 @media (max-width:600px){.form-summary{padding:.95rem 1rem}.form-summary a strong{min-width:100%}.form-summary a::after{display:none}}
 @media (prefers-reduced-motion:reduce){.form-summary a,.form-summary a::after{transition:none}}
+
+/* Desktop: keep the contact-info box in view while the (taller) form scrolls, as the gallery does on product pages.
+   Needs overflow-x:clip (not hidden) on html/body, see the rule above. */
+@media (min-width:1025px){.info-box{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);align-self:start;}}
