@@ -136,12 +136,12 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .poverlay{position:absolute;top:9%;bottom:9%;overflow:hidden;left:8%;right:8%;background:rgba(255,255,255,.96);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(.6rem,1.2vw,1.4rem);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .4s ease,visibility .4s ease,transform .4s ease;}
 .pcard:hover .poverlay,.pcard:focus-within .poverlay{opacity:1;visibility:visible;transform:none;}
 .poverlay h3{font-family:'Manrope',sans-serif;font-size:clamp(.9rem,1.1vw,1.1rem);font-weight:500;text-transform:uppercase;color:var(--charcoal);margin-bottom:.8rem;}
-.poverlay p{font-size:clamp(.66rem,.8vw,.8rem);line-height:1.55;color:#171813;margin-bottom:.8rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;}
+.poverlay p{font-size:clamp(.75rem,.8vw,.8rem);line-height:1.55;color:#171813;margin-bottom:.8rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;}
 .pinfo{display:flex;justify-content:space-between;align-items:center;gap:clamp(1rem,1.6vw,1.6rem);padding-top:.9rem;}
 .pinfo b{flex:1 1 auto;min-width:0;}
 .pinfo .view-more{flex:none;white-space:nowrap;}
 .pinfo b{font-family:'Manrope',sans-serif;font-size:clamp(.9rem,1.15vw,1.1rem);font-weight:500;text-transform:uppercase;color:#000;}
-.pinfo .view-more{font-size:clamp(.72rem,.85vw,.85rem);}
+.pinfo .view-more{font-size:clamp(.75rem,.85vw,.85rem);}
 .prod-cta{text-align:center;margin-top:clamp(1.8rem,3.6vw,3.6rem);}
 
 /* ---------- 7. TESTIMONIALS ---------- */
