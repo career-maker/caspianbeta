@@ -97,6 +97,21 @@ function csp_register_page_groups() {
 				csp_f_img( 'home_why_video_image', 'Video cover image' ),
 				csp_f_file( 'home_why_video', 'Video file', array( 'mime_types' => 'mp4,webm', 'instructions' => 'Opens in a pop-up player when the play button is pressed. Clear it to hide the play button.' ) ),
 
+				csp_f_tab( 'How We Work' ),
+				csp_f_bool( 'home_process_show', 'Show this section', array( 'default_value' => 1, 'instructions' => 'Four-step process between "Why Choose Us" and "Clients". Leave the fields empty to use the built-in wording.' ) ),
+				csp_f_text( 'home_process_eyebrow', 'Eyebrow', array( 'instructions' => 'Default: Process' ) ),
+				csp_f_text( 'home_process_heading', 'Heading', array( 'instructions' => 'Default: How We Work' ) ),
+				csp_f_area( 'home_process_text', 'Intro text', 2 ),
+				csp_f_rep(
+					'home_process_steps',
+					'Steps (use 3 to 5)',
+					array(
+						csp_f_select( 'icon', 'Icon', csp_icon_choices( array( 'globe', 'check', 'search', 'handling', 'box', 'truck', 'leaf', 'global-std', 'clock', 'bolt' ) ), array( 'allow_null' => 0, 'default_value' => 'check' ) ),
+						csp_f_text( 'title', 'Title' ),
+						csp_f_area( 'text', 'Text', 2 ),
+					),
+					array( 'button_label' => 'Add step', 'layout' => 'table', 'max' => 5 )
+				),
 				csp_f_tab( 'Clients' ),
 				csp_f_area( 'home_clients_heading', 'Heading', 2 ),
 				csp_f_area( 'home_clients_text', 'Text', 3 ),
