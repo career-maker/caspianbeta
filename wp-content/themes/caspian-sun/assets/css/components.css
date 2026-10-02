@@ -183,3 +183,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .pagination .page-numbers{min-width:40px;height:40px;padding:0 .8rem;display:inline-flex;align-items:center;justify-content:center;border:1px solid #cfd1dc;color:#1E4951;text-decoration:none;font-family:'Manrope',sans-serif;font-size:.9rem;transition:background .3s,color .3s}
 .pagination a.page-numbers:hover,.pagination .page-numbers.current{background:#1E4951;color:#fff;border-color:#1E4951}
 a.cta-btn{line-height:normal;text-align:center}
+
+/* Mobile safety net: never justify text on small screens (also overrides inline justify pasted into editor content) */
+@media (max-width:767px){[style*="text-align: justify"],[style*="text-align:justify"],.has-text-align-justify,.about-text p{text-align:left !important;hyphens:manual;}}
