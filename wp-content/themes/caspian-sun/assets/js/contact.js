@@ -112,7 +112,10 @@
       if (!msg) return;
       n++;
       var li = document.createElement('li'), a = document.createElement('a');
-      a.href = '#' + el.id; a.textContent = labelOf(k) + ': ' + msg;
+      a.href = '#' + el.id;
+      var lb = document.createElement('strong'), ms = document.createElement('span');
+      lb.textContent = labelOf(k); ms.textContent = msg;
+      a.appendChild(lb); a.appendChild(document.createTextNode(' ')); a.appendChild(ms);
       a.addEventListener('click', function (e) { e.preventDefault(); el.focus(); });
       li.appendChild(a); list.appendChild(li);
     });

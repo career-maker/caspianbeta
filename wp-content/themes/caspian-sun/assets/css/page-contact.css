@@ -439,10 +439,19 @@
 .form-section .form-group{margin-bottom:1.2rem}
 .form-section .form-row .form-group{margin-bottom:0}
 .form-section .form-row{align-items:start}
-.form-summary{border-left:3px solid #b3261e;background:#fdf2f1;color:#7a1710;padding:.8rem 1rem;margin-bottom:1.2rem;font-size:.9rem;line-height:1.5}
+.form-summary{position:relative;background:#fff6f4;border:1px solid #f0cbc5;border-left:4px solid #b3261e;padding:1.05rem 1.3rem 1.1rem;margin-bottom:1.5rem;color:#5c1a14;box-shadow:0 6px 18px rgba(179,38,30,.07)}
 .form-summary[hidden]{display:none}
-.form-summary:focus{outline:2px solid #b3261e;outline-offset:2px}
-.form-summary ul{margin:.4rem 0 0 1.1rem;padding:0}
-.form-summary a{color:#7a1710;text-decoration:underline}
-/* Desktop: keep the contact-info box in view while the (taller) form scrolls, as the gallery does on product pages */
-@media (min-width:1025px){.info-box{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);align-self:start;}}
+.form-summary:focus{outline:2px solid #b3261e;outline-offset:3px}
+.form-summary>strong{display:flex;align-items:center;gap:.65rem;font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;letter-spacing:.01em;color:#8a1c14;margin-bottom:.7rem}
+.form-summary>strong::before{content:'!';flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.45rem;height:1.45rem;border-radius:50%;background:#b3261e;color:#fff;font:700 .85rem/1 'Manrope',sans-serif}
+.form-summary ul{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
+.form-summary li{margin:0}
+.form-summary a{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .7rem;padding:.38rem .6rem;margin:0 -.6rem;border-radius:3px;color:#5c1a14;text-decoration:none;font-size:.9rem;line-height:1.45;transition:background .2s ease}
+.form-summary a strong{flex:none;min-width:6.6rem;font-weight:700;color:#8a1c14;letter-spacing:.02em}
+.form-summary a span{color:#6d3a34}
+.form-summary a::after{content:'Fix \2192';margin-left:auto;flex:none;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#b3261e;opacity:0;transform:translateX(-4px);transition:opacity .2s ease,transform .2s ease}
+.form-summary a:hover,.form-summary a:focus-visible{background:rgba(179,38,30,.08);outline:none}
+.form-summary a:hover::after,.form-summary a:focus-visible::after{opacity:1;transform:none}
+.form-summary a:focus-visible{box-shadow:inset 0 0 0 2px #b3261e}
+@media (max-width:600px){.form-summary{padding:.95rem 1rem}.form-summary a strong{min-width:100%}.form-summary a::after{display:none}}
+@media (prefers-reduced-motion:reduce){.form-summary a,.form-summary a::after{transition:none}}
