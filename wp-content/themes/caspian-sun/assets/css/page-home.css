@@ -49,7 +49,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 /* ---------- 2. ABOUT CASPIAN ---------- */
 .about-grid{display:grid;grid-template-columns:555fr 693fr 270fr;gap:clamp(1.5rem,4vw,5rem);align-items:center;}
 .about-text .section-heading{margin-bottom:1.5rem;}
-.about-text p{text-align:justify;margin-bottom:1rem;}
+.about-text p{text-align:left;margin-bottom:1rem;}
+@media (min-width:768px){.about-text p{text-align:justify;hyphens:auto;}}
 .about-text .btn-shop{margin-top:1.2rem;}
 .about-photo{overflow:hidden;aspect-ratio:693/666;}
 .about-photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1);}
