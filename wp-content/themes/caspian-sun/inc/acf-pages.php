@@ -244,7 +244,7 @@ function csp_register_page_groups() {
 				csp_f_text( 'about_ord_eyebrow', 'Eyebrow' ),
 				csp_f_text( 'about_ord_heading', 'Heading' ),
 				csp_f_area( 'about_ord_intro', 'Intro', 5 ),
-				csp_f_rep( 'about_ord_steps', 'Steps (numbered automatically)', array( csp_f_text( 'text', 'Step title' ) ), array( 'layout' => 'table', 'button_label' => 'Add step', 'collapsed' => '' ) ),
+				csp_f_rep( 'about_ord_steps', 'Steps (numbered automatically)', array( csp_f_text( 'text', 'Step title' ), csp_f_select( 'icon', 'Icon (optional)', csp_icon_choices( array( 'mail', 'phone', 'box', 'search', 'bolt', 'check', 'handling', 'global-std', 'truck', 'clock', 'calendar', 'globe', 'leaf', 'pin' ) ), array( 'allow_null' => 1, 'default_value' => '', 'instructions' => 'Leave empty to use the default icon for this position.' ) ) ), array( 'layout' => 'table', 'button_label' => 'Add step', 'collapsed' => '' ) ),
 				csp_f_text( 'about_lt_heading', 'Lead-time heading' ),
 				csp_f_rep(
 					'about_lt_items',
@@ -304,6 +304,8 @@ function csp_register_page_groups() {
 				csp_f_text( 'products_all_label', '"All" tab label' ),
 				csp_f_text( 'products_other_tab', '"Other products" tab label', array( 'instructions' => 'Clear to hide the tab and the "Other Food Products" block.' ) ),
 				csp_f_text( 'products_no_results', '"No results" message' ),
+				csp_f_text( 'products_count_one', 'Result count — singular word', array( 'instructions' => 'Shown as "1 product". Default: product' ) ),
+				csp_f_text( 'products_count_many', 'Result count — plural word', array( 'instructions' => 'Shown as "12 products". Default: products' ) ),
 				csp_f_text( 'products_nav_label', 'Category filter accessible label' ),
 				csp_f_tab( 'Other food products' ),
 				csp_f_text( 'products_other_heading', 'Heading' ),

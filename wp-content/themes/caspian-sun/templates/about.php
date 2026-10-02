@@ -170,13 +170,15 @@ if ( $steps || csp_get( 'about_ord_heading' ) ) :
     <?php if ( $steps ) : ?>
     <div class="steps">
       <?php
-		$i = 0;
+		$default_icons = array( 'mail', 'box', 'search', 'bolt', 'check', 'handling', 'global-std', 'truck', 'clock' );
+		$i             = 0;
 		foreach ( $steps as $st ) {
 			if ( empty( $st['text'] ) ) {
 				continue;
 			}
 			++$i;
-			echo '<div class="step reveal"><div class="step-num">' . (int) $i . '</div><h3>' . esc_html( $st['text'] ) . '</h3></div>';
+			$icon = ! empty( $st['icon'] ) ? $st['icon'] : ( isset( $default_icons[ $i - 1 ] ) ? $default_icons[ $i - 1 ] : 'check' );
+			echo '<div class="step reveal"><span class="step-icon" aria-hidden="true">' . csp_icon( $icon ) . '</span><div class="step-num" aria-hidden="true">' . esc_html( sprintf( '%02d', $i ) ) . '</div><h3><span class="sr-only">' . esc_html( sprintf( /* translators: %d: step number */ __( 'Step %d:', 'caspian-sun' ), $i ) ) . ' </span>' . esc_html( $st['text'] ) . '</h3></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		?>
     </div>

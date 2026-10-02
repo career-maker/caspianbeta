@@ -52,6 +52,8 @@ $arrow_svg = '<svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><pa
     <?php if ( $show_other ) : ?><button type="button" class="cat-tab" data-filter="other" aria-pressed="false"><?php echo esc_html( $other_tab ); ?></button><?php endif; ?>
   </div>
 
+  <p class="result-count" id="resultCount" role="status" aria-live="polite" aria-atomic="true" data-one="<?php echo esc_attr( csp_get( 'products_count_one' ) ? csp_get( 'products_count_one' ) : __( 'product', 'caspian-sun' ) ); ?>" data-many="<?php echo esc_attr( csp_get( 'products_count_many' ) ? csp_get( 'products_count_many' ) : __( 'products', 'caspian-sun' ) ); ?>"></p>
+
   <div class="shop-grid">
     <?php
 	foreach ( $terms as $t ) :
