@@ -124,45 +124,6 @@ $why_img   = csp_get( 'home_why_video_image' );
 </section>
 
 <?php
-/* ------------------------------------------------------ 4b. HOW WE WORK */
-$proc_show = get_field( 'home_process_show' );
-$proc      = array_values( array_filter( (array) get_field( 'home_process_steps' ), function ( $p ) {
-	return ! empty( $p['title'] ) || ! empty( $p['text'] );
-} ) );
-if ( ! $proc ) { // Built-in wording until the client edits it in Theme → Home → How We Work.
-	$proc = array(
-		array( 'icon' => 'globe', 'title' => __( 'Source', 'caspian-sun' ), 'text' => __( 'We work directly with trusted producers and suppliers around the world, chosen for quality and consistency.', 'caspian-sun' ) ),
-		array( 'icon' => 'check', 'title' => __( 'Inspect', 'caspian-sun' ), 'text' => __( 'Every batch is checked for freshness, quality and compliance before it is accepted.', 'caspian-sun' ) ),
-		array( 'icon' => 'handling', 'title' => __( 'Cold-chain', 'caspian-sun' ), 'text' => __( 'Products stay under controlled temperature from processing to loading, so freshness is never compromised.', 'caspian-sun' ) ),
-		array( 'icon' => 'truck', 'title' => __( 'Deliver', 'caspian-sun' ), 'text' => __( 'Fast, secure delivery to hotels, restaurants and retailers in the UAE, Türkiye and international markets.', 'caspian-sun' ) ),
-	);
-}
-$proc_eyebrow = csp_get( 'home_process_eyebrow' ) ? csp_get( 'home_process_eyebrow' ) : __( 'Process', 'caspian-sun' );
-$proc_heading = csp_get( 'home_process_heading' ) ? csp_get( 'home_process_heading' ) : __( 'How We Work', 'caspian-sun' );
-$proc_text    = csp_get( 'home_process_text' ) ? csp_get( 'home_process_text' ) : __( 'From trusted producers to your kitchen, every shipment follows the same four steps.', 'caspian-sun' );
-if ( null === $proc_show || false === $proc_show || '' === $proc_show || (bool) $proc_show ) :
-	?>
-<section class="sec process" aria-labelledby="processHeading">
-  <div class="wrap">
-    <div class="process-head reveal">
-      <?php echo csp_eyebrow( $proc_eyebrow ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-      <h2 class="section-heading" id="processHeading"><?php echo esc_html( $proc_heading ); ?></h2>
-      <?php echo csp_p( $proc_text ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-    </div>
-    <ol class="process-steps">
-      <?php foreach ( $proc as $i => $st ) : ?>
-      <li class="process-step reveal">
-        <div class="process-circle"><?php echo csp_icon( isset( $st['icon'] ) ? $st['icon'] : 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span class="process-num" aria-hidden="true"><?php echo (int) ( $i + 1 ); ?></span></div>
-        <?php echo ! empty( $st['title'] ) ? '<h3>' . esc_html( $st['title'] ) . '</h3>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-        <?php echo ! empty( $st['text'] ) ? '<p>' . esc_html( $st['text'] ) . '</p>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-      </li>
-      <?php endforeach; ?>
-    </ol>
-  </div>
-</section>
-<?php endif; ?>
-
-<?php
 /* --------------------------------------------------------- 5. CLIENTS */
 $logos = get_field( 'home_client_logos' );
 if ( $logos || csp_get( 'home_clients_heading' ) ) :
