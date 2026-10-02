@@ -444,3 +444,5 @@
 .form-summary:focus{outline:2px solid #b3261e;outline-offset:2px}
 .form-summary ul{margin:.4rem 0 0 1.1rem;padding:0}
 .form-summary a{color:#7a1710;text-decoration:underline}
+/* Desktop: keep the contact-info box in view while the (taller) form scrolls, as the gallery does on product pages */
+@media (min-width:1025px){.info-box{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);align-self:start;}}
