@@ -196,7 +196,6 @@ header.scrolled nav a:hover,header.scrolled nav a.active{color:var(--gold-text);
 /* Touch targets: at least 44x44px of hit area on touch screens; the visible size is unchanged (extra area via ::after / padding).
    "body" prefix so these win over the per-page copies of the header/footer rules. */
 @media (max-width:1024px){
-  body .hamburger{width:44px;height:44px;}
   body .social-links a{position:relative;}
   body .social-links a::after,body .arrows button::after,body .drawer-close::after{content:'';position:absolute;inset:-5px;}
   body .arrows button{position:relative;}
@@ -207,3 +206,27 @@ header.scrolled nav a:hover,header.scrolled nav a.active{color:var(--gold-text);
   body .crumbs a,body .footer-bottom a,body .footer-contact-item a,body .footer-content li a,body .info-value a,body .contact-lines a,body .phone-cta a{display:inline-block;padding:14px 10px;margin:-14px -10px;}
   body .footer-content li{margin:0;}
 }
+
+/* Mobile menu: larger button, call / WhatsApp row, transform + opacity only.
+   "body" prefix so these also win over the per-page copies of the header rules. */
+@media (max-width:1024px){
+  body .hamburger{width:48px;height:48px;gap:6px;align-items:center;margin-right:-6px;border-radius:50%;-webkit-tap-highlight-color:transparent;}
+  body .hamburger span{width:30px;height:2.5px;border-radius:2px;}
+  body .hamburger:active{transform:scale(.94);}
+  body .hamburger:focus-visible{outline:2px solid var(--rich-gold);outline-offset:2px;}
+}
+/* drawer slides with transform only; the shadow is static (hidden with the drawer) and visibility flips after the slide-out */
+body .mobile-drawer{box-shadow:-10px 0 35px rgba(0,0,0,.18);transition:transform .4s cubic-bezier(.4,0,.2,1),visibility 0s linear .4s;will-change:transform;}
+body .mobile-drawer.open{transition:transform .4s cubic-bezier(.4,0,.2,1),visibility 0s;}
+body .drawer-nav a{transition:color .3s ease,transform .3s ease;padding-left:.2rem;}
+body .drawer-nav a.active,body .drawer-nav a:hover{padding-left:.2rem;transform:translateX(.6rem);}
+body .drawer-contact{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:-.8rem 0 1.6rem;}
+body .drawer-contact:has(a:only-child){grid-template-columns:1fr;}
+body .drawer-contact a{display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:48px;padding:0 .8rem;font:700 .85rem/1.2 'Manrope',sans-serif;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border:1px solid var(--deep-teal);transition:transform .25s ease,opacity .25s ease;-webkit-tap-highlight-color:transparent;}
+body .drawer-contact a svg{width:20px;height:20px;flex:none;}
+body .drawer-contact .dc-call{background:var(--deep-teal);color:#fff;}
+body .drawer-contact .dc-call svg{fill:none;stroke:currentColor;stroke-width:1.8;}
+body .drawer-contact .dc-wa{background:#fff;color:var(--deep-teal);}
+body .drawer-contact .dc-wa svg{fill:#25D366;stroke:none;}
+body .drawer-contact a:active{transform:scale(.97);}
+@media (prefers-reduced-motion:reduce){body .mobile-drawer,body .mobile-drawer.open{transition:none;}body .drawer-nav a{transition:none;}}
