@@ -179,7 +179,7 @@ if ( $featured || csp_get( 'home_products_heading' ) ) :
 			$sum  = csp_get( 'card_summary', $pid );
 			$vm   = csp_view_more( $url, $view_more, $view_more . ': ' . $name );
 			?>
-      <div class="pcard reveal"><div class="pimg"><?php echo csp_img( csp_get( 'card_image', $pid ), array( 'alt' => $name ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div class="poverlay"><h3><?php echo esc_html( $name ); ?></h3><?php echo csp_p( $sum ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $vm; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></div><div class="pinfo"><b><?php echo esc_html( $name ); ?></b><?php echo $vm; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></div>
+      <div class="pcard reveal"><div class="pimg"><?php echo csp_img( csp_get( 'card_image', $pid ), array( 'alt' => $name, 'sizes' => '(max-width: 600px) 100vw, 340px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div class="poverlay"><h3><?php echo esc_html( $name ); ?></h3><?php echo csp_p( $sum ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $vm; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></div><div class="pinfo"><b><?php echo esc_html( $name ); ?></b><?php echo $vm; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></div>
       <?php endforeach; ?>
     </div>
     <?php endif; ?>

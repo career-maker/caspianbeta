@@ -81,7 +81,7 @@ $arrow_svg = '<svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><pa
 			?>
       <div class="product-card reveal" data-name="<?php echo esc_attr( mb_strtolower( $name ) ); ?>">
         <div class="product-icon">
-          <?php echo csp_img( csp_get( 'card_image' ), array( 'alt' => $name ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+          <?php echo csp_img( csp_get( 'card_image' ), array( 'alt' => $name, 'sizes' => '(max-width: 600px) 100vw, 340px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
           <div class="product-overlay">
             <h3><?php echo esc_html( $name ); ?></h3>
             <?php echo csp_p( $sum ); // phpcs:ignore WordPress.Security.EscapeOutput ?>

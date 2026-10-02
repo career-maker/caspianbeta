@@ -138,8 +138,8 @@ function csp_asset_ver( $rel ) {
 add_action( 'wp_enqueue_scripts', 'csp_enqueue' );
 function csp_enqueue() {
 	$uri = CSP_URI . '/assets/';
-	wp_enqueue_style( 'csp-preloader', $uri . 'css/preloader.css', array(), csp_asset_ver( 'css/preloader.css' ) );
-	wp_enqueue_style( 'csp-components', $uri . 'css/components.css', array( 'csp-preloader' ), csp_asset_ver( 'css/components.css' ) );
+	// preloader.css is tiny and needed for first paint: printed inline in <head> (see csp_inline_preloader_css), not a separate request.
+	wp_enqueue_style( 'csp-components', $uri . 'css/components.css', array(), csp_asset_ver( 'css/components.css' ) );
 
 	list( $css, $js ) = csp_page_assets();
 	wp_enqueue_style( 'csp-page', $uri . 'css/page-' . $css . '.css', array( 'csp-components' ), csp_asset_ver( 'css/page-' . $css . '.css' ) );
@@ -161,6 +161,21 @@ function csp_enqueue() {
 		);
 	}
 }
+
+/** Inline the small preloader stylesheet. */
+add_action(
+	'wp_head',
+	function () {
+		$f = CSP_DIR . '/assets/css/preloader.css';
+		if ( is_readable( $f ) ) {
+			$css = (string) file_get_contents( $f ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			$css = preg_replace( '#/\*.*?\*/#s', '', $css );
+			$css = trim( preg_replace( '/\s+/', ' ', $css ) );
+			echo '<style id="csp-preloader-css">' . str_replace( '</', '<\/', $css ) . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+	},
+	1
+);
 
 // Strip WordPress front-end extras the design does not use.
 add_action(
@@ -241,7 +256,7 @@ add_action(
 	function () {
 		$logo = csp_opt( 'opt_logo' );
 		echo '<div id="preloader" aria-hidden="true"><div class="pl-disc"></div><div class="pl-logo"><span class="pl-ring"></span>';
-		echo csp_img( $logo, array( 'alt' => '', 'loading' => 'eager', 'width' => 360, 'height' => 360 ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+		echo csp_img( $logo, array( 'alt' => '', 'loading' => 'eager', 'width' => 360, 'height' => 360, 'sizes' => '(max-width: 768px) 120px, 168px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '</div></div>' . "\n";
 	}
 );

@@ -103,6 +103,13 @@ function csp_img( $id, $attrs = array(), $size = 'full' ) {
 			'loading'  => 'lazy',
 			'decoding' => 'async',
 		);
+		if ( empty( $attrs['width'] ) && empty( $attrs['height'] ) ) {
+			$dims = csp_svg_dimensions( $id );
+			if ( $dims ) {
+				$attrs['width']  = $dims[0];
+				$attrs['height'] = $dims[1];
+			}
+		}
 		$html = '<img src="' . esc_url( $url ) . '"';
 		foreach ( $attrs as $k => $v ) {
 			$html .= ' ' . esc_attr( $k ) . '="' . esc_attr( $v ) . '"';
@@ -113,6 +120,33 @@ function csp_img( $id, $attrs = array(), $size = 'full' ) {
 		return '';
 	}
 	return wp_get_attachment_image( $id, $size, false, $attrs );
+}
+
+/** Intrinsic size of an SVG attachment (from its width/height or viewBox), cached; array( w, h ) or empty. */
+function csp_svg_dimensions( $id ) {
+	$cached = get_post_meta( $id, '_csp_svg_dims', true );
+	if ( is_array( $cached ) && 2 === count( $cached ) ) {
+		return $cached;
+	}
+	$file = get_attached_file( $id );
+	if ( ! $file || ! is_readable( $file ) ) {
+		return array();
+	}
+	$head = (string) file_get_contents( $file, false, null, 0, 2048 ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+	$w    = $h = 0;
+	if ( preg_match( '/<svg[^>]*\swidth="([\d.]+)(?:px)?"/i', $head, $mw ) && preg_match( '/<svg[^>]*\sheight="([\d.]+)(?:px)?"/i', $head, $mh ) ) {
+		$w = (float) $mw[1];
+		$h = (float) $mh[1];
+	} elseif ( preg_match( '/viewBox="[\d.\-]+[ ,]+[\d.\-]+[ ,]+([\d.]+)[ ,]+([\d.]+)"/i', $head, $mv ) ) {
+		$w = (float) $mv[1];
+		$h = (float) $mv[2];
+	}
+	if ( $w > 0 && $h > 0 ) {
+		$dims = array( (int) round( $w ), (int) round( $h ) );
+		update_post_meta( $id, '_csp_svg_dims', $dims );
+		return $dims;
+	}
+	return array();
 }
 
 /** Attachment URL or empty string. */
