@@ -145,7 +145,7 @@ if ( $logos || csp_get( 'home_clients_heading' ) ) :
 				continue;
 			}
 			++$n;
-			echo '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . '">' . $img . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . ( csp_logo_is_solid( $l['logo'] ) ? ' logo-cell--solid' : '' ) . '">' . $img . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		// Empty filler cell(s) complete the 5-column grid.
 		for ( $i = 0; $n && $i < ( 5 - $n % 5 ) % 5; $i++ ) {

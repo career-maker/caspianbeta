@@ -113,14 +113,16 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .clients .section-heading{color:#fff;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.15;margin-bottom:1.4rem;}
 .clients p{color:#fff;margin-bottom:2rem;max-width:520px;}
 .logos{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(.5rem,.9vw,.9rem);}
-/* one treatment for every client: a uniform white tile with the logo on a common-height box; empty cells stay as teal */
-.logo-cell{display:flex;align-items:center;justify-content:center;min-height:clamp(84px,8.6vw,128px);padding:clamp(.6rem,1.2vw,1.1rem);position:relative;transition:background-color .3s ease,box-shadow .3s ease,transform .3s ease;}
-.logo-cell:not(:empty){background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06);}
-.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#FBF8F3;box-shadow:0 10px 24px rgba(0,0,0,.22);transform:translateY(-2px);}
-.logo-cell img{width:auto;max-width:82%;height:clamp(40px,4.6vw,66px);margin:0 auto;object-fit:contain;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-.logo-cell:hover img,.logo-cell.is-active img{transform:scale(1.06);}
-/* La Mar file is white-on-transparent: render it black on the white tile */
-.logo-cell--light img{filter:invert(1);}
+/* clients: white logos straight on the teal band; hover / the highlight cycle shows a white tile with the full-colour logo */
+.logo-cell{display:flex;align-items:center;justify-content:center;min-height:clamp(84px,8.6vw,128px);padding:clamp(.6rem,1.2vw,1.1rem);position:relative;border:1px solid transparent;transition:background-color .3s ease,box-shadow .3s ease,transform .3s ease,border-color .3s ease;}
+.logo-cell:not(:empty){border-color:rgba(255,255,255,.2);}
+.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#fff;border-color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.22);transform:translateY(-2px);}
+.logo-cell img{width:auto;max-width:82%;height:clamp(40px,4.6vw,66px);margin:0 auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.92;transition:filter .3s ease,opacity .3s ease,transform .4s cubic-bezier(.34,1.56,.64,1);}
+.logo-cell:hover img,.logo-cell.is-active img{filter:none;opacity:1;transform:scale(1.06);}
+/* emblems with a solid centre (e.g. Shore Oyster) keep their own colours — a white silhouette would be a blank disc */
+.logo-cell--solid img,.logo-cell--solid:hover img{filter:none;opacity:1;}
+/* La Mar file is white-on-transparent: white by default, black on the white hover tile */
+.logo-cell--light:hover img,.logo-cell--light.is-active img{filter:invert(1);}
 
 /* ---------- 6. PRODUCTS ---------- */
 .prod-head{text-align:center;margin-bottom:clamp(1.8rem,3.5vw,3.4rem);}

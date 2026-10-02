@@ -149,6 +149,43 @@ function csp_svg_dimensions( $id ) {
 	return array();
 }
 
+/** True when a (PNG/WebP) logo is a solid emblem — an opaque centre that would turn into a plain white disc if rendered as a white silhouette. Cached. */
+function csp_logo_is_solid( $id ) {
+	$id     = is_array( $id ) ? ( isset( $id['ID'] ) ? (int) $id['ID'] : 0 ) : (int) $id;
+	$cached = $id ? get_post_meta( $id, '_csp_logo_solid', true ) : '';
+	if ( '' !== $cached ) {
+		return '1' === $cached;
+	}
+	$solid = false;
+	$file  = $id ? get_attached_file( $id ) : '';
+	if ( $file && is_readable( $file ) && function_exists( 'imagecreatefromstring' ) && in_array( get_post_mime_type( $id ), array( 'image/png', 'image/webp' ), true ) ) {
+		$im = @imagecreatefromstring( (string) file_get_contents( $file ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+		if ( $im ) {
+			$w = imagesx( $im );
+			$h = imagesy( $im );
+			$opaque = 0;
+			$total  = 0;
+			for ( $gx = 0; $gx < 12; $gx++ ) {
+				for ( $gy = 0; $gy < 12; $gy++ ) {
+					$px = (int) ( $w * ( 0.3 + 0.4 * $gx / 11 ) );
+					$py = (int) ( $h * ( 0.3 + 0.4 * $gy / 11 ) );
+					$a  = ( imagecolorat( $im, min( $px, $w - 1 ), min( $py, $h - 1 ) ) >> 24 ) & 127; // 0 = opaque, 127 = transparent.
+					++$total;
+					if ( $a <= 10 ) {
+						++$opaque;
+					}
+				}
+			}
+			$solid = $total && ( $opaque / $total ) >= 0.9;
+			imagedestroy( $im );
+		}
+	}
+	if ( $id ) {
+		update_post_meta( $id, '_csp_logo_solid', $solid ? '1' : '0' );
+	}
+	return $solid;
+}
+
 /** Attachment URL or empty string. */
 function csp_img_url( $id, $size = 'full' ) {
 	$id = is_array( $id ) ? ( isset( $id['ID'] ) ? (int) $id['ID'] : 0 ) : (int) $id;
