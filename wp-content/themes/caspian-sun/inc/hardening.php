@@ -228,10 +228,16 @@ add_action(
       'html lang: '+document.documentElement.lang,
       'UA: '+navigator.userAgent
     ];
+    // what is under the centre of the screen right now (scroll onto the About paragraph and screenshot)
+    var c=document.elementFromPoint(innerWidth/2,innerHeight*0.35),chain=[];
+    for(var e=c,i=0;e&&i<4;e=e.parentElement,i++){var q=getComputedStyle(e);chain.push(e.tagName.toLowerCase()+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\s+/)[0]:'')+' [align:'+q.textAlign+' hyph:'+q.hyphens+' ws:'+q.wordSpacing+' tj:'+(q.textJustify||'')+' tw:'+(q.textWrap||'')+' lang:'+(e.lang||'')+']');}
+    out.push('UNDER CENTRE: '+(chain.join('  <  ')||'-'));
+    out.push('scrollY: '+Math.round(scrollY)+'  document width: '+document.documentElement.scrollWidth);
     g('#csp-debug').textContent=out.join('\n');
   }
   window.addEventListener('load',function(){setTimeout(run,800);});
   window.addEventListener('resize',run);
+  var tm;window.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(run,150);},{passive:true});
 })();
 </script>
 		<?php
