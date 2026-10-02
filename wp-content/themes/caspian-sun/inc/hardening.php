@@ -199,3 +199,42 @@ add_action(
 	},
 	99
 );
+
+/* ---- Support aid: open any page with ?csp_debug=1 to show what the visitor's device really renders (no effect otherwise) ---- */
+add_action(
+	'wp_footer',
+	function () {
+		if ( ! isset( $_GET['csp_debug'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			return;
+		}
+		?>
+<div id="csp-debug" style="position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#000;color:#0f0;font:12px/1.35 monospace;padding:8px;max-height:60vh;overflow:auto;white-space:pre-wrap;word-break:break-all"></div>
+<script>
+(function(){
+  function g(sel){return document.querySelector(sel);}
+  function run(){
+    var h=g('.hero'),p=g('.about-text p'),L=[].slice.call(document.querySelectorAll('link[rel=stylesheet]')).map(function(l){return l.href.split('/').pop();});
+    var cs=p?getComputedStyle(p):null, hs=h?h.getBoundingClientRect():null;
+    var out=[
+      'innerWidth x innerHeight: '+innerWidth+' x '+innerHeight,
+      'screen: '+screen.width+' x '+screen.height+'  DPR: '+devicePixelRatio,
+      'visualViewport: '+(window.visualViewport?Math.round(visualViewport.width)+' x '+Math.round(visualViewport.height)+' scale '+visualViewport.scale:'n/a'),
+      'matches (max-width:767px): '+matchMedia('(max-width:767px)').matches,
+      'matches (max-width:768px): '+matchMedia('(max-width:768px)').matches,
+      'supports 100dvh: '+(window.CSS&&CSS.supports&&CSS.supports('height','100dvh')),
+      'hero height: '+(hs?Math.round(hs.height):'no .hero')+'   computed: '+(h?getComputedStyle(h).height:''),
+      'about p text-align: '+(cs?cs.textAlign+'  hyphens: '+cs.hyphens:'(no .about-text p on this page)'),
+      'stylesheets: '+L.join(', '),
+      'html lang: '+document.documentElement.lang,
+      'UA: '+navigator.userAgent
+    ];
+    g('#csp-debug').textContent=out.join('\n');
+  }
+  window.addEventListener('load',function(){setTimeout(run,800);});
+  window.addEventListener('resize',run);
+})();
+</script>
+		<?php
+	},
+	99
+);
