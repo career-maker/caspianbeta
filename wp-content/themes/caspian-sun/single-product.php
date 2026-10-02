@@ -111,7 +111,15 @@ while ( have_posts() ) :
     </div>
     <?php endif; ?>
 
-    <?php $assure = get_field( 'pd_assurances', 'option' ); ?>
+    <?php
+	// This product's own badges (Product edit screen) win; otherwise the site-wide defaults from Theme Settings.
+	$assure = array_values( array_filter( (array) get_field( 'assurances' ), function ( $a ) {
+		return ! empty( $a['text'] );
+	} ) );
+	if ( ! $assure ) {
+		$assure = get_field( 'pd_assurances', 'option' );
+	}
+	?>
     <?php if ( $assure ) : ?>
     <div class="assure reveal">
       <?php foreach ( $assure as $a ) : ?>

@@ -21,6 +21,20 @@ function csp_register_content_groups() {
 			csp_f_img( 'card_image', 'Card image', array( 'instructions' => 'Image used on product cards and in related-product lists.' ) ),
 			csp_f( 'gallery', 'gallery', 'Product page photos', array( 'return_format' => 'id', 'preview_size' => 'medium', 'library' => 'all', 'insert' => 'append', 'instructions' => 'First photo is the main image; extra photos appear as thumbnails.' ) ),
 			csp_f_rep( 'origin', 'Origin (countries)', array( csp_f_text( 'country', 'Country', array( 'instructions' => 'A flag is shown automatically for known countries; for any other country upload one below.' ) ), csp_f_img( 'flag', 'Flag image (optional)', array( 'instructions' => 'Overrides the built-in flag. Square image recommended.' ) ) ), array( 'layout' => 'table', 'button_label' => 'Add country', 'collapsed' => '' ) ),
+			csp_f_rep(
+				'assurances',
+				'Assurance badges (this product)',
+				array(
+					csp_f_select( 'icon', 'Icon', csp_icon_choices( array( 'leaf', 'handling', 'global-std', 'check', 'globe', 'truck', 'box' ) ), array( 'allow_null' => 0 ) ),
+					csp_f_area( 'text', 'Text', 2, array( 'instructions' => 'Use a line break for a two-line label.' ) ),
+				),
+				array(
+					'layout'       => 'table',
+					'button_label' => 'Add badge',
+					'collapsed'    => '',
+					'instructions' => 'The three small badges at the bottom of the product page (e.g. "Responsibly Sourced"). Leave empty to show the default badges from Theme Settings → Product Detail Page.',
+				)
+			),
 			csp_f_rep( 'packing', 'Packing options', array( csp_f_text( 'size', 'Packing option' ) ), array( 'layout' => 'table', 'button_label' => 'Add packing option', 'collapsed' => '' ) ),
 		),
 		0
