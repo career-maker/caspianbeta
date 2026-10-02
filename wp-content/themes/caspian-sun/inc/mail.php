@@ -410,10 +410,17 @@ function csp_mail_confirm( $d ) {
 add_action(
 	'admin_menu',
 	function () {
-		global $admin_page_hooks;
-		$cb = 'csp_mail_page';
-		if ( isset( $admin_page_hooks['csp-settings'] ) ) {
-			add_submenu_page( 'csp-settings', 'Mail & reCAPTCHA', 'Mail & reCAPTCHA', 'manage_options', 'csp-mail', $cb );
+		global $menu;
+		$cb     = 'csp_mail_page';
+		$parent = '';
+		foreach ( (array) $menu as $m ) { // ACF's "Theme Settings" top-level item (its slug is the first sub page when it redirects).
+			if ( isset( $m[2] ) && in_array( $m[2], array( 'csp-settings', 'csp-general' ), true ) ) {
+				$parent = $m[2];
+				break;
+			}
+		}
+		if ( $parent ) {
+			add_submenu_page( $parent, 'Mail & reCAPTCHA', 'Mail & reCAPTCHA', 'manage_options', 'csp-mail', $cb );
 		} else {
 			add_options_page( 'Mail & reCAPTCHA', 'Mail & reCAPTCHA', 'manage_options', 'csp-mail', $cb );
 		}
@@ -442,9 +449,14 @@ function csp_mail_sanitize( $in ) {
 	$in  = is_array( $in ) ? wp_unslash( $in ) : array();
 	$out = array();
 
+	$email_labels = array( 'gmail' => 'Gmail address', 'recipient' => 'Receive enquiries at', 'smtp_from' => 'From address' );
 	foreach ( array( 'gmail', 'recipient', 'smtp_from' ) as $k ) {
-		$v         = isset( $in[ $k ] ) ? sanitize_email( trim( $in[ $k ] ) ) : '';
+		$raw       = isset( $in[ $k ] ) ? trim( (string) $in[ $k ] ) : '';
+		$v         = sanitize_email( $raw );
 		$out[ $k ] = is_email( $v ) ? $v : '';
+		if ( '' !== $raw && '' === $out[ $k ] && function_exists( 'add_settings_error' ) ) {
+			add_settings_error( 'csp_mail', 'csp_bad_' . $k, sprintf( '"%1$s" is not a valid email address, so "%2$s" was not saved.', esc_html( $raw ), $email_labels[ $k ] ), 'error' );
+		}
 	}
 	foreach ( array( 'from_name', 'smtp_host', 'smtp_user', 'autoreply_subject', 'recaptcha_site' ) as $k ) {
 		$out[ $k ] = isset( $in[ $k ] ) ? trim( sanitize_text_field( $in[ $k ] ) ) : '';

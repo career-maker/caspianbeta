@@ -230,3 +230,8 @@ body .drawer-contact .dc-wa{background:#fff;color:var(--deep-teal);}
 body .drawer-contact .dc-wa svg{fill:#25D366;stroke:none;}
 body .drawer-contact a:active{transform:scale(.97);}
 @media (prefers-reduced-motion:reduce){body .mobile-drawer,body .mobile-drawer.open{transition:none;}body .drawer-nav a{transition:none;}}
+
+/* Logged-in visitors: the WordPress admin bar (32px, 46px on tablets) must not cover the fixed header */
+@media (min-width:601px){body.admin-bar header{top:32px;}}
+@media (min-width:601px) and (max-width:782px){body.admin-bar header{top:46px;}}
+@media (max-width:600px){body.admin-bar header:not(.scrolled){top:46px;}}

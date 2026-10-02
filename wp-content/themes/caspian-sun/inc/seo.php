@@ -241,6 +241,9 @@ add_filter(
 if ( defined( 'WPSEO_VERSION' ) ) {
 	$csp_title_filter = function ( $title ) {
 			$id = csp_seo_object_id();
+			if ( $id && '' !== trim( (string) get_post_meta( $id, '_yoast_wpseo_title', true ) ) ) {
+				return $title; // A title typed into Yoast's own box always wins over the approved ACF one.
+			}
 			if ( $id ) {
 				$custom = csp_get( 'seo_title', $id );
 				if ( $custom ) {
