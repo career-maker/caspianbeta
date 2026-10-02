@@ -165,3 +165,25 @@ add_filter(
 		return '0' === (string) get_option( 'blog_public' ) ? false : $on;
 	}
 );
+
+/* ---- Compress the HTML itself when the web server does not (static files are handled by .htaccess) ---- */
+add_action(
+	'after_setup_theme',
+	function () {
+		if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) || headers_sent() ) {
+			return;
+		}
+		$accept = isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ? (string) $_SERVER['HTTP_ACCEPT_ENCODING'] : '';
+		if ( false === stripos( $accept, 'gzip' ) || ! extension_loaded( 'zlib' ) || ini_get( 'zlib.output_compression' ) || ob_get_level() > 1 ) {
+			return;
+		}
+		foreach ( headers_list() as $h ) {
+			if ( 0 === stripos( $h, 'Content-Encoding:' ) ) {
+				return; // Something else already compresses.
+			}
+		}
+		@ini_set( 'zlib.output_compression', 'On' ); // phpcs:ignore WordPress.PHP.IniSet, WordPress.PHP.NoSilencedErrors
+		@ini_set( 'zlib.output_compression_level', '6' ); // phpcs:ignore WordPress.PHP.IniSet, WordPress.PHP.NoSilencedErrors
+	},
+	0
+);
