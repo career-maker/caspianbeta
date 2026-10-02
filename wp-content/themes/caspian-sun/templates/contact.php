@@ -100,6 +100,7 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
           <input type="hidden" name="action" value="csp_contact">
           <?php wp_nonce_field( 'csp_contact', 'csp_nonce' ); ?>
           <input type="hidden" name="csp_ts" value="<?php echo esc_attr( $token ); ?>">
+          <div class="form-summary" id="cf-summary" role="alert" tabindex="-1" hidden><strong><?php echo esc_html( csp_get( 'contact_summary_heading' ) ? csp_get( 'contact_summary_heading' ) : __( 'Please check these fields', 'caspian-sun' ) ); ?></strong><ul></ul></div>
           <div class="csp-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <?php csp_field_row( 'cf-name', 'name', 'text', ( csp_get( 'contact_label_name' ) ? csp_get( 'contact_label_name' ) : __( 'Name', 'caspian-sun' ) ), csp_get( 'contact_placeholder_name' ), true, 'autocomplete="name"' ); ?>

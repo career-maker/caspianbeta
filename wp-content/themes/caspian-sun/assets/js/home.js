@@ -15,7 +15,7 @@
   }
   if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion:reduce)').matches){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.6});
-    counters.forEach(function(c){c.textContent='0'+(c.dataset.suffix||'');io.observe(c);});
+    counters.forEach(function(c){io.observe(c);}); // real numbers stay in the HTML; the count-up starts from 0 only when a counter scrolls into view
   }
 
   /* clients: highlight each logo in turn (1s apart); real hover takes over and pauses the cycle */

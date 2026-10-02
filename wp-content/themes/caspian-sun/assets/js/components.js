@@ -66,6 +66,7 @@ function initFooterAccordion() {
 function initReveal() {
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length === 0) return;
+  if (!('IntersectionObserver' in window)) { reveals.forEach(r => r.classList.add('in-view')); return; }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

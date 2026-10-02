@@ -97,6 +97,29 @@
 
   function field(name) { return form.elements[name]; }
 
+  /* error summary: appears after a failed submit, links to every invalid field, follows the live validation */
+  var summary = document.getElementById('cf-summary');
+  function labelOf(name) {
+    var el = field(name), l = el && form.querySelector('label[for="' + el.id + '"]');
+    return l ? l.textContent.replace(/\*/g, '').trim() : name;
+  }
+  function renderSummary(focus) {
+    if (!summary) return;
+    var list = summary.querySelector('ul'), n = 0;
+    list.innerHTML = '';
+    ['name', 'phone', 'email', 'product', 'size', 'subject', 'message'].forEach(function (k) {
+      var el = field(k), out = el && document.getElementById(el.id + '-err'), msg = out && out.textContent.trim();
+      if (!msg) return;
+      n++;
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = '#' + el.id; a.textContent = labelOf(k) + ': ' + msg;
+      a.addEventListener('click', function (e) { e.preventDefault(); el.focus(); });
+      li.appendChild(a); list.appendChild(li);
+    });
+    summary.hidden = n === 0;
+    if (n && focus) summary.focus();
+  }
+
   function showError(name, msg) {
     var el = field(name);
     if (!el) return;
@@ -127,6 +150,7 @@
     if (optional && raw === '') { clearState(name); return true; }
     var msg = rules[name](raw);
     showError(name, msg);
+    if (summary && !summary.hidden) renderSummary(false);
     return !msg;
   }
 
@@ -186,7 +210,7 @@
       normalise(n);
       if (!check(n, true)) { ok = false; if (!first) first = field(n); }
     });
-    if (first) first.focus();
+    if (!ok) renderSummary(true); else if (summary) summary.hidden = true;
     return ok;
   }
 
@@ -214,6 +238,7 @@
         field('product').value = '';
         fillSizes('');
         ['name', 'phone', 'email', 'subject', 'message', 'product', 'size'].forEach(clearState);
+        renderSummary(false);
         setStatus(form.dataset.success || (json.data && json.data.message) || '', 'is-success');
       } else {
         var d = (json && json.data) || {};
@@ -224,7 +249,7 @@
           showError(k, errs[k]);
           if (!first && field(k)) first = field(k);
         });
-        if (first) first.focus();
+        renderSummary(true);
         setStatus(errs._form || (first ? '' : (form.dataset.error || 'Something went wrong.')), errs._form || !first ? 'is-error' : '');
       }
     }).catch(function () {

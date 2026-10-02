@@ -219,7 +219,7 @@ add_filter( 'the_generator', '__return_empty_string' );
 add_action(
 	'wp_head',
 	function () {
-		echo '<script>try{if(sessionStorage.getItem("plSeen"))document.documentElement.classList.add("pl-skip")}catch(e){}</script>' . "\n";
+		echo '<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("plSeen"))document.documentElement.classList.add("pl-skip")}catch(e){}</script>' . "\n";
 	},
 	1
 );
