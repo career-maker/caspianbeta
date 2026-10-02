@@ -186,3 +186,9 @@ a.cta-btn{line-height:normal;text-align:center}
 
 /* Mobile safety net: never justify text on small screens (also overrides inline justify pasted into editor content) */
 @media (max-width:767px){[style*="text-align: justify"],[style*="text-align:justify"],.has-text-align-justify,.about-text p{text-align:left !important;hyphens:manual;}}
+
+/* Legibility: soft dark scrim behind the transparent header so white nav text keeps 4.5:1 on bright hero frames */
+header:not(.scrolled)::before{content:'';position:absolute;left:0;right:0;top:0;height:calc(100% + 40px);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(6,10,11,.72) 0%,rgba(6,10,11,.55) 50%,rgba(6,10,11,0) 100%);}
+/* Gold tokens: small gold text on light backgrounds uses the darker tone (5:1); bright gold stays for large text, lines and dark backgrounds */
+:root{--gold-text:#7A6024;}
+header.scrolled nav a:hover,header.scrolled nav a.active{color:var(--gold-text);}

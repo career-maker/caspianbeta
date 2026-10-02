@@ -416,7 +416,7 @@
 @media (max-width:768px){.hero{background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), var(--hero-bg-sm,var(--hero-bg,none)) center/cover;}}
 
 /* ---- form feedback (WordPress build) ---- */
-.form-group .req{color:#AA8D3F}
+.form-group .req{color:#7A6024}
 .form-error{display:block;min-height:0;margin-top:.35rem;font-size:.82rem;color:#b3261e}
 .form-error:empty{display:none}
 .form-group input[aria-invalid="true"],.form-group textarea[aria-invalid="true"]{border-color:#b3261e}

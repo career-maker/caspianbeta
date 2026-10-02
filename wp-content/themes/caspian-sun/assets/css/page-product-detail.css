@@ -43,7 +43,7 @@
 
     /* info */
     .info{display:flex;flex-direction:column;}
-    .tag{display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--antique-gold);margin-bottom:.9rem;}
+    .tag{display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold-text,#7A6024);margin-bottom:.9rem;}
     .tag::before{content:'';width:28px;height:1px;background:var(--rich-gold);}
     .info h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.6vw,3.6rem);font-weight:500;line-height:1.1;letter-spacing:-.5px;text-transform:uppercase;color:var(--charcoal);}
     .rule{width:64px;height:2px;background:var(--rich-gold);margin:clamp(1rem,2vw,1.5rem) 0;}
