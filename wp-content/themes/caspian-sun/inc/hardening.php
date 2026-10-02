@@ -187,3 +187,15 @@ add_action(
 	},
 	0
 );
+
+/* ---- HTML pages must always be re-validated: a phone that kept an old copy would keep pointing at old CSS/JS file versions ---- */
+add_action(
+	'send_headers',
+	function () {
+		if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || is_feed() ) {
+			return;
+		}
+		header( 'Cache-Control: no-cache, must-revalidate, max-age=0', true );
+	},
+	99
+);
