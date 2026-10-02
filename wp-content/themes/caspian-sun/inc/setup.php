@@ -177,6 +177,20 @@ add_action(
 	1
 );
 
+/** Preload the two above-the-fold fonts so they download in parallel with the CSS instead of after it. */
+add_action(
+	'wp_head',
+	function () {
+		foreach ( array( 'Manrope.woff2', 'PlayfairDisplay.woff2' ) as $font ) {
+			if ( is_readable( CSP_DIR . '/assets/fonts/' . $font ) ) {
+				echo '<link rel="preload" href="' . esc_url( CSP_URI . '/assets/fonts/' . $font ) . '" as="font" type="font/woff2" crossorigin>' . "
+"; // phpcs:ignore WordPress.Security.EscapeOutput
+			}
+		}
+	},
+	1
+);
+
 // Strip WordPress front-end extras the design does not use.
 add_action(
 	'wp_enqueue_scripts',
