@@ -299,3 +299,31 @@ html,body{max-width:100%;overflow-x:hidden;}
 .step-num{transition:background-color .4s ease .1s,color .4s ease .1s,transform .4s ease;}
 .step:hover .step-num{background:var(--rich-gold);color:var(--deep-teal);transform:translateY(-50%) scale(1.08);}
 @media (prefers-reduced-motion:reduce){.step,.step::before{transition:none;}}
+
+/* ---------- HOW ORDERING WORKS: vertical timeline (zig-zag on desktop, single column on mobile) ---------- */
+.steps{--sn:44px;--sg:56px;display:flex;flex-direction:column;gap:clamp(1rem,2vw,1.5rem);position:relative;max-width:1060px;margin:0 auto;}
+.steps::before{content:'';position:absolute;top:calc(var(--sn) / 2);bottom:calc(var(--sn) / 2);left:50%;border-left:2px dashed rgba(170,141,63,.55);transform:translateX(-1px);}
+.step{overflow:visible;width:calc(50% - var(--sg));min-height:0;padding:1.15rem 1.5rem;margin:0;display:flex;align-items:center;background:#fff;border:1px solid rgba(23,24,19,.06);box-shadow:0 2px 10px rgba(30,73,81,.05);}
+.step:nth-child(odd){align-self:flex-start;justify-content:flex-end;text-align:right;}
+.step:nth-child(even){align-self:flex-end;justify-content:flex-start;text-align:left;}
+.step h3{font-size:clamp(1rem,1.25vw,1.12rem);font-weight:600;line-height:1.35;position:relative;z-index:1;}
+/* numbered node sits on the centre line */
+.step-num{left:auto;right:auto;top:50%;width:var(--sn);height:var(--sn);transform:translateY(-50%);z-index:2;box-shadow:0 0 0 6px #F7F3EC,0 0 0 7px rgba(170,141,63,.5);}
+.step:nth-child(odd) .step-num{right:calc(-1 * (var(--sg) + var(--sn) / 2));}
+.step:nth-child(even) .step-num{left:calc(-1 * (var(--sg) + var(--sn) / 2));}
+/* short connector from the card to its node */
+.step::after{content:'';position:absolute;top:50%;width:calc(var(--sg) - var(--sn) / 2 - 7px);border-top:2px solid rgba(170,141,63,.55);transform:translateY(-1px);}
+.step:nth-child(odd)::after{left:100%;}
+.step:nth-child(even)::after{right:100%;}
+/* hover: teal fill wipes in (clip-path so the node and connector can sit outside the card) */
+.step::before{inset:0;transform:none;clip-path:inset(100% 0 0 0);transition:clip-path .6s cubic-bezier(.45,.05,.25,1);}
+.step:hover::before{transform:none;clip-path:inset(0 0 0 0);}
+.step:hover .step-num{transform:translateY(-50%) scale(1.1);}
+@media (max-width:900px){
+  .steps{--sn:40px;--sg:30px;gap:1rem;}
+  .steps::before{left:calc(var(--sn) / 2);}
+  .step,.step:nth-child(odd),.step:nth-child(even){width:calc(100% - var(--sn) - var(--sg) + 6px);align-self:flex-end;justify-content:flex-start;text-align:left;padding:1rem 1.15rem;}
+  .step:nth-child(odd) .step-num,.step:nth-child(even) .step-num{left:calc(-1 * (var(--sg) + var(--sn) - 6px));right:auto;}
+  .step:nth-child(odd)::after,.step:nth-child(even)::after{left:auto;right:100%;width:calc(var(--sg) - 12px);}
+}
+@media (prefers-reduced-motion:reduce){.step::before{transition:none;}}
