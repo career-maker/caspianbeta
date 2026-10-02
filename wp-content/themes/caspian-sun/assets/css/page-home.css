@@ -112,17 +112,14 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .clients-grid{display:grid;grid-template-columns:minmax(0,560px) 1fr;gap:clamp(2rem,5vw,6rem);align-items:center;}
 .clients .section-heading{color:#fff;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.15;margin-bottom:1.4rem;}
 .clients p{color:#fff;margin-bottom:2rem;max-width:520px;}
-.logos{display:grid;grid-template-columns:repeat(5,1fr);}
-.logo-cell{display:flex;align-items:center;justify-content:center;padding:clamp(.4rem,1vw,1rem) clamp(.3rem,.8vw,.9rem);position:relative;}
-.logo-cell:not(:nth-child(5n))::after{content:'';position:absolute;right:0;top:12%;bottom:12%;width:1px;background:rgba(30,73,81,.18);}
-.logo-cell:nth-child(n+6){border-top:1px solid rgba(30,73,81,.18);}
-.logo-cell{transition:background-color .3s ease;}
-/* subtle light card so dark logos stay readable before hover */
-.logo-cell:not(:empty){background:rgba(255,255,255,.6);}
-.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#fff;}
-.logo-cell img{width:auto;max-width:100%;max-height:clamp(48px,6vw,84px);height:auto;margin:0 auto;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(.5rem,.9vw,.9rem);}
+/* one treatment for every client: a uniform white tile with the logo on a common-height box; empty cells stay as teal */
+.logo-cell{display:flex;align-items:center;justify-content:center;min-height:clamp(84px,8.6vw,128px);padding:clamp(.6rem,1.2vw,1.1rem);position:relative;transition:background-color .3s ease,box-shadow .3s ease,transform .3s ease;}
+.logo-cell:not(:empty){background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06);}
+.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#FBF8F3;box-shadow:0 10px 24px rgba(0,0,0,.22);transform:translateY(-2px);}
+.logo-cell img{width:auto;max-width:82%;height:clamp(40px,4.6vw,66px);margin:0 auto;object-fit:contain;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
 .logo-cell:hover img,.logo-cell.is-active img{transform:scale(1.06);}
-/* La Mar file is white-on-transparent: render it black on the light card */
+/* La Mar file is white-on-transparent: render it black on the white tile */
 .logo-cell--light img{filter:invert(1);}
 
 /* ---------- 6. PRODUCTS ---------- */
@@ -258,10 +255,6 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .cat-card{aspect-ratio:16/11;}
   .why-head{flex-direction:column;align-items:flex-start;}
   .logos{grid-template-columns:repeat(3,1fr);}
-  .logo-cell::after{display:none;}
-  /* mobile: grid lines between the client logos (stronger than desktop because the tiles are small and on teal) */
-  .logo-cell:not(:empty):not(:nth-child(3n)){border-right:1px solid rgba(30,73,81,.38);}
-  .logo-cell:nth-child(n+4):not(:empty){border-top:1px solid rgba(30,73,81,.38);}
   .prod-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .art-grid{grid-template-columns:1fr;}
   .slider{margin-right:calc(-1 * var(--gutter));}
@@ -275,9 +268,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .why-grid:not(:hover) .why-item:nth-child(2){background:transparent;}
   .why-video{aspect-ratio:16/10;}
   .logos{grid-template-columns:repeat(2,1fr);}
-  .logo-cell:not(:empty):not(:nth-child(3n)){border-right:0;}
-  .logo-cell:not(:empty):nth-child(odd){border-right:1px solid rgba(30,73,81,.38);}
-  .logo-cell:nth-child(n+3):not(:empty){border-top:1px solid rgba(30,73,81,.38);}
+  .logo-cell{min-height:84px;}
   .pinfo{flex-direction:column;align-items:flex-start;gap:.3rem;}
   .poverlay p{display:none;}
   .counter,.counter:first-child,.counter:last-child{flex:1 1 100%;}
