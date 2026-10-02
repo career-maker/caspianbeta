@@ -249,6 +249,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .testi-photo{aspect-ratio:16/11;max-width:640px;}
 }
 @media (max-width:768px){
+  /* mobile: full-screen hero, same as the inner-page banners */
+  .hero{height:100vh;height:100dvh;min-height:480px;}
   .about-grid{grid-template-columns:1fr;}
   .counters{flex-direction:row;flex-wrap:wrap;}
   .counter,.counter:first-child,.counter:last-child{flex:1 1 45%;padding:1rem 0;border-bottom:1px solid rgba(23,24,19,.09);}
