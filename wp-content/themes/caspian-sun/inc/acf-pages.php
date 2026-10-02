@@ -330,7 +330,6 @@ function csp_register_page_groups() {
 				csp_f_text( 'contact_label_email', 'Label — Email' ),
 				csp_f_text( 'contact_product_placeholder', 'Product dropdown — first option', array( 'instructions' => 'Default: General enquiry (no specific product)' ) ),
 				csp_f_text( 'contact_packing_placeholder', 'Packing dropdown — first option', array( 'instructions' => 'Default: Select packing' ) ),
-				csp_f_text( 'contact_summary_heading', 'Error summary heading', array( 'instructions' => 'Shown above the form after a failed submit. Default: Please check these fields' ) ),
 				csp_f_text( 'contact_label_subject', 'Label — Subject' ),
 				csp_f_text( 'contact_label_product', 'Label — Product' ),
 				csp_f_text( 'contact_label_packing', 'Label — Packing' ),
