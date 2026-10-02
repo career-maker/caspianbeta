@@ -30,5 +30,10 @@ t('normal sentence "select ... from" accepted', R.message('Please select the pro
 for (const bad of ['<svg onload=alert(1)>', 'javascript:alert(1)', '{{7*7}}', '${jndi:ldap://x}', '1 UNION SELECT password FROM users', "x' OR '1'='1", '<!-- hi -->'])
   t('injection rejected: ' + bad, R.message(bad) !== '');
 t('product: unknown rejected', R.product('Nope') !== '' && R.product('') === '');
+// CSS guards for rules that were lost once by accident
+const css = f => fs.readFileSync(path.join(root, 'assets/css', f), 'utf8');
+t('contact: info box is sticky on desktop', /\.info-box\{position:sticky/.test(css('page-contact.css')));
+t('contact: html/body use overflow-x:clip (hidden would break sticky)', /html,\s*body\s*\{[^}]*overflow-x:clip/.test(css('page-contact.css')));
+t('legal: TOC sticky works (overflow-x:clip)', /overflow-x:clip/.test(css('page-legal.css')));
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
