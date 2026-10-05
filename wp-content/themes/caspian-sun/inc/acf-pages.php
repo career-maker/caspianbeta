@@ -40,8 +40,8 @@ function csp_register_page_groups() {
 		array_merge(
 			array( csp_f_tab( 'Hero' ) ),
 			array(
-				csp_f_area( 'home_hero_heading', 'Heading', 2, array( 'instructions' => 'Use a line break to split the heading over two lines.' ) ),
-				csp_f_area( 'home_hero_text', 'Text', 4 ),
+				csp_f_area( 'home_hero_heading', 'Heading', 2, array( 'instructions' => 'Use a line break to split the heading over two lines. To colour words gold, wrap them: A WORLD OF [gold]PREMIUM FOOD[/gold] ON YOUR TABLE.' ) ),
+				csp_f_area( 'home_hero_text', 'Text', 4, array( 'instructions' => 'To colour words gold, wrap them: We supply [gold]premium seafood[/gold] worldwide.' ) ),
 				csp_f_link( 'home_hero_button', 'Button' ),
 			),
 			csp_video_hero_fields( 'home' ),

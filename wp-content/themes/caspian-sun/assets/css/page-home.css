@@ -277,3 +277,6 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .counter,.counter:first-child,.counter:last-child{flex:1 1 100%;}
   .served{width:78%;}
 }
+
+.hero h1 .gold-text{background:linear-gradient(180deg,#F3D675,#C9A445);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;}
+.hero p .gold-text{color:var(--rich-gold);font-weight:700;}

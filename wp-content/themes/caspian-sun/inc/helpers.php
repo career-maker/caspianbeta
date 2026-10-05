@@ -218,6 +218,12 @@ function csp_heading( $text, $level = 2, $mods = '', $extra_class = '' ) {
 	return sprintf( '<h%1$d class="%2$s">%3$s</h%1$d>', (int) $level, esc_attr( $class ), csp_br( $text ) );
 }
 
+/** Like csp_br(), but turns [gold]text[/gold] into a golden highlight span. */
+function csp_gold( $text ) {
+	$out = csp_br( $text );
+	return preg_replace( '#\[gold\](.*?)\[/gold\]#s', '<span class="gold-text">$1</span>', $out );
+}
+
 /** Eyebrow line. */
 function csp_eyebrow( $text, $class = '' ) {
 	$text = trim( (string) $text );

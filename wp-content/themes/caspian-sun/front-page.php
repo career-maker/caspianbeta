@@ -36,8 +36,8 @@ $h_btn     = csp_get( 'home_hero_button' );
   <video class="hero-video" muted loop playsinline preload="none" data-src="<?php echo csp_img_url( $video ); // phpcs:ignore WordPress.Security.EscapeOutput ?>" data-src-sm="<?php echo csp_img_url( $video_sm ? $video_sm : $video ); // phpcs:ignore WordPress.Security.EscapeOutput ?>" aria-hidden="true"></video>
   <?php endif; ?>
   <div class="hero-inner">
-    <?php if ( csp_get( 'home_hero_heading' ) ) : ?><h1><?php echo csp_br( csp_get( 'home_hero_heading' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h1><?php endif; ?>
-    <?php echo csp_p( csp_get( 'home_hero_text' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+    <?php if ( csp_get( 'home_hero_heading' ) ) : ?><h1><?php echo csp_gold( csp_get( 'home_hero_heading' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h1><?php endif; ?>
+    <?php if ( csp_get( 'home_hero_text' ) ) : ?><p><?php echo csp_gold( csp_get( 'home_hero_text' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p><?php endif; ?>
     <?php echo csp_btn( $h_btn, 'btn-shop', csp_link( $h_btn ) ? csp_link( $h_btn )['title'] : '' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
   </div>
 </section>
