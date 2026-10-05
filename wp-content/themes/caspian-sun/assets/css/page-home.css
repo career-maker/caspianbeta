@@ -86,14 +86,13 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 /* ---------- 4. WHY CHOOSE US ---------- */
 .why-head{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(1.8rem,3.5vw,3.2rem);}
 .why-head p{max-width:560px;color:#171813;font-size:16px;}
-.why-strip{border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1920px;margin:0 auto;}
+.why-strip{border-top:1px solid #cfcfcf;}
+.why-grid{background:linear-gradient(#cfcfcf,#cfcfcf) bottom/100% 1px no-repeat;display:grid;grid-template-columns:repeat(4,1fr);max-width:1920px;margin:0 auto;}
 .why-item{padding:clamp(1.4rem,2.6vw,2.6rem) clamp(1rem,2vw,2.2rem);padding-left:max(var(--gutter),0px);transition:background .35s ease;}
 .why-item:not(:nth-child(4n+1)){padding-left:clamp(1rem,2.4vw,2.6rem);}
 .why-item + .why-item{border-left:1px solid transparent;}
 .why-item:not(:nth-child(4n)){border-right:1px solid #cfcfcf;}
-.why-item:nth-child(n+5){border-top:1px solid #cfcfcf;}
-.why-item:last-child{grid-column:auto/-1;border-right:none;}
+.why-item{border-bottom:1px solid #cfcfcf;}
 .why-grid:not(:hover) .why-item:nth-child(2),.why-item:hover{background:var(--cream);}
 .why-item img{height:clamp(38px,3.6vw,68px);width:auto;max-width:none;object-fit:contain;margin-bottom:clamp(.9rem,1.6vw,1.6rem);transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
 .why-item:hover img{transform:translateY(-4px) scale(1.06);}
@@ -242,9 +241,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .cat-grid{grid-template-columns:1fr 1fr 1fr;}
   .why-grid{grid-template-columns:1fr 1fr;}
   .why-item,.why-item:not(:nth-child(4n+1)){padding:clamp(1.2rem,3vw,2rem) var(--gutter);}
-  .why-item:nth-child(n){border-right:1px solid #cfcfcf;border-top:0;}
+  .why-item:nth-child(n){border-right:1px solid #cfcfcf;}
   .why-item:nth-child(even){border-right:none;}
-  .why-item:nth-child(n+3){border-top:1px solid #cfcfcf;}
   .clients-grid{grid-template-columns:1fr;}
   .prod-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
   .testi-grid{grid-template-columns:1fr;}
@@ -267,8 +265,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 @media (max-width:600px){
   .hero p{font-size:15px;line-height:25px;}
   .why-grid{grid-template-columns:1fr;}
-  .why-item:nth-child(n){border-right:none;border-top:0;}
-  .why-item:nth-child(n+2){border-top:1px solid #cfcfcf;}
+  .why-item:nth-child(n){border-right:none;}
   .why-grid:not(:hover) .why-item:nth-child(2){background:transparent;}
   .why-video{aspect-ratio:16/10;}
   .logos{grid-template-columns:repeat(2,1fr);}
