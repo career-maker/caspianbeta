@@ -29,6 +29,7 @@ function csp_footer_h3( $text ) {
   <div class="footer-grid">
     <div class="footer-section">
       <a class="footer-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Home', 'caspian-sun' ); ?>"><?php echo csp_img( $logo, array( 'class' => 'footer-logo-badge' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+      <?php echo csp_p( $about, 'footer-desc' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <?php if ( $socials ) : ?>
       <?php if ( csp_opt( 'opt_footer_social_heading' ) ) : ?><h3><?php echo esc_html( csp_opt( 'opt_footer_social_heading' ) ); ?></h3><?php endif; ?>
       <div class="social-links">
@@ -46,15 +47,6 @@ function csp_footer_h3( $text ) {
       </div>
       <?php endif; ?>
     </div>
-
-    <?php if ( $about || csp_opt( 'opt_footer_about_heading' ) ) : ?>
-    <div class="footer-section footer-accordion">
-      <?php csp_footer_h3( csp_opt( 'opt_footer_about_heading' ) ); ?>
-      <div class="footer-content">
-        <?php echo csp_p( $about ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-      </div>
-    </div>
-    <?php endif; ?>
 
     <?php if ( has_nav_menu( 'footer_company' ) ) : ?>
     <div class="footer-section footer-accordion">
