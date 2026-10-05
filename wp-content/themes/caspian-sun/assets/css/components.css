@@ -298,3 +298,16 @@ body footer .footer-section h3{padding-bottom:.65rem;margin-bottom:.9rem;}
 body footer .footer-section li,body footer .footer-section li a{line-height:1.7;}
 body footer .footer-contact-item{margin-bottom:.6rem;}
 body footer .footer-bottom{padding-top:.9rem;gap:.5rem;}
+
+/* Footer v4: compact */
+body footer{padding-top:1.4rem;padding-bottom:.8rem;}
+body footer .footer-grid{margin-bottom:.9rem;}
+body footer .footer-logo-badge{width:clamp(96px,8.5vw,124px);height:clamp(96px,8.5vw,124px);margin-bottom:.35rem;display:block;}
+body footer .footer-desc{font-size:.8rem;line-height:1.45;margin:0 0 .6rem;max-width:380px;}
+body footer .social-links{gap:.6rem;}
+body footer .social-links a{width:32px;height:32px;}
+body footer .social-links a svg{width:15px;height:15px;}
+body footer .footer-section h3{font-size:1rem;padding-bottom:.5rem;margin-bottom:.7rem;}
+body footer .footer-section li,body footer .footer-section li a,body footer .footer-contact-item,body footer .footer-contact-item span,body footer .footer-contact-item a{font-size:.85rem;line-height:1.55;}
+body footer .footer-contact-item{margin-bottom:.45rem;}
+body footer .footer-bottom{padding-top:.7rem;}
