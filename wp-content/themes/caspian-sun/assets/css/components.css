@@ -251,3 +251,5 @@ html.js .about-photo.reveal:not(.revealed) img,html.js .testi-photo.reveal:not(.
 @media (prefers-reduced-motion:reduce){html.js .reveal,html.js .reveal:not(.in-view){opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}}
 
 .sec p strong,.sec p b,.hero p strong,.hero p b,.section-heading strong,.section-heading b{font-weight:700;}
+
+body .drawer-nav a,body .drawer-footer a,body .drawer-contact a{text-shadow:none;}
