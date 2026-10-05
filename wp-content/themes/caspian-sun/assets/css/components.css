@@ -249,3 +249,5 @@ html.js .about-photo.reveal:not(.revealed) img,html.js .testi-photo.reveal:not(.
 @media (prefers-reduced-motion:no-preference){.hero-video{animation:heroSettle 2.6s cubic-bezier(.22,1,.36,1) both;}}
 @keyframes heroSettle{from{transform:scale(1.08);}to{transform:scale(1);}}
 @media (prefers-reduced-motion:reduce){html.js .reveal,html.js .reveal:not(.in-view){opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}}
+
+.sec p strong,.sec p b,.hero p strong,.hero p b,.section-heading strong,.section-heading b{font-weight:700;}
