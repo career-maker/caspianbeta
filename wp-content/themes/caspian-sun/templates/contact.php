@@ -121,15 +121,12 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
 
       <div class="info-box">
         <?php echo csp_heading( csp_get( 'contact_info_heading' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-        <?php if ( $phone || $wa_disp ) : ?>
+        <?php if ( $phone ) : ?>
         <div class="info-item">
           <?php echo csp_get( 'contact_label_phones' ) ? '<div class="info-label">' . esc_html( csp_get( 'contact_label_phones' ) ) . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
           <ul class="contact-lines">
             <?php if ( $phone ) : ?>
             <li><span class="cl-icon" aria-hidden="true"><?php echo csp_icon( 'phone-line' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><span class="cl-text"><?php echo csp_get( 'contact_label_call' ) ? '<span class="cl-label">' . esc_html( csp_get( 'contact_label_call' ) ) . '</span>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $tel ? '<a href="tel:' . esc_attr( $tel ) . '">' . esc_html( $phone ) . '</a>' : esc_html( $phone ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></li>
-            <?php endif; ?>
-            <?php if ( $wa_disp ) : ?>
-            <li><span class="cl-icon cl-wa" aria-hidden="true"><?php echo csp_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><span class="cl-text"><?php echo csp_get( 'contact_label_whatsapp' ) ? '<span class="cl-label">' . esc_html( csp_get( 'contact_label_whatsapp' ) ) . '</span>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $wa_num ? '<a href="' . esc_url( 'https://wa.me/' . $wa_num ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( sprintf( /* translators: %s: label */ __( 'Chat with us on %s', 'caspian-sun' ), 'WhatsApp' ) ) . '">' . esc_html( $wa_disp ) . '</a>' : esc_html( $wa_disp ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></li>
             <?php endif; ?>
           </ul>
         </div>

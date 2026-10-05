@@ -376,3 +376,17 @@ add_filter(
 		return $c;
 	}
 );
+
+/* ------------------------------------------------------- WhatsApp floating button */
+
+add_action(
+	'wp_footer',
+	function () {
+		$num = preg_replace( '/\D/', '', (string) csp_opt( 'opt_whatsapp_number' ) );
+		if ( '' === $num ) {
+			return;
+		}
+		$label = __( 'Chat on WhatsApp', 'caspian-sun' );
+		echo '<a class="wa-float" href="' . esc_url( 'https://wa.me/' . $num ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $label ) . '">' . csp_icon( 'whatsapp' ) . '</a>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
+);
