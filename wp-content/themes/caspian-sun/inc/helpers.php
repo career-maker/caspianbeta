@@ -32,9 +32,16 @@ function csp_opt( $name ) {
 	return csp_get( $name, 'option' );
 }
 
-/** Escape text and convert new lines to <br> (used for multi-line headings). */
+/** Escape text, keep <b>/<strong>/<em>/<i>/<br> typed in the dashboard, and convert new lines to <br>. */
 function csp_br( $text ) {
-	return nl2br( esc_html( (string) $text ), false );
+	$allowed = array(
+		'b'      => array(),
+		'strong' => array(),
+		'em'     => array(),
+		'i'      => array(),
+		'br'     => array(),
+	);
+	return nl2br( wp_kses( (string) $text, $allowed ), false );
 }
 
 /** Make a stored URL safe and absolute (supports "/path/", "#hash", tel:, mailto:). */
