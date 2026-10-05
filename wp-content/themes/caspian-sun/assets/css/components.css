@@ -284,3 +284,5 @@ body footer .footer-bottom img{height:12px!important;}
   body footer .footer-section h3{padding-bottom:.4rem;margin-bottom:0;}
   body footer .footer-section h3::after{display:none;}
 }
+
+body footer .footer-contact-item span{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);font-family:inherit;}
