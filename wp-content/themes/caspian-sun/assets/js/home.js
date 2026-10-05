@@ -105,6 +105,24 @@
   startAuto();
   })();
 
+  /* "Why choose us" video plays inside its own frame */
+  document.querySelectorAll('[data-inline-video]').forEach(function(box){
+    var started=false;
+    function play(){
+      if(started)return;started=true;
+      var v=document.createElement('video');
+      v.src=box.dataset.inlineVideo;v.controls=true;v.autoplay=true;v.playsInline=true;v.preload='auto';
+      v.setAttribute('playsinline','');
+      var img=box.querySelector('img');if(img&&img.currentSrc)v.poster=img.currentSrc;
+      v.className='why-player';
+      box.appendChild(v);box.classList.add('playing');
+      var b=box.querySelector('.play-btn');if(b)b.hidden=true;
+      v.play&&v.play().catch(function(){});
+    }
+    box.addEventListener('click',play);
+    box.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play();}});
+  });
+
   /* video lightbox */
   (function(){
   var lb=document.getElementById('lightbox'),lv=document.getElementById('lbVideo');

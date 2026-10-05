@@ -115,7 +115,7 @@ $why_img   = csp_get( 'home_why_video_image' );
   <?php endif; ?>
   <?php if ( $why_img ) : ?>
   <div class="wrap">
-    <div class="why-video reveal"<?php echo $why_video ? ' data-video="' . csp_img_url( $why_video ) . '"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+    <div class="why-video reveal"<?php echo $why_video ? ' data-inline-video="' . csp_img_url( $why_video ) . '"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
       <?php echo csp_img( $why_img, array( 'decoding' => 'async' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <?php if ( $why_video ) : ?><button class="play-btn" type="button" aria-label="<?php esc_attr_e( 'Play video', 'caspian-sun' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg></button><?php endif; ?>
     </div>
