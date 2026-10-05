@@ -98,6 +98,16 @@ function csp_register_options_groups() {
 		array(
 			csp_f_tab( 'Header' ),
 			csp_f_link( 'opt_header_cta', 'Header button ("Get In Touch")', array( 'instructions' => 'Shown in the header and the mobile menu. Clear the link to hide the button. Navigation links are managed under Appearance → Menus.' ) ),
+			csp_f(
+				'message',
+				'opt_header_menus_note',
+				'Menu item names',
+				array(
+					'esc_html'  => 0,
+					'new_lines' => '',
+					'message'   => '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">Edit header and footer menu names and links under Appearance → Menus</a> (click an item and change its "Navigation Label").',
+				)
+			),
 			csp_f_bool( 'opt_header_phone_show', 'Show phone number in header and mobile menu', array( 'default_value' => 1 ) ),
 			csp_f_tab( 'Footer — headings & text' ),
 			csp_f_text( 'opt_footer_social_heading', 'Social column heading' ),
