@@ -334,3 +334,13 @@ html,body{max-width:100%;overflow-x:hidden;}
   .step:last-child::after{display:none;}
 }
 @media (prefers-reduced-motion:reduce){.step,.step::before,.step-num,.step-icon,.step h3{transition:none;}.step:hover{transform:none;}}
+
+/* Why choose us on phones: two compact columns instead of one tall stack */
+@media (max-width:600px){
+  .why-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;}
+  .why-list li{padding:.7rem .75rem;gap:.45rem;}
+  .why-list svg{width:16px;height:16px;margin-top:1px;}
+  .why-list span{font-size:.8rem;line-height:1.35;}
+  .why-list li{align-items:flex-start;}
+}
+@media (max-width:340px){.why-list{grid-template-columns:1fr;}}
