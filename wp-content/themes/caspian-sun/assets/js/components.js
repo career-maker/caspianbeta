@@ -64,6 +64,14 @@ function initFooterAccordion() {
 }
 
 function initReveal() {
+  // Pages without hand-placed .reveal markup: tag their main blocks automatically (staggered).
+  ['.form-section', '.info-box', '.map-section', 'footer .footer-section'].forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      if (el.classList.contains('reveal')) return;
+      el.classList.add('reveal');
+      if (i) el.style.transitionDelay = Math.min(i, 6) * 80 + 'ms';
+    });
+  });
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length === 0) return;
   if (!('IntersectionObserver' in window)) { reveals.forEach(r => r.classList.add('in-view')); return; }
