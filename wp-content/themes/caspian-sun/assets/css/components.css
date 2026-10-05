@@ -314,3 +314,6 @@ body footer .footer-bottom{padding-top:.7rem;}
 
 /* Footer v5: long logo description set small and wide to keep the footer short */
 body footer .footer-desc{font-size:.72rem;line-height:1.4;max-width:none;margin:0 0 .5rem;padding-right:.5rem;}
+
+/* Footer v6: logo a little larger */
+body footer .footer-logo-badge{width:clamp(120px,10.5vw,150px);height:clamp(120px,10.5vw,150px);}
