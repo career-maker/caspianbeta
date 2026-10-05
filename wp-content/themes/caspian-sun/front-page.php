@@ -136,23 +136,33 @@ if ( $logos || csp_get( 'home_clients_heading' ) ) :
       <?php echo csp_btn( csp_get( 'home_clients_button' ), 'btn-shop light' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
     </div>
     <?php if ( $logos ) : ?>
-    <div class="logos reveal">
-      <?php
-		$n = 0;
-		foreach ( $logos as $l ) {
-			$img = csp_img( $l['logo'], array( 'decoding' => 'async' ) );
-			if ( ! $img ) {
-				continue;
-			}
-			++$n;
-			echo '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . ( csp_logo_is_solid( $l['logo'] ) ? ' logo-cell--solid' : '' ) . '">' . $img . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+    <?php
+	$cells = array();
+	foreach ( $logos as $l ) {
+		$img = csp_img( $l['logo'], array( 'decoding' => 'async' ) );
+		if ( $img ) {
+			$cells[] = '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . ( csp_logo_is_solid( $l['logo'] ) ? ' logo-cell--solid' : '' ) . '">' . $img . '</div>';
 		}
-		// Empty filler cell(s) complete the 5-column grid.
-		for ( $i = 0; $n && $i < ( 5 - $n % 5 ) % 5; $i++ ) {
-			echo '<div class="logo-cell" aria-hidden="true"></div>';
-		}
+	}
+	if ( $cells ) :
+		// Repeat the set until one copy is wide enough to fill the row, then print it twice for a seamless loop.
+		$count  = count( $cells );
+		$reps   = max( 1, (int) ceil( 10 / $count ) );
+		$row_a  = array_merge( ...array_fill( 0, $reps, $cells ) );
+		$row_b  = array_merge( array_slice( $row_a, (int) floor( count( $row_a ) / 2 ) ), array_slice( $row_a, 0, (int) floor( count( $row_a ) / 2 ) ) );
+		$dur    = max( 24, count( $row_a ) * 3 );
 		?>
+    <div class="logo-marquee reveal" style="--dur:<?php echo (int) $dur; ?>s">
+      <?php foreach ( array( array( $row_a, '' ), array( $row_b, ' is-rev' ) ) as $row ) : ?>
+      <div class="marquee-row<?php echo esc_attr( $row[1] ); ?>">
+        <div class="marquee-track">
+          <?php echo implode( '', $row[0] ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+          <?php echo str_replace( 'class="logo-cell', 'aria-hidden="true" class="logo-cell', implode( '', $row[0] ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+        </div>
+      </div>
+      <?php endforeach; ?>
     </div>
+    <?php endif; ?>
     <?php endif; ?>
   </div>
 </section>
