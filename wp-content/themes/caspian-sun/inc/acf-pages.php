@@ -153,7 +153,7 @@ function csp_register_page_groups() {
 					'Articles — use 1, 3 or 5 (1st = large, 2nd–3rd = middle column, 4th–5th = right column)',
 					array(
 						csp_f( 'post_object', 'post', 'Article', array( 'post_type' => array( 'post' ), 'return_format' => 'id', 'ui' => 1 ) ),
-						csp_f_img( 'image', 'Image for this slot' ),
+						csp_f_img( 'image', 'Image for this slot (fallback)', array( 'instructions' => 'Only used when the article itself has no Listing image or Featured image. Change the article's own images to update this slot.' ) ),
 						csp_f_bool( 'open', 'Show image by default (side columns)', array( 'instructions' => 'In the side columns one article shows its image; hovering the other swaps it.' ) ),
 					),
 					array( 'button_label' => 'Add article', 'max' => 5 )

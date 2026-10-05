@@ -48,7 +48,7 @@ while ( have_posts() ) :
 
 	?>
 <main id="main">
-	<?php csp_banner( 'bd', false, 'option' ); ?>
+	<?php csp_banner( 'bd', false, 'option', csp_get( 'article_banner_image' ) ? csp_get( 'article_banner_image' ) : csp_get( 'article_image' ) ); ?>
 	<?php
 	csp_breadcrumb(
 		array_filter(

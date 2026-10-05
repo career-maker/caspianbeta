@@ -46,6 +46,7 @@ function csp_register_content_groups() {
 		'Article Details',
 		csp_loc_type( 'post' ),
 		array(
+			csp_f_img( 'article_banner_image', 'Banner image (optional)', array( 'instructions' => 'Wide image behind the article title. If empty, the Featured image is used; if that is empty too, the default banner from Theme Settings.' ) ),
 			csp_f_img( 'article_image', 'Featured image', array( 'instructions' => 'Large image at the top of the article.' ) ),
 			csp_f_img( 'article_card_image', 'Listing image', array( 'instructions' => 'Image used on the Insights page and in related-article lists.' ) ),
 			csp_f_text( 'article_author', 'Author name' ),

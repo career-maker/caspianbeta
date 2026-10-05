@@ -271,12 +271,12 @@ function csp_paras( $rows, $key = 'text' ) {
  * Inner-page banner. Background image is supplied through CSS custom
  * properties (--hero-bg / --hero-bg-sm) consumed by the page stylesheet.
  */
-function csp_banner( $prefix, $h1 = true, $post_id = null ) {
+function csp_banner( $prefix, $h1 = true, $post_id = null, $img_override = 0 ) {
 	$title = csp_get( $prefix . '_banner_heading', $post_id );
 	$text  = csp_get( $prefix . '_banner_text', $post_id );
-	$img   = csp_get( $prefix . '_banner_image', $post_id );
+	$img   = $img_override ? $img_override : csp_get( $prefix . '_banner_image', $post_id );
 	$imgm  = csp_get( $prefix . '_banner_image_mobile', $post_id );
-	$style = csp_style_attr( array( csp_bg_var( 'hero-bg', $img ), csp_bg_var( 'hero-bg-sm', $imgm ? $imgm : $img ) ) );
+	$style = csp_style_attr( array( csp_bg_var( 'hero-bg', $img ), csp_bg_var( 'hero-bg-sm', ( $imgm && ! $img_override ) ? $imgm : $img ) ) );
 	echo '<section class="hero"' . $style . '><div class="hero-inner">'; // phpcs:ignore WordPress.Security.EscapeOutput
 	if ( $title ) {
 		echo $h1 ? '<h1>' . csp_br( $title ) . '</h1>' : '<div class="hero-title">' . csp_br( $title ) . '</div>'; // phpcs:ignore

@@ -271,7 +271,7 @@ if ( 4 === count( $arts ) ) {
 function csp_home_article( $a, $mode, $view_more ) {
 	$pid   = (int) $a['post'];
 	$title = get_the_title( $pid );
-	$img   = csp_img( $a['image'] ? $a['image'] : csp_get( 'article_card_image', $pid ), array( 'alt' => $title, 'decoding' => 'async' ) );
+	$img   = csp_img( csp_get( 'article_card_image', $pid ) ? csp_get( 'article_card_image', $pid ) : ( csp_get( 'article_image', $pid ) ? csp_get( 'article_image', $pid ) : $a['image'] ), array( 'alt' => $title, 'decoding' => 'async' ) );
 	$sum   = csp_article_summary( $pid );
 	$cls   = 'art ' . ( 'big' === $mode ? 'big' : '' ) . ' reveal' . ( 'side' === $mode && ! empty( $a['open'] ) ? ' show-img' : '' );
 	echo '<a class="' . esc_attr( trim( $cls ) ) . '" href="' . esc_url( get_permalink( $pid ) ) . '">'; // phpcs:ignore WordPress.Security.EscapeOutput
