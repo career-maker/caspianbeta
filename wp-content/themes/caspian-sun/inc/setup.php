@@ -215,11 +215,11 @@ add_filter( 'the_generator', '__return_empty_string' );
 
 /* -------------------------------------------------------------- Head extras */
 
-// Skip the preloader animation on repeat visits (tiny inline script — must run before first paint).
+// Mark JS-enabled browsers before first paint (the preloader plays on every page load).
 add_action(
 	'wp_head',
 	function () {
-		echo '<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("plSeen"))document.documentElement.classList.add("pl-skip")}catch(e){}</script>' . "\n";
+		echo '<script>document.documentElement.classList.add("js");</script>' . "\n";
 	},
 	1
 );

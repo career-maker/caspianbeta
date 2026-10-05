@@ -102,13 +102,13 @@ function initReveal() {
 (function(){
   var pl=document.getElementById('preloader');
   if(!pl)return;
-  var root=document.documentElement,start=Date.now(),MIN=0,done=false;
+  var root=document.documentElement,start=Date.now(),MIN=900,done=false;
   root.classList.add('pl-lock');
   function finish(){
     if(done)return;done=true;
     var wait=Math.max(0,MIN-(Date.now()-start));
     setTimeout(function(){
-      pl.classList.add('pl-done');try{sessionStorage.setItem('plSeen','1');}catch(e){}
+      pl.classList.add('pl-done');
       root.classList.remove('pl-lock');
       setTimeout(function(){if(pl.parentNode)pl.parentNode.removeChild(pl);},1400);
     },wait);
