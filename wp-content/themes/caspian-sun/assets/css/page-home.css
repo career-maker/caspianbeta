@@ -93,6 +93,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .why-item + .why-item{border-left:1px solid transparent;}
 .why-item:not(:nth-child(4n)){border-right:1px solid #cfcfcf;}
 .why-item:nth-child(n+5){border-top:1px solid #cfcfcf;}
+.why-item:last-child{grid-column:auto/-1;border-right:none;}
 .why-grid:not(:hover) .why-item:nth-child(2),.why-item:hover{background:var(--cream);}
 .why-item img{height:clamp(38px,3.6vw,68px);width:auto;max-width:none;object-fit:contain;margin-bottom:clamp(.9rem,1.6vw,1.6rem);transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
 .why-item:hover img{transform:translateY(-4px) scale(1.06);}
