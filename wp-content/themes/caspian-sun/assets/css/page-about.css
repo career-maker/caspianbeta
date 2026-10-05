@@ -46,8 +46,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-images{position:relative;height:clamp(320px,min(38vw, 52vh),500px);}
 .who-img-back{position:absolute;top:0;left:0;width:72%;height:70%;object-fit:cover;transition:transform .6s ease;}
 .who-img-front{position:absolute;bottom:0;right:0;width:auto;aspect-ratio:9/14;height:88%;max-width:46%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
-.who-images:hover .who-img-back{transform:scale(1.04);}
-.who-images:hover .who-img-front{transform:scale(1.04);}
+.who-img-back:hover,.who-img-front:hover{transform:scale(1.04);}
 
 /* WHY CHOOSE US — Rule 2: no min-height; image fills its column naturally */
 .why-section{padding:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden;box-sizing:border-box;}
