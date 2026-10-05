@@ -64,26 +64,38 @@ function initFooterAccordion() {
 }
 
 function initReveal() {
-  // Pages without hand-placed .reveal markup: tag their main blocks automatically (staggered).
+  // Pages without hand-placed .reveal markup: tag their main blocks automatically.
   ['.form-section', '.info-box', '.map-section', 'footer .footer-section'].forEach(function (sel) {
-    document.querySelectorAll(sel).forEach(function (el, i) {
-      if (el.classList.contains('reveal')) return;
-      el.classList.add('reveal');
-      if (i) el.style.transitionDelay = Math.min(i, 6) * 80 + 'ms';
-    });
+    document.querySelectorAll(sel).forEach(function (el) { el.classList.add('reveal'); });
   });
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length === 0) return;
-  if (!('IntersectionObserver' in window)) { reveals.forEach(r => r.classList.add('in-view')); return; }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  // Stagger siblings (cards in a grid, footer columns, ...) so they cascade in.
+  const groups = new Map();
+  reveals.forEach(function (el) {
+    const k = el.parentElement;
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(el);
+  });
+  groups.forEach(function (list) {
+    if (list.length < 2) return;
+    list.forEach(function (el, i) { el.style.transitionDelay = Math.min(i, 7) * 90 + 'ms'; });
+  });
+  const done = function (el) {
+    // Drop the entrance timing/delay so hover transitions on the same element are not delayed.
+    setTimeout(function () { el.style.transitionDelay = ''; el.classList.add('revealed'); }, 1600 + parseFloat(el.style.transitionDelay || 0));
+  };
+  if (!('IntersectionObserver' in window)) { reveals.forEach(function (r) { r.classList.add('in-view', 'revealed'); }); return; }
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
+        done(entry.target);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  reveals.forEach(r => observer.observe(r));
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(function (r) { observer.observe(r); });
 }
 
 // PRELOADER: logo expands and reveals the page once everything has loaded
