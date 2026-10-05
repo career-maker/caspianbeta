@@ -286,3 +286,15 @@ body footer .footer-bottom img{height:12px!important;}
 }
 
 body footer .footer-contact-item span{font-size:clamp(.82rem,1.4vw,.92rem);line-height:1.8;color:rgba(255,255,255,.85);font-family:inherit;}
+
+/* Footer v3: shorter footer (tighter padding, smaller logo, no "Social media" heading) */
+body footer{padding-top:clamp(1.6rem,2.6vw,2.4rem);padding-bottom:clamp(.9rem,1.6vw,1.3rem);}
+body footer .footer-grid{margin-bottom:clamp(1rem,1.8vw,1.5rem);}
+body footer .footer-logo-badge{width:clamp(120px,11vw,165px);height:clamp(120px,11vw,165px);margin-bottom:.5rem;}
+body footer .footer-desc{margin-bottom:.8rem;line-height:1.5;}
+body footer .footer-section:first-child h3{display:none;}
+body footer .social-links{margin-top:0;}
+body footer .footer-section h3{padding-bottom:.65rem;margin-bottom:.9rem;}
+body footer .footer-section li,body footer .footer-section li a{line-height:1.7;}
+body footer .footer-contact-item{margin-bottom:.6rem;}
+body footer .footer-bottom{padding-top:.9rem;gap:.5rem;}
