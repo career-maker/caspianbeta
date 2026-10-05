@@ -343,3 +343,12 @@ html,body{max-width:100%;overflow-x:hidden;}
   .why-list li{align-items:flex-start;}
 }
 @media (max-width:340px){.why-list{grid-template-columns:1fr;}}
+
+/* International network: top-align the items so all country titles sit on the same line */
+.process-item{align-items:flex-start;}
+.process-item>div:not(.process-circle){padding-top:clamp(.9rem,2.2vw,1.9rem);}
+.process-item::after{top:calc(clamp(70px,min(9.5vw,15vh),110px) / 2);}
+@media (max-width:640px){
+  .process-item::after{top:38px;}
+  .process-item>div:not(.process-circle){padding-top:.9rem;}
+}
