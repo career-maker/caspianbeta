@@ -43,9 +43,9 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
 /* .who-heading replaced by .section-heading — no duplicate rule needed */
 .who-text p{margin-bottom:.9rem;}
-.who-images{position:relative;height:clamp(240px,min(32vw, 40vh),400px);}
-.who-img-back{position:absolute;top:0;left:0;width:78%;height:80%;object-fit:cover;transition:transform .6s ease;}
-.who-img-front{position:absolute;bottom:0;right:0;width:52%;height:72%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
+.who-images{position:relative;height:clamp(320px,min(38vw, 52vh),500px);}
+.who-img-back{position:absolute;top:0;left:0;width:72%;height:70%;object-fit:cover;transition:transform .6s ease;}
+.who-img-front{position:absolute;bottom:0;right:0;width:auto;aspect-ratio:9/14;height:88%;max-width:46%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
 .who-images:hover .who-img-back{transform:scale(1.04);}
 .who-images:hover .who-img-front{transform:scale(1.04);}
 
@@ -141,7 +141,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 @media (max-width:768px){
   .wrap{padding:0 1.25rem;    .best-bg { height: 250px; }
   }
-  .who-images{height:300px;}
+  .who-images{height:360px;}
   /* mission keeps image + text side by side on tablets (no empty right column); stacks only on phones */
   .sustain-grid{grid-template-columns:1fr;}
   .why-content,.best-card{padding-left:1.25rem;padding-right:1.25rem;}
@@ -155,9 +155,9 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
   .hero p{max-width:100%;}
   section{padding:2.5rem 0;}
   .wrap{padding:0 1.25rem;}
-  .who-images{height:260px;}
-  .who-img-back{width:72%;height:76%;}
-  .who-img-front{width:58%;height:66%;}
+  .who-images{height:320px;}
+  .who-img-back{width:74%;height:68%;}
+  .who-img-front{height:86%;max-width:48%;}
   .why-content{padding:2rem 1.25rem;}
   .best-card{padding:1.75rem 1.25rem;}
   .sustain-img{aspect-ratio:4/3;}
@@ -167,7 +167,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 @media (max-width:390px){
   .hero h1{font-size:2.1rem;}
   
-  .who-images{height:230px;}
+  .who-images{height:290px;}
   .process-circle{width:76px;height:76px;}
   .process-circle svg{width:30px;height:30px;}
 }
