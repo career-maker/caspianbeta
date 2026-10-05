@@ -41,7 +41,9 @@ function csp_br( $text ) {
 		'i'      => array(),
 		'br'     => array(),
 	);
-	return nl2br( wp_kses( (string) $text, $allowed ), false );
+	// Editors often type <br>bold text</br>; a <br> that is closed by </br> means bold.
+	$text = preg_replace( '#<br\s*/?>(.*?)</br\s*>#is', '<strong>$1</strong>', (string) $text );
+	return nl2br( wp_kses( $text, $allowed ), false );
 }
 
 /** Make a stored URL safe and absolute (supports "/path/", "#hash", tel:, mailto:). */
