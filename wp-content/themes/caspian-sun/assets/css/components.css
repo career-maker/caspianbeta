@@ -31,10 +31,10 @@ header .cta-right{display:none;}
 .phone-cta svg{width:14px;height:14px;stroke:#fff;fill:none;transition:stroke .4s ease;flex:none;}
 header.scrolled .phone-cta{color:var(--charcoal);text-shadow:none;}
 header.scrolled .phone-cta svg{stroke:var(--charcoal);}
-.cta-btn{background:transparent;border:1px solid #fff;color:#fff;padding:clamp(.45rem,.9vw,.8rem) clamp(.8rem,1.6vw,1.8rem);font-family:'Manrope',sans-serif;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;white-space:nowrap;}
+.cta-btn{background:transparent;border:1px solid var(--rich-gold,#D7BB51);color:#fff;padding:clamp(.45rem,.9vw,.8rem) clamp(.8rem,1.6vw,1.8rem);font-family:'Manrope',sans-serif;font-size:clamp(.68rem,1vw,1.05rem);font-weight:500;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .3s ease,box-shadow .3s ease;text-decoration:none;display:inline-block;white-space:nowrap;}
 .cta-btn:hover{background:#fff;color:var(--deep-teal);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.18);}
-header.scrolled .cta-btn{border-color:var(--charcoal);color:var(--charcoal);}
-header.scrolled .cta-btn:hover{background:var(--deep-teal);color:#fff;border-color:var(--deep-teal);box-shadow:0 10px 24px rgba(30,73,81,.25);}
+header.scrolled .cta-btn{border-color:var(--antique-gold,#AA8D3F);color:var(--charcoal);}
+header.scrolled .cta-btn:hover{background:var(--deep-teal);color:#fff;border-color:var(--antique-gold,#AA8D3F);box-shadow:0 10px 24px rgba(30,73,81,.25);}
 
 /* HAMBURGER — hidden on desktop, shown only ≤1024px (tablet + phone) */
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;z-index:210;}
