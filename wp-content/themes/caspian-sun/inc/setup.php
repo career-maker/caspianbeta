@@ -269,7 +269,7 @@ add_action(
 	'wp_body_open',
 	function () {
 		$logo = csp_opt( 'opt_logo' );
-		echo '<div id="preloader" aria-hidden="true"><div class="pl-disc"></div><div class="pl-logo"><span class="pl-ring"></span>';
+		echo '<div id="preloader" aria-hidden="true"><div class="pl-disc"></div><div class="pl-logo">';
 		echo csp_img( $logo, array( 'alt' => '', 'loading' => 'eager', 'width' => 360, 'height' => 360, 'sizes' => '(max-width: 768px) 120px, 168px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '</div></div>' . "\n";
 	}
