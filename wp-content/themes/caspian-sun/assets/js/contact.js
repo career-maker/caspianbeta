@@ -241,3 +241,21 @@
     document.head.appendChild(s);
   }
 })();
+
+/* LOCATE US: hovering a pin or a card highlights its partner */
+(function () {
+  var pins = document.querySelectorAll('.map-pin');
+  var cards = document.querySelectorAll('.loc-card');
+  if (!pins.length) return;
+  function set(n, on) {
+    [].forEach.call(pins, function (p) { if (p.getAttribute('data-loc') === n) p.classList.toggle('is-on', on); });
+    [].forEach.call(cards, function (c) { if (c.getAttribute('data-loc') === n) c.classList.toggle('is-on', on); });
+  }
+  [].concat([].slice.call(pins), [].slice.call(cards)).forEach(function (el) {
+    var n = el.getAttribute('data-loc');
+    el.addEventListener('mouseenter', function () { set(n, true); });
+    el.addEventListener('mouseleave', function () { set(n, false); });
+    el.addEventListener('focus', function () { set(n, true); });
+    el.addEventListener('blur', function () { set(n, false); });
+  });
+})();

@@ -449,3 +449,22 @@
 .cta-image img{width:100%;height:100%;object-fit:cover;display:block;}
 @media (max-width:1024px){.cta-image{height:clamp(240px,48vw,340px);}}
 @media (max-width:600px){.cta-image{height:240px;}}
+
+/* LOCATE US: three pins on the map + one card per location */
+.map-multi .map-placeholder{height:auto;aspect-ratio:1600/614;background-size:100% 100%;max-width:1000px;margin:0 auto;}
+.map-pin{position:absolute;transform:translate(-50%,-100%);background:none;border:0;padding:0;cursor:pointer;z-index:10;line-height:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.map-pin svg{filter:drop-shadow(0 3px 4px rgba(0,0,0,.3));}
+.map-pin::after{content:'';position:absolute;left:50%;bottom:-3px;width:14px;height:6px;margin-left:-7px;border-radius:50%;background:rgba(215,187,81,.45);animation:pinPulse 2.2s ease-out infinite;}
+@keyframes pinPulse{0%{transform:scale(.6);opacity:.9;}100%{transform:scale(2.4);opacity:0;}}
+.map-pin-tip{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);background:var(--deep-teal,#1E4951);color:#fff;font:600 .72rem/1 'Manrope',sans-serif;letter-spacing:.04em;padding:.4rem .6rem;border-radius:3px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+.map-pin:hover,.map-pin.is-on{transform:translate(-50%,-100%) scale(1.2);}
+.map-pin:hover .map-pin-tip,.map-pin.is-on .map-pin-tip{opacity:1;}
+.loc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.6vw,1.4rem);margin-top:clamp(1.2rem,2.4vw,2rem);}
+.loc-card{display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid rgba(23,24,19,.08);border-top:3px solid #D7BB51;border-radius:4px;padding:1.2rem 1.3rem;box-shadow:0 4px 20px rgba(0,0,0,.05);transition:transform .3s ease,box-shadow .3s ease;}
+.loc-card.is-on,.loc-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,73,81,.14);}
+.loc-card-pin{flex:none;margin-top:.15rem;}
+.loc-country{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:700;color:var(--deep-teal,#1E4951);margin:0 0 .3rem;text-transform:none;}
+.loc-company{font-size:.9rem;font-weight:600;color:var(--charcoal-black,#171813);line-height:1.4;margin-bottom:.3rem;}
+.loc-address{font-size:.9rem;line-height:1.55;color:#666;}
+@media (max-width:900px){.loc-cards{grid-template-columns:1fr;}}
+@media (prefers-reduced-motion:reduce){.map-pin::after{animation:none;}}

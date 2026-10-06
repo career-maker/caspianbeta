@@ -153,10 +153,48 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
     </div>
   </section>
 
-  <?php if ( csp_get( 'contact_map_heading' ) || $address ) : ?>
+  <?php
+	$locs = array();
+	foreach ( (array) get_field( 'contact_locations' ) as $loc ) {
+		if ( ! empty( $loc['country'] ) || ! empty( $loc['company'] ) || ! empty( $loc['address'] ) ) {
+			$locs[] = $loc;
+		}
+	}
+	$pin_defaults = array( array( 52.2, 33.5 ), array( 54.4, 36.2 ), array( 60.8, 43.8 ) );
+	?>
+  <?php if ( csp_get( 'contact_map_heading' ) || $address || $locs ) : ?>
   <section class="map-section">
     <?php echo csp_heading( csp_get( 'contact_map_heading' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
     <?php echo csp_p( csp_get( 'contact_map_text' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+    <?php if ( $locs ) : ?>
+    <div class="map-container map-multi">
+      <div class="map-placeholder">
+        <?php
+		foreach ( $locs as $n => $loc ) :
+			$d  = isset( $pin_defaults[ $n ] ) ? $pin_defaults[ $n ] : array( 50, 40 );
+			$px = ( isset( $loc['pin_x'] ) && '' !== $loc['pin_x'] ) ? (float) $loc['pin_x'] : $d[0];
+			$py = ( isset( $loc['pin_y'] ) && '' !== $loc['pin_y'] ) ? (float) $loc['pin_y'] : $d[1];
+			?>
+        <button type="button" class="map-pin" data-loc="<?php echo (int) $n; ?>" style="left:<?php echo esc_attr( $px ); ?>%;top:<?php echo esc_attr( $py ); ?>%" aria-label="<?php echo esc_attr( $loc['country'] ); ?>">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#D7BB51" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          <span class="map-pin-tip"><?php echo esc_html( $loc['country'] ); ?></span>
+        </button>
+        <?php endforeach; ?>
+      </div>
+      <div class="loc-cards">
+        <?php foreach ( $locs as $n => $loc ) : ?>
+        <div class="loc-card" data-loc="<?php echo (int) $n; ?>">
+          <svg class="loc-card-pin" width="26" height="26" viewBox="0 0 24 24" fill="#D7BB51" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          <div>
+            <?php echo ! empty( $loc['country'] ) ? '<h3 class="loc-country">' . esc_html( $loc['country'] ) . '</h3>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+            <?php echo ! empty( $loc['company'] ) ? '<div class="loc-company">' . esc_html( $loc['company'] ) . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+            <?php echo ! empty( $loc['address'] ) ? '<div class="loc-address">' . csp_br( $loc['address'] ) . '</div>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <?php else : ?>
     <div class="map-container">
       <div class="map-placeholder">
         <div class="map-marker">
@@ -170,6 +208,7 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
       </div>
       <?php endif; ?>
     </div>
+    <?php endif; ?>
   </section>
   <?php endif; ?>
 

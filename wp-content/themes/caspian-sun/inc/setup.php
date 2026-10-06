@@ -390,3 +390,43 @@ add_action(
 		echo '<a class="wa-float" href="' . esc_url( 'https://wa.me/' . $num ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $label ) . '">' . csp_icon( 'whatsapp' ) . '</a>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 );
+
+/* ----------------------------------------------- One-time seed: contact page map locations */
+
+add_action(
+	'acf/init',
+	function () {
+		if ( get_option( 'csp_contact_locations_seeded' ) || ! function_exists( 'update_field' ) ) {
+			return;
+		}
+		$page = csp_page_by_template( 'templates/contact.php' );
+		if ( ! $page ) {
+			return;
+		}
+		if ( ! get_field( 'contact_locations', $page ) ) {
+			update_field(
+				'contact_locations',
+				array(
+					array(
+						'country' => 'Bulgaria',
+						'company' => 'ILDE - STIL FOOD',
+						'address' => "Georgi Kirkov 23,\nSvilengrad 6500, Bulgaria.",
+					),
+					array(
+						'country' => 'Türkiye',
+						'company' => 'SUN SEAFOOD DIŞ TİCARET LİMİTED ŞİRKETİ',
+						'address' => "Yavuz Selim Mah. Gazi Bayram Çavuş Sk. No: 6,\nİç Kapı No: 1, Beykoz, İstanbul, Türkiye.",
+					),
+					array(
+						'country' => 'United Arab Emirates',
+						'company' => 'CASPIAN & SUN FOOD TRADING LLC',
+						'address' => "Office C-08, Belselah Building,\nDubai, United Arab Emirates.",
+					),
+				),
+				$page
+			);
+		}
+		update_option( 'csp_contact_locations_seeded', 1 );
+	},
+	99
+);

@@ -357,6 +357,18 @@ function csp_register_page_groups() {
 				csp_f_text( 'contact_map_heading', 'Heading' ),
 				csp_f_area( 'contact_map_text', 'Text', 2 ),
 				csp_f_text( 'contact_map_name', 'Location card title' ),
+				csp_f_rep(
+					'contact_locations',
+					'Locations (map pins)',
+					array(
+						csp_f_text( 'country', 'Country' ),
+						csp_f_text( 'company', 'Company name' ),
+						csp_f_area( 'address', 'Address', 3 ),
+						csp_f_num( 'pin_x', 'Pin position — from left (%)', array( 'min' => 0, 'max' => 100, 'step' => 0.1, 'instructions' => 'Optional. 0 = left edge of the map, 100 = right edge.' ) ),
+						csp_f_num( 'pin_y', 'Pin position — from top (%)', array( 'min' => 0, 'max' => 100, 'step' => 0.1, 'instructions' => 'Optional. 0 = top edge of the map, 100 = bottom edge.' ) ),
+					),
+					array( 'button_label' => 'Add location', 'instructions' => 'One pin and one card per location. If empty, the single address from Theme Settings is shown.' )
+				),
 				csp_f_tab( 'Bottom banner' ),
 				csp_f_img( 'contact_cta_image', 'Photo' ),
 				csp_f_img( 'contact_cta_watermark', 'Watermark graphic (optional)' ),
