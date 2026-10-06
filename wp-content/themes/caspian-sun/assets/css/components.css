@@ -337,3 +337,6 @@ body footer .footer-bottom{padding-top:1.1rem;}
 @media (prefers-reduced-motion:reduce){.wa-float::before{animation:none;}}
 body.drawer-open .wa-float{display:none;}
 @media (max-width:768px){body.has-enq-bar .wa-float{bottom:84px;}}
+
+/* Banner titles on every page: same line height and spacing as the Home hero title */
+body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
