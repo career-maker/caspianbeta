@@ -340,3 +340,8 @@ body.drawer-open .wa-float{display:none;}
 
 /* Banner titles on every page: same line height and spacing as the Home hero title */
 body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
+
+/* [gold]...[/gold] highlight (any heading or paragraph) */
+.gold-text{color:#B8932F;}
+.hero h1 .gold-text,.hero .hero-title .gold-text{background:linear-gradient(180deg,#F3D675,#C9A445);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;}
+.hero p .gold-text{color:var(--rich-gold,#D7BB51);font-weight:700;}

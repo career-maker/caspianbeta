@@ -32,7 +32,10 @@ function csp_opt( $name ) {
 	return csp_get( $name, 'option' );
 }
 
-/** Escape text, keep <b>/<strong>/<em>/<i>/<br> typed in the dashboard, and convert new lines to <br>. */
+/**
+ * Escape text, keep <b>/<strong>/<em>/<i>/<br> typed in the dashboard, convert new lines to <br>,
+ * and turn [gold]words[/gold] (or [gold]words[gold]) into a golden highlight.
+ */
 function csp_br( $text ) {
 	$allowed = array(
 		'b'      => array(),
@@ -43,7 +46,8 @@ function csp_br( $text ) {
 	);
 	// Editors often type <br>bold text</br>; a <br> that is closed by </br> means bold.
 	$text = preg_replace( '#<br\s*/?>(.*?)</br\s*>#is', '<strong>$1</strong>', (string) $text );
-	return nl2br( wp_kses( $text, $allowed ), false );
+	$out  = nl2br( wp_kses( $text, $allowed ), false );
+	return preg_replace( '#\[gold\](.*?)\[/?gold\]#is', '<span class="gold-text">$1</span>', $out );
 }
 
 /** Make a stored URL safe and absolute (supports "/path/", "#hash", tel:, mailto:). */
@@ -227,10 +231,9 @@ function csp_heading( $text, $level = 2, $mods = '', $extra_class = '' ) {
 	return sprintf( '<h%1$d class="%2$s">%3$s</h%1$d>', (int) $level, esc_attr( $class ), csp_br( $text ) );
 }
 
-/** Like csp_br(), but turns [gold]text[/gold] into a golden highlight span. */
+/** Kept for older templates: csp_br() now handles [gold] itself. */
 function csp_gold( $text ) {
-	$out = csp_br( $text );
-	return preg_replace( '#\[gold\](.*?)\[/gold\]#s', '<span class="gold-text">$1</span>', $out );
+	return csp_br( $text );
 }
 
 /** Eyebrow line. */
