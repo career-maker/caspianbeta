@@ -443,3 +443,9 @@
 /* Desktop: keep the contact-info box in view while the (taller) form scrolls, as the gallery does on product pages.
    Needs overflow-x:clip (not hidden) on html/body, see the rule above. */
 @media (min-width:1025px){.info-box{position:sticky;top:calc(clamp(60px,7vw,100px) + 1rem);align-self:start;}}
+
+/* CTA photo: fixed frame so a different image never changes the section height */
+.cta-image{height:clamp(300px,32vw,420px);overflow:hidden;}
+.cta-image img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:1024px){.cta-image{height:clamp(240px,48vw,340px);}}
+@media (max-width:600px){.cta-image{height:240px;}}
