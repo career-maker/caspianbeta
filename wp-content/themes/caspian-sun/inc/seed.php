@@ -290,3 +290,24 @@ function csp_seed_run( $verbose = false ) {
 	update_option( 'csp_seeded', CSP_VERSION );
 	$log( 'done' );
 }
+
+/**
+ * One-time: add "Other Food Products" to the already-seeded footer Products menu.
+ * (seed.php only runs on first install, so existing sites never get new seed.json items.)
+ */
+add_action( 'init', function () {
+	if ( get_option( 'csp_footer_other_added' ) || ! get_option( 'csp_seeded' ) ) {
+		return;
+	}
+	$menu = wp_get_nav_menu_object( 'Footer — Products' );
+	if ( $menu ) {
+		wp_update_nav_menu_item( $menu->term_id, 0, array(
+			'menu-item-title'    => 'Other Food Products',
+			'menu-item-url'      => home_url( '/products/#other' ),
+			'menu-item-type'     => 'custom',
+			'menu-item-status'   => 'publish',
+			'menu-item-position' => 99,
+		) );
+	}
+	update_option( 'csp_footer_other_added', 1 );
+}, 20 );
