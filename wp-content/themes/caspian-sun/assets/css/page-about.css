@@ -43,14 +43,14 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
 /* .who-heading replaced by .section-heading — no duplicate rule needed */
 .who-text p{margin-bottom:.9rem;}
-/* fixed section height: extra copy scrolls inside .who-paras instead of growing the section */
+/* fixed section height: extra copy is clipped behind a Read more button instead of growing the section */
 .who-text{display:flex;flex-direction:column;height:clamp(320px,min(38vw, 52vh),500px);min-height:0;}
-.who-paras{flex:1;min-height:0;overflow-y:auto;padding-right:.9rem;}
-.who-paras::-webkit-scrollbar{width:3px;}
-.who-paras::-webkit-scrollbar-track{background:transparent;}
-.who-paras::-webkit-scrollbar-thumb{background:rgba(75,106,116,.3);border-radius:3px;}
-.who-paras::-webkit-scrollbar-button{display:none;width:0;height:0;}
-@supports not selector(::-webkit-scrollbar){.who-paras{scrollbar-width:thin;scrollbar-color:rgba(75,106,116,.3) transparent;}}
+.who-paras{flex:1;min-height:0;overflow:hidden;}
+.who-text.is-clipped:not(.is-open) .who-paras{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent);}
+.who-text.is-open{height:auto;}
+.who-text.is-open .who-paras{overflow:visible;}
+.who-more{align-self:flex-start;margin-top:.6rem;padding:0;background:none;border:0;border-bottom:1px solid currentColor;font:600 14px/1.6 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#4B6A74;cursor:pointer;}
+.who-more:hover{color:var(--charcoal);}
 .who-images{position:relative;height:clamp(320px,min(38vw, 52vh),500px);}
 .who-img-back{position:absolute;top:0;left:0;width:72%;height:70%;object-fit:cover;transition:transform .6s ease;}
 .who-img-front{position:absolute;bottom:0;right:0;width:auto;aspect-ratio:9/14;height:88%;max-width:46%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
@@ -133,7 +133,7 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 @media (max-width:1024px){
   .who-grid,.goal-grid{grid-template-columns:1fr;}
   .who-text{height:auto;}
-  .who-paras{max-height:300px;}
+  .who-text:not(.is-open) .who-paras{max-height:300px;}
   .why-grid{grid-template-columns:1fr;}
   .why-img-wrap{min-height:0;height:360px;}
   .best-section{padding:0;}

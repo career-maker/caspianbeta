@@ -36,6 +36,23 @@ $ov_front = csp_get( 'about_ov_image_front' );
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var t=document.querySelector('.who-text'),p=t&&t.querySelector('.who-paras');
+  if(!p)return;
+  var more=<?php echo wp_json_encode( __( 'Read more', 'caspian-sun' ) ); ?>,less=<?php echo wp_json_encode( __( 'Read less', 'caspian-sun' ) ); ?>,b;
+  function check(){
+    if(t.classList.contains('is-open'))return;
+    var over=p.scrollHeight>p.clientHeight+2;
+    t.classList.toggle('is-clipped',over);
+    if(over&&!b){b=document.createElement('button');b.type='button';b.className='who-more';b.textContent=more;b.setAttribute('aria-expanded','false');
+      b.onclick=function(){var o=t.classList.toggle('is-open');b.textContent=o?less:more;b.setAttribute('aria-expanded',o);if(!o)check();};
+      t.appendChild(b);}
+    if(b)b.hidden=!over;
+  }
+  check();addEventListener('resize',check);addEventListener('load',check);
+})();
+</script>
 
 <?php
 /* Services */
