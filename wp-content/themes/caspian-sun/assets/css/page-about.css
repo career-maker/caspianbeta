@@ -45,7 +45,12 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-text p{margin-bottom:.9rem;}
 /* fixed section height: extra copy scrolls inside .who-paras instead of growing the section */
 .who-text{display:flex;flex-direction:column;height:clamp(320px,min(38vw, 52vh),500px);min-height:0;}
-.who-paras{flex:1;min-height:0;overflow-y:auto;padding-right:.6rem;scrollbar-width:thin;scrollbar-color:#4B6A74 transparent;}
+.who-paras{flex:1;min-height:0;overflow-y:auto;padding-right:.9rem;}
+.who-paras::-webkit-scrollbar{width:3px;}
+.who-paras::-webkit-scrollbar-track{background:transparent;}
+.who-paras::-webkit-scrollbar-thumb{background:rgba(75,106,116,.3);border-radius:3px;}
+.who-paras::-webkit-scrollbar-button{display:none;width:0;height:0;}
+@supports not selector(::-webkit-scrollbar){.who-paras{scrollbar-width:thin;scrollbar-color:rgba(75,106,116,.3) transparent;}}
 .who-images{position:relative;height:clamp(320px,min(38vw, 52vh),500px);}
 .who-img-back{position:absolute;top:0;left:0;width:72%;height:70%;object-fit:cover;transition:transform .6s ease;}
 .who-img-front{position:absolute;bottom:0;right:0;width:auto;aspect-ratio:9/14;height:88%;max-width:46%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
