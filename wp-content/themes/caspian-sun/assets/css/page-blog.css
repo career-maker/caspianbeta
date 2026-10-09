@@ -55,18 +55,9 @@ img{max-width:100%;display:block;}
 .hero-inner{position:relative;z-index:2;}
 
 /* TRUSTED BY */
-.trusted{background:var(--cream);color:var(--charcoal);padding:clamp(3rem,6vw,5rem) 0;}
-.trusted-wrap{max-width:1500px;margin:0 auto;padding:0 clamp(2.5rem,7vw,5.5rem);display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:clamp(2rem,5vw,6rem);align-items:center;}
-.trusted .section-heading{color:var(--charcoal);margin-bottom:1rem;}
-.trusted p{color:#5a5a56;}
-.trusted-logos{display:grid;grid-template-columns:repeat(3,1fr);}
-.trusted-logo{display:flex;align-items:center;justify-content:center;min-height:96px;padding:1rem;border-right:1px solid rgba(30,73,81,.18);border-bottom:1px solid rgba(30,73,81,.18);}
-.trusted-logo:nth-child(3n){border-right:none;}
-.trusted-logo:nth-last-child(-n+3){border-bottom:none;}
-.trusted-logo span{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.35rem);letter-spacing:2px;text-transform:uppercase;color:var(--deep-teal);text-align:center;}
-.trusted-logo img{max-width:140px;max-height:56px;width:auto;height:auto;object-fit:contain;}
+.trusted{background:var(--deep-teal);color:#fff;padding:clamp(3rem,6vw,5rem) 0;}
+.trusted-wrap{max-width:1500px;margin:0 auto;padding:0 clamp(2.5rem,7vw,5.5rem);display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(2rem,5vw,6rem);align-items:center;}
 @media (max-width:900px){.trusted-wrap{grid-template-columns:1fr;padding:0 1.25rem;}}
-@media (max-width:480px){.trusted-logos{grid-template-columns:repeat(2,1fr);}.trusted-logo:nth-child(3n){border-right:1px solid rgba(30,73,81,.18);}.trusted-logo:nth-child(2n){border-right:none;}.trusted-logo:nth-last-child(-n+3){border-bottom:1px solid rgba(30,73,81,.18);}.trusted-logo:nth-last-child(-n+2){border-bottom:none;}}
 
 /* RESPONSIVE */
 @media (max-width:1024px){
@@ -85,3 +76,7 @@ img{max-width:100%;display:block;}
 html,body{max-width:100%;overflow-x:hidden;}
 
 
+
+.trusted .section-heading{color:#fff;margin-bottom:1rem;}
+.trusted p{color:#fff;}
+.trusted .logo-marquee{min-width:0;}

@@ -345,3 +345,30 @@ body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
 .gold-text{color:#B8932F;}
 .hero h1 .gold-text,.hero .hero-title .gold-text{background:linear-gradient(180deg,#F3D675,#C9A445);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;}
 .hero p .gold-text{color:var(--rich-gold,#D7BB51);font-weight:700;}
+
+/* client logo marquee (Home + Insights) */
+.logo-cell{display:flex;align-items:center;justify-content:center;min-height:clamp(96px,10vw,148px);padding:clamp(.4rem,.9vw,.9rem);position:relative;border:1px solid transparent;transition:background-color .3s ease,box-shadow .3s ease,transform .3s ease,border-color .3s ease;}
+.logo-cell:not(:empty){border-color:rgba(255,255,255,.2);}
+.logo-cell:not(:empty):hover,.logo-cell.is-active{background:#fff;border-color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.22);transform:translateY(-2px);}
+.logo-cell img{width:auto;max-width:90%;height:clamp(54px,6.4vw,92px);margin:0 auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.92;transition:filter .3s ease,opacity .3s ease,transform .4s cubic-bezier(.34,1.56,.64,1);}
+.logo-cell:hover img,.logo-cell.is-active img{filter:none;opacity:1;transform:scale(1.06);}
+/* emblems with a solid centre (e.g. Shore Oyster) keep their own colours — a white silhouette would be a blank disc */
+.logo-cell--solid img,.logo-cell--solid:hover img{filter:none;opacity:1;}
+/* La Mar file is white-on-transparent: white by default, black on the white hover tile */
+.logo-cell--light:hover img,.logo-cell--light.is-active img{filter:invert(1);}
+/* clients: two marquee rows, all logos in each; top row moves left to right, bottom row right to left */
+.logo-marquee{min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:clamp(.6rem,1vw,1rem);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.marquee-row{overflow:hidden;}
+.marquee-track{display:flex;width:max-content;animation:marqueeRight var(--dur,50s) linear infinite;}
+.marquee-row.is-rev .marquee-track{animation-name:marqueeLeft;}
+.logo-marquee:hover .marquee-track{animation-play-state:paused;}
+.marquee-track .logo-cell{flex:0 0 auto;width:clamp(150px,13vw,200px);min-height:clamp(84px,8vw,124px);margin-right:clamp(.5rem,.9vw,.9rem);}
+.marquee-track .logo-cell img{height:clamp(44px,5vw,76px);}
+@keyframes marqueeRight{from{transform:translate3d(-50%,0,0);}to{transform:translate3d(0,0,0);}}
+@keyframes marqueeLeft{from{transform:translate3d(0,0,0);}to{transform:translate3d(-50%,0,0);}}
+@media (max-width:768px){
+  .marquee-track .logo-cell{width:128px;min-height:78px;margin-right:.5rem;}
+  .marquee-track .logo-cell img{height:44px;}
+  .logo-marquee{margin-top:.5rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none;}.marquee-row{overflow-x:auto;}}

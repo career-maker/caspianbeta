@@ -324,3 +324,32 @@ function csp_page_by_template( $template ) {
 	}
 	return $cache[ $template ];
 }
+
+/**
+ * Two-row client logo marquee from the Home "client logos" repeater (shared by Home and Insights).
+ *
+ * @param array|false $logos Repeater rows.
+ * @return string HTML, empty when there are no usable logos.
+ */
+function csp_logo_marquee( $logos ) {
+	$cells = array();
+	foreach ( (array) $logos as $l ) {
+		$img = csp_img( $l['logo'], array( 'decoding' => 'async' ) );
+		if ( $img ) {
+			$cells[] = '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . ( csp_logo_is_solid( $l['logo'] ) ? ' logo-cell--solid' : '' ) . '">' . $img . '</div>';
+		}
+	}
+	if ( ! $cells ) {
+		return '';
+	}
+	// Repeat the set until one copy is wide enough to fill the row, then print it twice for a seamless loop.
+	$count = count( $cells );
+	$row_a = array_merge( ...array_fill( 0, max( 1, (int) ceil( 10 / $count ) ), $cells ) );
+	$half  = (int) floor( count( $row_a ) / 2 );
+	$row_b = array_merge( array_slice( $row_a, $half ), array_slice( $row_a, 0, $half ) );
+	$out   = '<div class="logo-marquee reveal" style="--dur:' . (int) max( 24, count( $row_a ) * 3 ) . 's">';
+	foreach ( array( array( $row_a, '' ), array( $row_b, ' is-rev' ) ) as $row ) {
+		$out .= '<div class="marquee-row' . $row[1] . '"><div class="marquee-track">' . implode( '', $row[0] ) . str_replace( 'class="logo-cell', 'aria-hidden="true" class="logo-cell', implode( '', $row[0] ) ) . '</div></div>';
+	}
+	return $out . '</div>';
+}

@@ -15,7 +15,7 @@ $poster_sm = csp_get( 'blog_hero_poster_mobile', $page_id );
 $video     = csp_get( 'blog_hero_video', $page_id );
 $video_sm  = csp_get( 'blog_hero_video_mobile', $page_id );
 $view_more = csp_opt( 'opt_view_more' );
-$clients   = get_field( 'blog_trusted_clients', $page_id );
+$clients   = csp_logo_marquee( get_field( 'home_client_logos', (int) get_option( 'page_on_front' ) ) );
 ?>
 <main id="main">
 
@@ -78,13 +78,7 @@ $clients   = get_field( 'blog_trusted_clients', $page_id );
       <?php echo csp_heading( csp_get( 'blog_trusted_heading', $page_id ), 2, 'section-heading--on-dark' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
       <?php echo csp_p( csp_get( 'blog_trusted_text', $page_id ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
     </div>
-    <?php if ( $clients ) : ?>
-    <div class="trusted-logos reveal">
-      <?php foreach ( $clients as $c ) : ?>
-        <?php if ( ! empty( $c['name'] ) ) : ?><div class="trusted-logo" data-client="<?php echo esc_attr( $c['name'] ); ?>"><span><?php echo esc_html( $c['name'] ); ?></span></div><?php endif; ?>
-      <?php endforeach; ?>
-    </div>
-    <?php endif; ?>
+    <?php echo $clients; // phpcs:ignore WordPress.Security.EscapeOutput ?>
   </div>
 </section>
 <?php endif; ?>
