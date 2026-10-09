@@ -43,6 +43,9 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
 /* .who-heading replaced by .section-heading — no duplicate rule needed */
 .who-text p{margin-bottom:.9rem;}
+/* fixed section height: extra copy scrolls inside .who-paras instead of growing the section */
+.who-text{display:flex;flex-direction:column;height:clamp(320px,min(38vw, 52vh),500px);min-height:0;}
+.who-paras{flex:1;min-height:0;overflow-y:auto;padding-right:.6rem;scrollbar-width:thin;scrollbar-color:#4B6A74 transparent;}
 .who-images{position:relative;height:clamp(320px,min(38vw, 52vh),500px);}
 .who-img-back{position:absolute;top:0;left:0;width:72%;height:70%;object-fit:cover;transition:transform .6s ease;}
 .who-img-front{position:absolute;bottom:0;right:0;width:auto;aspect-ratio:9/14;height:88%;max-width:46%;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.15);transition:transform .6s ease;}
@@ -124,6 +127,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 /* ≤1024px — tablet + phone: hamburger nav kicks in, two-column sections stack */
 @media (max-width:1024px){
   .who-grid,.goal-grid{grid-template-columns:1fr;}
+  .who-text{height:auto;}
+  .who-paras{max-height:300px;}
   .why-grid{grid-template-columns:1fr;}
   .why-img-wrap{min-height:0;height:360px;}
   .best-section{padding:0;}

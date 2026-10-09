@@ -25,7 +25,7 @@ $ov_front = csp_get( 'about_ov_image_front' );
       <div class="who-text">
         <?php echo csp_eyebrow( csp_get( 'about_ov_eyebrow' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <?php echo csp_heading( csp_get( 'about_ov_heading' ), 2, 'section-heading--upper' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-        <?php echo csp_paras( get_field( 'about_ov_paras' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+        <div class="who-paras"><?php echo csp_paras( get_field( 'about_ov_paras' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
       </div>
       <?php if ( $ov_back || $ov_front ) : ?>
       <div class="who-images">
