@@ -465,7 +465,7 @@
 .loc-card-pin{flex:none;margin-top:.15rem;}
 .loc-country{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:700;color:var(--deep-teal,#1E4951);margin:0 0 .3rem;text-transform:none;}
 .loc-company{font-size:.9rem;font-weight:600;color:var(--charcoal-black,#171813);line-height:1.4;margin-bottom:.3rem;}
-.loc-address{font-size:.9rem;line-height:1.55;color:#666;}
+.loc-address{font-size:.9rem;line-height:1.55;text-wrap:balance;color:#666;}
 @media (max-width:900px){.loc-cards{grid-template-columns:1fr;}}
 @media (prefers-reduced-motion:reduce){.map-pin::after{animation:none;}}
 
