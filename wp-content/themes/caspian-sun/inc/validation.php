@@ -16,13 +16,13 @@ function csp_v_trim( $s ) {
 /** Script / markup / SQL / template-injection patterns. */
 function csp_v_injection( $s ) {
 	return (bool) preg_match(
-		'/<\s*\/?\s*[a-z!?]'
+		'/<\/?[a-z][a-z0-9:-]*(?:[\s\/][^<>]*)?>|<[!?]|<\s*\/?\s*(?:script|iframe|object|embed|svg|style|link|meta|img)\b'
 		. '|javascript\s*:|vbscript\s*:|data\s*:\s*text\/html'
 		. '|\bon(?:error|load|click|mouse\w*|focus|blur|key\w*|change|submit|input|abort|toggle|animation\w*|pointer\w*)\s*='
 		. '|\{\{|\}\}|\{%|%\}|\$\{'
 		. '|\bunion\s+(?:all\s+)?select\b|\b(?:drop|truncate)\s+(?:table|database)\b|\bdelete\s+from\b|\binsert\s+into\b'
-		. '|;\s*--|--\s*$|\/\*|\*\/'
-		. '|[\'"]\s*or\s+[\'"]?\w+[\'"]?\s*=\s*[\'"]?\w+/i',
+		. '|;\s*--|\/\*|\*\/'
+		. '|[\'"]\s*or\s+(?:[\'"]?\d+[\'"]?\s*=\s*[\'"]?\d+|[\'"]\w+[\'"]\s*=\s*[\'"]\w+)/i',
 		$s
 	);
 }

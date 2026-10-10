@@ -38,6 +38,23 @@ function csp_check_token( $token ) {
 	return $age < 3 ? 'fast' : 'ok';
 }
 
+/**
+ * Visitor IP. REMOTE_ADDR is used as-is; X-Forwarded-For is trusted only when the direct peer is a
+ * private/loopback address (i.e. a reverse proxy of our own), so it cannot be spoofed from the internet.
+ */
+function csp_client_ip() {
+	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	if ( $ip && ! filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		foreach ( explode( ',', sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) ) as $cand ) {
+			$cand = trim( $cand );
+			if ( filter_var( $cand, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) ) {
+				return $cand;
+			}
+		}
+	}
+	return $ip;
+}
+
 /** Strip CR/LF so values can never inject mail headers. */
 function csp_oneline( $s ) {
 	return trim( preg_replace( '/[\r\n\t]+/', ' ', (string) $s ) );
@@ -65,7 +82,8 @@ function csp_handle_contact() {
 	}
 	$tok = csp_check_token( isset( $_POST['csp_ts'] ) ? wp_unslash( $_POST['csp_ts'] ) : '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	if ( 'fast' === $tok ) {
-		csp_form_done( $is_ajax );
+		// Never pretend success: a person who autofilled and pressed Enter would lose the enquiry silently.
+		$fail( array( '_form' => __( 'Please wait a moment and press Send again.', 'caspian-sun' ) ), 429 );
 	}
 	if ( 'invalid' === $tok ) {
 		$fail( array( '_form' => __( 'This form has expired. Please reload the page and try again.', 'caspian-sun' ) ), 400 );
@@ -102,7 +120,7 @@ function csp_handle_contact() {
 	}
 
 	// Rate limit: 5 submissions per IP per 10 minutes.
-	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	$ip  = csp_client_ip();
 	$key = 'csp_rl_' . md5( $ip );
 	$cnt = (int) get_transient( $key );
 	if ( $cnt >= 5 ) {
@@ -144,8 +162,13 @@ function csp_handle_contact() {
 	$data = compact( 'name', 'phone', 'email', 'subject', 'message', 'product', 'size' );
 	$sent = csp_mail_notify( $data );
 	if ( '0' !== (string) csp_mail_opt( 'autoreply', '1' ) ) {
-		if ( ! csp_mail_confirm( $data ) ) {
-			error_log( 'Caspian theme: confirmation e-mail to the visitor failed for enquiry #' . (int) $id ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+		// One confirmation per address per hour: the form must not be usable to mail-bomb a third party.
+		$ck = 'csp_ar_' . md5( strtolower( $email ) );
+		if ( ! get_transient( $ck ) ) {
+			set_transient( $ck, 1, HOUR_IN_SECONDS );
+			if ( ! csp_mail_confirm( $data ) ) {
+				error_log( 'Caspian theme: confirmation e-mail to the visitor failed for enquiry #' . (int) $id ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+			}
 		}
 	}
 

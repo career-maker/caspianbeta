@@ -85,7 +85,7 @@
 /* ---- 404 / generic fallback ---- */
 .notfound{padding:clamp(3rem,7vw,7rem) clamp(1.25rem,5vw,3rem);background:#fff;text-align:center}
 .notfound-inner{max-width:680px;margin:0 auto}
-.notfound-code{font-family:'Playfair Display',serif;font-size:clamp(5rem,16vw,10rem);line-height:1;color:#D7BB51;font-weight:500;margin-bottom:.5rem}
+.notfound-code{font-family:'Playfair Display',serif;font-size:clamp(5rem,16vw,10rem);line-height:1;color:#8a6d1c;font-weight:500;margin-bottom:.5rem}
 .notfound .section-heading{margin-bottom:1rem}
 .notfound p{margin-bottom:1.6rem}
 .section-heading{font-family:'Playfair Display',serif;font-weight:500;color:#171813;font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1.25;text-transform:uppercase}

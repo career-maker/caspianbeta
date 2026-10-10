@@ -265,9 +265,20 @@ function csp_view_more( $url, $label, $aria = '', $tag = 'a', $arrow = false ) {
 function csp_paras( $rows, $key = 'text' ) {
 	$out = '';
 	foreach ( (array) $rows as $r ) {
-		$out .= csp_p( isset( $r[ $key ] ) ? $r[ $key ] : '' );
+		// A line break inside one repeater row is a paragraph break: each line becomes its own <p> (with spacing).
+		foreach ( preg_split( '/\R+/', trim( (string) ( isset( $r[ $key ] ) ? $r[ $key ] : '' ) ) ) as $line ) {
+			$out .= csp_p( $line );
+		}
 	}
 	return $out;
+}
+
+/** Wrap whole-word occurrences of $terms in <strong> inside already-escaped paragraph HTML (text nodes only). */
+function csp_bold_terms( $html, $terms ) {
+	$alt = implode( '|', array_map( function ( $t ) {
+		return preg_quote( esc_html( $t ), '/' );
+	}, $terms ) );
+	return preg_replace( '/(?<![\p{L}\p{N}])(' . $alt . ')(?![\p{L}\p{N}])(?![^<]*>)/u', '<strong>$1</strong>', (string) $html );
 }
 
 /**
@@ -334,7 +345,7 @@ function csp_page_by_template( $template ) {
 function csp_logo_marquee( $logos ) {
 	$cells = array();
 	foreach ( (array) $logos as $l ) {
-		$img = csp_img( $l['logo'], array( 'decoding' => 'async' ) );
+		$img = csp_img( $l['logo'], array( 'decoding' => 'async', 'loading' => 'lazy', 'sizes' => '(max-width: 768px) 128px, 200px' ) );
 		if ( $img ) {
 			$cells[] = '<div class="logo-cell' . ( ! empty( $l['invert'] ) ? ' logo-cell--light' : '' ) . ( csp_logo_is_solid( $l['logo'] ) ? ' logo-cell--solid' : '' ) . '">' . $img . '</div>';
 		}

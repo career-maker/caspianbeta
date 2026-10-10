@@ -43,6 +43,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 .who-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
 /* .who-heading replaced by .section-heading — no duplicate rule needed */
 .who-text p{margin-bottom:.9rem;}
+.who-paras p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;}
+.who-paras strong{font-weight:700;}
 /* fixed section height: extra copy is clipped behind a Read more button instead of growing the section */
 .who-text{display:flex;flex-direction:column;height:clamp(320px,min(38vw, 52vh),500px);min-height:0;}
 .who-paras{flex:1;min-height:0;overflow:hidden;}

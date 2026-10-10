@@ -34,6 +34,7 @@ while ( have_posts() ) :
   <defs><clipPath id="flagClip"><circle cx="12" cy="12" r="12"/></clipPath></defs>
 </svg>
 
+<div role="region" aria-label="<?php esc_attr_e( 'Product header', 'caspian-sun' ); ?>">
 <?php csp_banner( 'pd', false, 'option' ); ?>
 
 	<?php
@@ -46,6 +47,7 @@ while ( have_posts() ) :
 		)
 	);
 	?>
+</div>
 
 <main class="detail" id="main">
 
@@ -167,7 +169,7 @@ while ( have_posts() ) :
 	$rl = csp_link( csp_opt( 'pd_related_link' ) );
 	if ( $ids ) :
 		?>
-<section class="related">
+<section class="related" aria-label="<?php esc_attr_e( 'Related products', 'caspian-sun' ); ?>">
   <div class="related-head reveal">
     <?php echo csp_opt( 'pd_related_heading' ) ? '<h2 class="related-title">' . esc_html( csp_opt( 'pd_related_heading' ) ) . '</h2>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
     <?php echo ( $rl && $rl['title'] ) ? '<a class="view-all" ' . csp_link_attrs( csp_opt( 'pd_related_link' ) ) . '>' . esc_html( $rl['title'] ) . ' <span class="dash"></span></a>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>

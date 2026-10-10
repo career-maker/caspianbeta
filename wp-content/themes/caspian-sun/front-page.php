@@ -83,7 +83,7 @@ if ( $cats || csp_get( 'home_cats_heading' ) ) :
     <?php if ( $cats ) : ?>
     <div class="cat-grid">
       <?php foreach ( $cats as $c ) : ?>
-      <a class="cat-card reveal"<?php echo ( csp_link( $c['link'] ) ? ' href="' . csp_link( $c['link'] )['url'] . '"' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo csp_img( $c['image'], array( 'decoding' => 'async' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div class="cat-label"><?php echo $c['title'] ? '<b>' . esc_html( $c['title'] ) . '</b>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $c['subtitle'] ? '<span>' . esc_html( $c['subtitle'] ) . '</span>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></a>
+      <a class="cat-card reveal"<?php echo ( csp_link( $c['link'] ) ? ' href="' . csp_link( $c['link'] )['url'] . '"' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo csp_img( $c['image'], array( 'decoding' => 'async', 'loading' => 'lazy', 'sizes' => '(max-width: 768px) 100vw, 34vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div class="cat-label"><?php echo $c['title'] ? '<b>' . esc_html( $c['title'] ) . '</b>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $c['subtitle'] ? '<span>' . esc_html( $c['subtitle'] ) . '</span>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></a>
       <?php endforeach; ?>
     </div>
     <?php endif; ?>

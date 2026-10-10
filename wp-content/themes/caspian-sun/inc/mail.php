@@ -28,7 +28,8 @@ function csp_mail_opt( $key, $default = '' ) {
 function csp_smtp_config() {
 	$gmail = trim( (string) csp_mail_opt( 'gmail' ) );
 	$user  = trim( (string) csp_mail_opt( 'smtp_user', $gmail ) );
-	$pass  = preg_replace( '/\s+/', '', (string) csp_mail_opt( 'app_password' ) );
+	// Prefer define( 'CSP_SMTP_PASS', '…' ) in wp-config.php so the secret is not stored in the database.
+	$pass  = preg_replace( '/\s+/', '', (string) ( defined( 'CSP_SMTP_PASS' ) && CSP_SMTP_PASS ? CSP_SMTP_PASS : csp_mail_opt( 'app_password' ) ) );
 	$host  = trim( (string) csp_mail_opt( 'smtp_host', 'smtp.gmail.com' ) );
 	if ( '' === $user || '' === $pass || '' === $host ) {
 		return array();
@@ -186,12 +187,14 @@ function csp_mail_logo_url() {
 	if ( in_array( $mime, array( 'image/png', 'image/jpeg', 'image/gif' ), true ) && $url ) {
 		return $url;
 	}
+	// The cache keeps the path relative to uploads (never an absolute URL), so a database copied
+	// between local / staging / live cannot leave the e-mail pointing at another host.
+	$up    = wp_upload_dir();
 	$cache = get_option( 'csp_mail_logo', array() );
-	if ( is_array( $cache ) && isset( $cache['id'], $cache['url'] ) && (int) $cache['id'] === $id ) {
-		return $cache['url'];
+	if ( is_array( $cache ) && isset( $cache['id'], $cache['rel'] ) && (int) $cache['id'] === $id && is_readable( trailingslashit( $up['basedir'] ) . $cache['rel'] ) ) {
+		return set_url_scheme( trailingslashit( $up['baseurl'] ) . $cache['rel'] );
 	}
 	$file = get_attached_file( $id );
-	$up   = wp_upload_dir();
 	if ( $file && is_readable( $file ) && empty( $up['error'] ) ) {
 		$editor = wp_get_image_editor( $file );
 		if ( ! is_wp_error( $editor ) ) {
@@ -199,9 +202,9 @@ function csp_mail_logo_url() {
 			$name = 'csp-mail-logo-' . $id . '.png';
 			$res  = $editor->save( trailingslashit( $up['path'] ) . $name, 'image/png' );
 			if ( ! is_wp_error( $res ) ) {
-				$new = trailingslashit( $up['url'] ) . $name;
-				update_option( 'csp_mail_logo', array( 'id' => $id, 'url' => $new ), false );
-				return $new;
+				$rel = ltrim( trailingslashit( $up['subdir'] ), '/' ) . $name;
+				update_option( 'csp_mail_logo', array( 'id' => $id, 'rel' => $rel ), false );
+				return set_url_scheme( trailingslashit( $up['baseurl'] ) . $rel );
 			}
 		}
 	}
@@ -391,8 +394,6 @@ function csp_mail_confirm( $d ) {
 			'Email'   => $d['email'],
 			'Phone'   => $d['phone'],
 		),
-		'message_label' => 'Your message',
-		'message'       => $d['message'],
 		'button'        => array( 'Visit our website', home_url( '/' ) ),
 		'note'          => 'You can simply reply to this email if you would like to add anything.',
 		'footer_note'   => 'You are receiving this email because an enquiry was submitted with this address on ' . home_url( '/' ) . '.',

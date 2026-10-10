@@ -200,47 +200,90 @@ add_action(
 	99
 );
 
-/* ---- Support aid: open any page with ?csp_debug=1 to show what the visitor's device really renders (no effect otherwise) ---- */
+/* ---- Login: no username enumeration, and a lockout after repeated failures (per IP) ---- */
+add_filter(
+	'login_errors',
+	function ( $msg ) {
+		global $errors;
+		if ( is_wp_error( $errors ) && array_intersect( array( 'invalid_username', 'incorrect_password', 'invalid_email', 'invalid_username_or_email' ), $errors->get_error_codes() ) ) {
+			return __( '<strong>Error:</strong> The username or password is incorrect.', 'caspian-sun' );
+		}
+		return $msg;
+	}
+);
+add_filter(
+	'authenticate',
+	function ( $user ) {
+		if ( (int) get_transient( 'csp_lf_' . md5( csp_client_ip() ) ) >= 5 ) {
+			return new WP_Error( 'csp_locked', __( '<strong>Error:</strong> Too many failed attempts. Please try again in 15 minutes.', 'caspian-sun' ) );
+		}
+		return $user;
+	},
+	100 // After core's credential checks, which would otherwise replace an earlier error.
+);
 add_action(
-	'wp_footer',
+	'wp_login_failed',
 	function () {
-		if ( ! isset( $_GET['csp_debug'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		$k = 'csp_lf_' . md5( csp_client_ip() );
+		set_transient( $k, (int) get_transient( $k ) + 1, 15 * MINUTE_IN_SECONDS );
+	}
+);
+add_action(
+	'wp_login',
+	function () {
+		delete_transient( 'csp_lf_' . md5( csp_client_ip() ) );
+	}
+);
+
+/* ---- Abandoned "WP Easy Tools Compression" plugin exposes its AJAX file-writer to anonymous visitors: admins only ---- */
+add_action(
+	'init',
+	function () {
+		if ( ! function_exists( 'wtc_ajax_admin' ) ) {
 			return;
 		}
-		?>
-<div id="csp-debug" style="position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#000;color:#0f0;font:12px/1.35 monospace;padding:8px;max-height:60vh;overflow:auto;white-space:pre-wrap;word-break:break-all"></div>
-<script>
-(function(){
-  function g(sel){return document.querySelector(sel);}
-  function run(){
-    var h=g('.hero'),p=g('.about-text p'),L=[].slice.call(document.querySelectorAll('link[rel=stylesheet]')).map(function(l){return l.href.split('/').pop();});
-    var cs=p?getComputedStyle(p):null, hs=h?h.getBoundingClientRect():null;
-    var out=[
-      'innerWidth x innerHeight: '+innerWidth+' x '+innerHeight,
-      'screen: '+screen.width+' x '+screen.height+'  DPR: '+devicePixelRatio,
-      'visualViewport: '+(window.visualViewport?Math.round(visualViewport.width)+' x '+Math.round(visualViewport.height)+' scale '+visualViewport.scale:'n/a'),
-      'matches (max-width:767px): '+matchMedia('(max-width:767px)').matches,
-      'matches (max-width:768px): '+matchMedia('(max-width:768px)').matches,
-      'supports 100dvh: '+(window.CSS&&CSS.supports&&CSS.supports('height','100dvh')),
-      'hero height: '+(hs?Math.round(hs.height):'no .hero')+'   computed: '+(h?getComputedStyle(h).height:''),
-      'about p text-align: '+(cs?cs.textAlign+'  hyphens: '+cs.hyphens:'(no .about-text p on this page)'),
-      'stylesheets: '+L.join(', '),
-      'html lang: '+document.documentElement.lang,
-      'UA: '+navigator.userAgent
-    ];
-    // what is under the centre of the screen right now (scroll onto the About paragraph and screenshot)
-    var c=document.elementFromPoint(innerWidth/2,innerHeight*0.35),chain=[];
-    for(var e=c,i=0;e&&i<4;e=e.parentElement,i++){var q=getComputedStyle(e);chain.push(e.tagName.toLowerCase()+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\s+/)[0]:'')+' [align:'+q.textAlign+' hyph:'+q.hyphens+' ws:'+q.wordSpacing+' tj:'+(q.textJustify||'')+' tw:'+(q.textWrap||'')+' lang:'+(e.lang||'')+']');}
-    out.push('UNDER CENTRE: '+(chain.join('  <  ')||'-'));
-    out.push('scrollY: '+Math.round(scrollY)+'  document width: '+document.documentElement.scrollWidth);
-    g('#csp-debug').textContent=out.join('\n');
-  }
-  window.addEventListener('load',function(){setTimeout(run,800);});
-  window.addEventListener('resize',run);
-  var tm;window.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(run,150);},{passive:true});
-})();
-</script>
-		<?php
+		remove_action( 'wp_ajax_nopriv_wtc_ajax_admin', 'wtc_ajax_admin' );
+		remove_action( 'wp_ajax_wtc_ajax_admin', 'wtc_ajax_admin' );
+		add_action(
+			'wp_ajax_wtc_ajax_admin',
+			function () {
+				if ( ! current_user_can( 'manage_options' ) ) {
+					wp_die( '', '', array( 'response' => 403 ) );
+				}
+				wtc_ajax_admin();
+			}
+		);
 	},
-	99
+	20
+);
+
+/* ---- Content-Security-Policy (front end) and no PHP version banner ---- */
+add_action(
+	'send_headers',
+	function () {
+		if ( is_admin() || is_customize_preview() ) {
+			return;
+		}
+		header_remove( 'X-Powered-By' );
+		header(
+			"Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'inline-speculation-rules' https://www.google.com https://www.gstatic.com; "
+			. "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; media-src 'self' blob:; "
+			. "connect-src 'self' https://www.google.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; "
+			. "form-action 'self'; frame-ancestors 'self'",
+			true
+		);
+	},
+	98
+);
+
+/* ---- Remove WordPress's version-revealing readme.html / license.txt (core updates put them back; this removes them again) ---- */
+add_action(
+	'admin_init',
+	function () {
+		foreach ( array( 'readme.html', 'license.txt' ) as $f ) {
+			if ( is_file( ABSPATH . $f ) && is_writable( ABSPATH . $f ) ) {
+				@unlink( ABSPATH . $f ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors
+			}
+		}
+	}
 );

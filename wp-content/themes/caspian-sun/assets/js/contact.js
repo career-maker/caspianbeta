@@ -26,13 +26,13 @@
   function count(re, s) { var m = s.match(re); return m ? m.length : 0; }
 
   var INJECTION = new RegExp(
-    '<\\s*\\/?\\s*[a-z!?]' +
+    '<\\/?[a-z][a-z0-9:-]*(?:[\\s\\/][^<>]*)?>|<[!?]|<\\s*\\/?\\s*(?:script|iframe|object|embed|svg|style|link|meta|img)\\b' +
     '|javascript\\s*:|vbscript\\s*:|data\\s*:\\s*text\\/html' +
     '|\\bon(?:error|load|click|mouse\\w*|focus|blur|key\\w*|change|submit|input|abort|toggle|animation\\w*|pointer\\w*)\\s*=' +
     '|\\{\\{|\\}\\}|\\{%|%\\}|\\$\\{' +
     '|\\bunion\\s+(?:all\\s+)?select\\b|\\b(?:drop|truncate)\\s+(?:table|database)\\b|\\bdelete\\s+from\\b|\\binsert\\s+into\\b' +
-    '|;\\s*--|--\\s*$|\\/\\*|\\*\\/' +
-    '|[\'"]\\s*or\\s+[\'"]?\\w+[\'"]?\\s*=\\s*[\'"]?\\w+', 'i');
+    '|;\\s*--|\\/\\*|\\*\\/' +
+    '|[\'"]\\s*or\\s+(?:[\'"]?\\d+[\'"]?\\s*=\\s*[\'"]?\\d+|[\'"]\\w+[\'"]\\s*=\\s*[\'"]\\w+)', 'i');
   var EMAIL = /^[A-Za-z0-9](?:[A-Za-z0-9._%+\-]{0,62}[A-Za-z0-9])?@(?:[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,24}$/;
   var NAME = /^[\p{L}\p{M}][\p{L}\p{M} '’.\-]*$/u;
 

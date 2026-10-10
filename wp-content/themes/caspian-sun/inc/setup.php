@@ -387,7 +387,7 @@ add_action(
 			return;
 		}
 		$label = __( 'Chat on WhatsApp', 'caspian-sun' );
-		echo '<a class="wa-float" href="' . esc_url( 'https://wa.me/' . $num ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $label ) . '">' . csp_icon( 'whatsapp' ) . '</a>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<aside aria-label="' . esc_attr__( 'WhatsApp chat', 'caspian-sun' ) . '"><a class="wa-float" href="' . esc_url( 'https://wa.me/' . $num ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $label ) . '">' . csp_icon( 'whatsapp' ) . '</a></aside>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 );
 
