@@ -372,3 +372,13 @@ body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
   .logo-marquee{margin-top:.5rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
 }
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none;}.marquee-row{overflow-x:auto;}}
+
+/* Banner readability: soft bottom-weighted dark layer behind the title; the picture stays clearly visible.
+   Video heroes (home / blog) already carry their own overlay. */
+.hero:not(:has(.hero-video)){isolation:isolate;}
+.hero:not(:has(.hero-video))::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.3) 35%,rgba(0,0,0,0) 70%);}
+
+/* reCAPTCHA v3 badge hidden; the required notice is printed under the contact form instead */
+.grecaptcha-badge{visibility:hidden !important;}
+.recaptcha-note{margin:1rem 0 0;font-size:.75rem;line-height:1.5;color:#7a7a75;}
+.recaptcha-note a{color:inherit;text-decoration:underline;}
