@@ -115,6 +115,9 @@ function csp_select_row( $id, $name, $label, $options, $selected, $disabled = fa
           <?php if ( csp_get( 'contact_submit' ) ) : ?>
           <div class="btn-shop"><button type="submit" class="form-submit"><?php echo esc_html( csp_get( 'contact_submit' ) ); ?></button></div>
           <?php endif; ?>
+          <?php list( $rc_site ) = csp_recaptcha_keys(); if ( $rc_site ) : ?>
+          <p class="recaptcha-note">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.</p>
+          <?php endif; ?>
           <div class="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
