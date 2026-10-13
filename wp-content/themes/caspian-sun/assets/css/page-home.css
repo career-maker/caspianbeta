@@ -49,6 +49,8 @@ p{font-size:16px;font-family:'Manrope',sans-serif;font-weight:400;line-height:27
 /* ---------- 2. ABOUT CASPIAN ---------- */
 .about-grid{display:grid;grid-template-columns:555fr 693fr 270fr;gap:clamp(1.5rem,4vw,5rem);align-items:center;}
 .about-text .section-heading{margin-bottom:1.5rem;}
+/* smaller desktops: let each heading line use the column gap instead of wrapping (same font size, same layout) */
+@media (min-width:1025px) and (max-width:1599px){.about-text .section-heading{white-space:nowrap;margin-right:calc(-1 * clamp(1.5rem,4vw,5rem));}}
 .about-text p{text-align:left;margin-bottom:1rem;}
 @media (min-width:768px){.about-text p{text-align:justify;hyphens:auto;}}
 .about-text .btn-shop{margin-top:1.2rem;}
