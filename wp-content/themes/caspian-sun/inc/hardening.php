@@ -143,6 +143,20 @@ add_action(
 	1
 );
 
+/* ---- Launch: open the site to search engines once per site (robots.txt allows crawling, no noindex/nofollow).
+   Runs a single time; afterwards Settings → Reading → "Discourage search engines" is respected as usual. ---- */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'csp_launch_indexing_v1' ) ) {
+			return;
+		}
+		update_option( 'blog_public', 1 );
+		update_option( 'csp_launch_indexing_v1', 1, false );
+	},
+	5
+);
+
 /* ---- Pre-launch: Settings → Reading → "Discourage search engines" (blog_public = 0) blocks indexing everywhere ---- */
 add_action(
 	'send_headers',
