@@ -71,7 +71,9 @@ function initHamburger() {
 function initFooterAccordion() {
   document.querySelectorAll('.footer-accordion h3').forEach(function (h3) {
     h3.addEventListener('click', function () {
-      h3.closest('.footer-accordion').classList.toggle('open');
+      var box = h3.closest('.footer-accordion');
+      document.querySelectorAll('.footer-accordion.open').forEach(function (o) { if (o !== box) o.classList.remove('open'); });
+      box.classList.toggle('open');
     });
   });
 }

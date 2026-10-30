@@ -287,6 +287,21 @@ if ( defined( 'WPSEO_VERSION' ) ) {
 		}
 		return $url;
 	};
+	// Yoast prints og:image only from its own image list, so the filters above never fire when it is empty: feed the list.
+	add_action(
+		'wpseo_add_opengraph_images',
+		function ( $images ) {
+			$id = csp_seo_image_id();
+			if ( $id ) {
+				$images->add_image_by_id( $id );
+			}
+		}
+	);
+	$csp_desc_filter = function ( $desc ) {
+		return '' === trim( (string) $desc ) ? wp_strip_all_tags( (string) csp_seo_description() ) : $desc;
+	};
+	add_filter( 'wpseo_opengraph_desc', $csp_desc_filter, 20 );
+	add_filter( 'wpseo_twitter_description', $csp_desc_filter, 20 );
 	add_filter( 'wpseo_opengraph_image', $csp_img_filter, 20 );
 	add_filter( 'wpseo_twitter_image', $csp_img_filter, 20 );
 	add_filter(
