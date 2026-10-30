@@ -364,7 +364,8 @@ body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
 .marquee-row{overflow:hidden;}
 .marquee-track{display:flex;width:max-content;animation:marqueeRight var(--dur,50s) linear infinite;}
 .marquee-row.is-rev .marquee-track{animation-name:marqueeLeft;}
-@media (hover:hover){.logo-marquee:hover .marquee-track{animation-play-state:paused;}} /* touch: a tap would leave :hover stuck and freeze the logos */
+@media (hover:hover){.logo-marquee:hover .marquee-track{animation-play-state:paused;}}
+.logo-marquee.is-paused .marquee-track{animation-play-state:paused;} /* touch: tap a logo to pause, tap anywhere else to resume (components.js) */
 .marquee-track .logo-cell{flex:0 0 auto;width:clamp(150px,13vw,200px);min-height:clamp(84px,8vw,124px);margin-right:clamp(.5rem,.9vw,.9rem);}
 .marquee-track .logo-cell img{height:clamp(44px,5vw,76px);}
 @keyframes marqueeRight{from{transform:translate3d(-50%,0,0);}to{transform:translate3d(0,0,0);}}

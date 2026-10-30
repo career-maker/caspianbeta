@@ -168,6 +168,15 @@ function initReveal() {
   els.forEach(function(e){io.observe(e);});
 })();
 
+// Logo marquee on touch screens: tap a logo to pause, tap anywhere outside to resume.
+(function(){
+  var ms=document.querySelectorAll('.logo-marquee');
+  if(!ms.length||!window.matchMedia||!window.matchMedia('(hover:none)').matches)return;
+  document.addEventListener('click',function(e){
+    ms.forEach(function(m){m.classList.toggle('is-paused',m.contains(e.target)&&!!e.target.closest('.logo-cell'));});
+  });
+})();
+
 // Product cards: on touch devices the hover overlay is skipped and a tap anywhere on the card opens its detail page.
 (function(){
   var cards=document.querySelectorAll('.pcard, .product-card');
