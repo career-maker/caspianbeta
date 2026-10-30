@@ -168,16 +168,6 @@ function initReveal() {
   els.forEach(function(e){io.observe(e);});
 })();
 
-// Warm lazy images: once the page has loaded, fetch the remaining lazy images in the background
-// so they are ready before the visitor scrolls to them (does not compete with the hero/LCP).
-(function(){
-  function warm(){
-    var run=function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading='eager';});};
-    if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:2500});else setTimeout(run,800);
-  }
-  if(document.readyState==='complete')setTimeout(warm,300);else window.addEventListener('load',function(){setTimeout(warm,300);});
-})();
-
 // Product cards: on touch devices the hover overlay is skipped and a tap anywhere on the card opens its detail page.
 (function(){
   var cards=document.querySelectorAll('.pcard, .product-card');
