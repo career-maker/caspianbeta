@@ -386,3 +386,6 @@ body .hero h1,body .hero .hero-title{line-height:1.14;margin-bottom:1rem;}
 .grecaptcha-badge{visibility:hidden !important;}
 .recaptcha-note{margin:1rem 0 0;font-size:.75rem;line-height:1.5;color:#7a7a75;}
 .recaptcha-note a{color:inherit;text-decoration:underline;}
+
+/* Mobile: editor line breaks inside banner paragraphs leave ragged one-word lines; let the text wrap naturally (headings keep theirs). */
+@media (max-width:768px){.hero p br{display:none;}}
