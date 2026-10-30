@@ -381,9 +381,10 @@ function csp_mail_notify( $d ) {
 function csp_mail_confirm( $d ) {
 	$site    = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 	$subject = csp_oneline( csp_mail_opt( 'autoreply_subject', 'Thank you for contacting ' . $site ) );
-	$intro   = (string) csp_mail_opt( 'autoreply_body', "Thank you for your enquiry. We have received your message and a member of our team will get back to you shortly." );
+	$intro   = (string) csp_mail_opt( 'autoreply_body', sprintf( "Dear %1\$s,\n\nThank you for contacting %2\$s. We have received your enquiry and our team will review it and respond within one business day.", $d['name'], $site ) );
+	$phone   = csp_opt( 'opt_phone_display' );
 	$a       = array(
-		'preheader'     => 'We have received your enquiry.',
+		'preheader'     => 'Thank you for contacting ' . $site . ' — we have received your enquiry.',
 		'eyebrow'       => 'Enquiry received',
 		'title'         => 'Thank you, ' . $d['name'],
 		'intro'         => $intro,
@@ -394,8 +395,10 @@ function csp_mail_confirm( $d ) {
 			'Email'   => $d['email'],
 			'Phone'   => $d['phone'],
 		),
+		'message_label' => 'Your message',
+		'message'       => $d['message'],
 		'button'        => array( 'Visit our website', home_url( '/' ) ),
-		'note'          => 'You can simply reply to this email if you would like to add anything.',
+		'note'          => 'For anything urgent' . ( $phone ? ', call us on ' . $phone . ' or' : '' ) . ' simply reply to this email.' . "\n\nWarm regards,\nThe " . $site . ' team',
 		'footer_note'   => 'You are receiving this email because an enquiry was submitted with this address on ' . home_url( '/' ) . '.',
 	);
 	$headers = array();
