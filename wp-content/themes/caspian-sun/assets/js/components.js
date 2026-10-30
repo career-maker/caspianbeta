@@ -107,7 +107,7 @@ function initReveal() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -60px 0px' }); // threshold 0: tall blocks (article body on mobile) can never show 12% of themselves
   reveals.forEach(function (r) { observer.observe(r); });
 }
 
