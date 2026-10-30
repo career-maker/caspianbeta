@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CSP_HTACCESS_VERSION', '4' );
+define( 'CSP_HTACCESS_VERSION', '5' );
 
 function csp_htaccess_blocks() {
 	$deny = array(
@@ -30,6 +30,10 @@ function csp_htaccess_blocks() {
 		array( '</FilesMatch>' )
 	);
 	$performance = array(
+		// The host's mod_pagespeed rewrote components.css to a *.pagespeed.cf.*.css URL that returned 404 (page rendered unstyled). The theme minifies and caches its own assets.
+		'<IfModule pagespeed_module>',
+		'  ModPagespeed off',
+		'</IfModule>',
 		'<IfModule mod_deflate.c>',
 		'  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/xhtml+xml application/javascript text/javascript application/json application/ld+json image/svg+xml application/rss+xml font/ttf font/otf',
 		'</IfModule>',
