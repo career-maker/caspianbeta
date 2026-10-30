@@ -219,9 +219,20 @@ add_filter( 'the_generator', '__return_empty_string' );
 add_action(
 	'wp_head',
 	function () {
-		echo '<script>document.documentElement.classList.add("js");</script>' . "\n";
+		// Phones skip the preloader: it holds the hero (LCP) behind an overlay until the poster has loaded.
+		echo '<script>var d=document.documentElement;d.classList.add("js");if(innerWidth<=768)d.classList.add("pl-skip");</script>' . "\n";
 	},
 	1
+);
+
+// New and regenerated image sizes are written as WebP (large PNG/JPEG cards were the heaviest mobile downloads).
+add_filter(
+	'image_editor_output_format',
+	function ( $map ) {
+		$map['image/png']  = 'image/webp';
+		$map['image/jpeg'] = 'image/webp';
+		return $map;
+	}
 );
 
 // Favicon: see inc/hardening.php (get_site_icon_url filter -> Theme Settings image or theme fallback).

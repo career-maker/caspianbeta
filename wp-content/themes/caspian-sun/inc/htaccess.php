@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CSP_HTACCESS_VERSION', '3' );
+define( 'CSP_HTACCESS_VERSION', '4' );
 
 function csp_htaccess_blocks() {
 	$deny = array(

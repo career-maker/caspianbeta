@@ -117,6 +117,7 @@ function initReveal() {
 (function(){
   var pl=document.getElementById('preloader');
   if(!pl)return;
+  if(document.documentElement.classList.contains('pl-skip')){if(pl.parentNode)pl.parentNode.removeChild(pl);return;}
   var root=document.documentElement,start=Date.now(),MIN=900,done=false;
   root.classList.add('pl-lock');
   function finish(){
