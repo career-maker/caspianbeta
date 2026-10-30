@@ -22,6 +22,16 @@ add_filter(
 	}
 );
 remove_action( 'template_redirect', 'rest_output_link_header', 11 );
+// Visitors get the normal 404 page for /wp-json and /?rest_route=, not a JSON error (runs before rest_api_loaded at priority 10).
+add_action(
+	'parse_request',
+	function ( $wp ) {
+		if ( ! empty( $wp->query_vars['rest_route'] ) && ! is_user_logged_in() ) {
+			$wp->query_vars = array( 'error' => '404' );
+		}
+	},
+	1
+);
 
 /* ---- Case-sensitive URLs: /About-Us/ → 301 → /about-us/ ---- */
 
