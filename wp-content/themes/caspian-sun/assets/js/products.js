@@ -48,8 +48,13 @@
   }
   tabs.forEach(function(t){t.addEventListener('click',function(){setFilter(t.dataset.filter);});});
   if(input)input.addEventListener('input',apply);
-  var h=location.hash.replace('#','');
   var valid=[].slice.call(tabs).map(function(t){return t.dataset.filter;});
-  if(h&&h!=='all'&&valid.indexOf(h)>-1)setFilter(h);else apply();
+  function fromHash(){
+    var h=location.hash.replace('#','');
+    if(h&&h!=='all'&&valid.indexOf(h)>-1)setFilter(h);else apply();
+  }
+  fromHash();
+  /* footer/menu links to /products/#cat on this same page change only the hash, no reload */
+  window.addEventListener('hashchange',fromHash);
   fades();
 })();
